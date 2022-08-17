@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Perimeter of a square",
+    "answer": "4*s",
+    "correct": true
+  },
+  {
+    "name": "Perimeter of a rectangle",
+    "answer": "2*w+2*h",
+    "correct": true
+  },
+  {
+    "name": "Area of a square",
+    "answer": "s**2",
+    "correct": true
+  },
+  {
+    "name": "Area of a rectangle",
+    "answer": "w*h",
+    "correct": true
+  },
+  {
+    "name": "Area of a triangle",
+    "answer": "b/2*h",
+    "correct": true
+  },
+  {
+    "name": "Area of a trapezoid",
+    "answer": "(b1+b2)/2*h",
+    "correct": true
+  },
+  {
+    "name": "Area of a circle",
+    "answer": "Math.PI*(r**2)",
+    "correct": true
+  },
+  {
+    "name": "Circumference of a circle",
+    "answer": "2*Math.PI*r",
+    "correct": true
+  }
+]
