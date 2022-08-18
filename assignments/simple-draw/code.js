@@ -36,4 +36,4 @@
  */
 
 drawFilledRect(0, height - 1000, 1000, 1000, 'purple')
-    drawLine(0, 0, 990, 990, 'red', 1)
+    drawLine(0, 0, 990, 990, 'red', 20)
