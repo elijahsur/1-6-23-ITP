@@ -35,5 +35,5 @@
  *
  */
 
-drawFilledRect(0, height - 1000, 1000, 1000, 'purple')
+drawFilledRect(0, height - 1000, 1000, 1000, 'black')
     drawLine(0, 0, 990, 990, 'red', 20)
