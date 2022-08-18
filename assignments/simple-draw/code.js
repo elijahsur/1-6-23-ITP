@@ -37,6 +37,6 @@
 
 drawFilledRect(0, height - 1000, 1000, 1000, 'blue')
 
-drawLine(0, height, 95, 500, 'black', 20);
+drawLine(0, height, 90, 500, 'black', 20);
 drawLine(0, height, width, 0, 'black', 20);
 drawLine(0, height, width, height, 'black', 20);
