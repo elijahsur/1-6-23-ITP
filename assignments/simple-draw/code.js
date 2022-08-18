@@ -38,4 +38,5 @@
 drawFilledRect(0, height - 1000, 1000, 1000, 'black')
     drawLine(0, 0, width, height, 'red', 20);
 
-drawLine(0, 0, -width, -height, 'red', 20);
+drawLine(0, 0, width, height, 'red', 20);
+drawLine(20, 20, 20, 20, 'red', 20);
