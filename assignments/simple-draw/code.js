@@ -44,4 +44,4 @@ drawLine(width,height,width,0,'black',30);
 drawLine(width,0,0,0,'black',30);
 drawLine(0,0,0,height,'black',30);
 drawLine(0,height,width,height,'black',30);
-
+drawLine(width/2-80,height/2+80,width/2+80,height/2+80,'black',10)
