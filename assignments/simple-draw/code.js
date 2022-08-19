@@ -40,4 +40,5 @@ drawFilledRect(0, height - 1000, 1000, 1000, 'white')
 drawLine(width/2-80,height/2,width/2+80,height/2,'black',10)
 drawLine(width/2-80,height/2,width/2,height/2-160,'black',10)
 drawLine(width/2+80,height/2,width/2,height/2-160,'black',10)
+drawLine(width,height,width,0,'black',10)
 
