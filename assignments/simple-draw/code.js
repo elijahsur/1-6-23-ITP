@@ -42,4 +42,4 @@ drawLine(0, height, width, height, 'black', 20);
 drawLine(0, height, 0, 0, 'black', 20);
 drawLine(0, 0, width, 0, 'black', 20);
 drawLine(width, 0, width, height, 'black', 20);
-drawFilledRect(width/2+20, height/2-40, width/2-20, height/2-40, 'black');
+drawFilledRect(width/2, height/2-40, width/2, height/2-40, 'black');
