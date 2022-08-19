@@ -37,5 +37,5 @@
 
 drawFilledRect(0, height - 1000, 1000, 1000, 'white')
 
-
+drawLine(width/2-20,height/2-4,width/2+20,height/2+4,'black',4)
 
