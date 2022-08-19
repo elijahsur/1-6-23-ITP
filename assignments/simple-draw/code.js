@@ -45,3 +45,4 @@ drawLine(width,0,0,0,'black',30);
 drawLine(0,0,0,height,'black',30);
 drawLine(0,height,width,height,'black',30);
 drawLine(width/2-160,height/2+80,width/2+160,height/2+80,'black',40)
+drawLine(width/2-160,height/2+120,width/2+160,height/2+80,'black',20)
