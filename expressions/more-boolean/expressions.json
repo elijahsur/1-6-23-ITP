@@ -8,5 +8,10 @@
     "name": "Wait for a sale?",
     "answer": "!storeOpen||!isASale",
     "correct": true
+  },
+  {
+    "name": "Coming to bookclub?",
+    "answer": "member&&!outSick",
+    "correct": true
   }
 ]
