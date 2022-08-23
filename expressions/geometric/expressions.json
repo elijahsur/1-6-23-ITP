@@ -103,5 +103,10 @@
     "name": "Surface area of a sphere",
     "answer": "(Math.PI*(r*r))*4",
     "correct": true
+  },
+  {
+    "name": "Volume of sphere",
+    "answer": "(4/3)*Math.PI*(Math.PI*(r*r)**4)",
+    "correct": false
   }
 ]
