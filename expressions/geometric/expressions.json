@@ -133,5 +133,10 @@
     "name": "Volume of sphere",
     "answer": "(4/3)*Math.PI*(r**3)",
     "correct": true
+  },
+  {
+    "name": "Midpoint of line",
+    "answer": "(a+b)/2",
+    "correct": true
   }
 ]
