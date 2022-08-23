@@ -123,5 +123,10 @@
     "name": "Volume of sphere",
     "answer": "(4/3)*Math.PI*(r*r*r*r)",
     "correct": false
+  },
+  {
+    "name": "Volume of sphere",
+    "answer": "(4/3)*Math.PI*(r**4)",
+    "correct": false
   }
 ]
