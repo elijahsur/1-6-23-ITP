@@ -28,5 +28,10 @@
     "name": "Can go to prom?",
     "answer": "isSenior||invitedBySenior",
     "correct": true
+  },
+  {
+    "name": "Having fun?",
+    "answer": "done||fun",
+    "correct": false
   }
 ]
