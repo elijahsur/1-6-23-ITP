@@ -82,5 +82,11 @@
     "answer": "'o'",
     "correct": true,
     "timestamp": 1661378094303
+  },
+  {
+    "name": "UPPER CASE",
+    "answer": "'FOO'",
+    "correct": true,
+    "timestamp": 1661378103982
   }
 ]
