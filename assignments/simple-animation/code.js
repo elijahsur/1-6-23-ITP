@@ -1,7 +1,7 @@
 const drawFrame = (time) => {
-  drawFilledCircle((time / 5) % width, height, 50, 'white');
-  drawFilledCircle((time / 5) % width, 0, 50, 'white');
-  drawFilledCircle((time / 5) % width - 10, height, 50, 'black');
-  drawFilledCircle((time / 5) % width - 10, 0, 50, 'black');
+  drawFilledCircle((time / 5) % width, height, 100, 'white');
+  drawFilledCircle((time / 5) % width, 0, 100, 'white');
+  drawFilledCircle((time / 5) % width - 10, height, 100, 'black');
+  drawFilledCircle((time / 5) % width - 10, 0, 100, 'black');
 };
 animate(drawFrame);
