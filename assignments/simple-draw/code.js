@@ -1,6 +1,5 @@
 
 drawFilledRect(0, height - 1000, 1000, 1000, 'white')
-drawLine(width,height,width,0,'black',30);
 drawLine(width,0,0,0,'black',30);
 drawLine(0,0,0,height,'black',30);
 drawLine(0,height,width,height,'black',30);
