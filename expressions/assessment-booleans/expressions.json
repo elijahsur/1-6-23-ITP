@@ -19,5 +19,12 @@
     "answer": "done||!fun",
     "correct": true,
     "timestamp": 1661895924388
+  },
+  {
+    "name": "Wait for a sale?",
+    "canonical": "!storeOpen || !isASale",
+    "answer": "!storeOpen&&!isASale",
+    "correct": false,
+    "timestamp": 1661895948756
   }
 ]
