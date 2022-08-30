@@ -187,5 +187,12 @@
     "answer": "member||outSick",
     "correct": false,
     "timestamp": 1661896390782
+  },
+  {
+    "name": "In the room where it happens?",
+    "canonical": "inTheClass || isProctor",
+    "answer": "inTheClass||isProctor",
+    "correct": true,
+    "timestamp": 1661896422887
   }
 ]
