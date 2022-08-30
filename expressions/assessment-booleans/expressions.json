@@ -194,5 +194,12 @@
     "answer": "inTheClass||isProctor",
     "correct": true,
     "timestamp": 1661896422887
+  },
+  {
+    "name": "Coming to bookclub?",
+    "canonical": "member && !outSick",
+    "answer": "member&&!outSick",
+    "correct": true,
+    "timestamp": 1661896431999
   }
 ]
