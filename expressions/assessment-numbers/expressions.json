@@ -40,5 +40,12 @@
     "answer": "24*60*60",
     "correct": true,
     "timestamp": 1661895736912
+  },
+  {
+    "name": "Manhattan distance",
+    "canonical": "Math.abs(x1 - x2) + Math.abs(y1 - y2)",
+    "answer": "Math.abs(x1-x2)+Math.abs(y1-y2)",
+    "correct": true,
+    "timestamp": 1661895799699
   }
 ]
