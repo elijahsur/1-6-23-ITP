@@ -26,5 +26,12 @@
     "answer": "a%b",
     "correct": true,
     "timestamp": 1661895715505
+  },
+  {
+    "name": "Seconds in a day",
+    "canonical": "24 * 60 * 60",
+    "answer": "24/60/60",
+    "correct": false,
+    "timestamp": 1661895727816
   }
 ]
