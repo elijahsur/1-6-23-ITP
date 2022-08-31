@@ -23,7 +23,7 @@ const drawFrame = (time) => {};
 const height = (t) => 5;
 
 // Compute the shade of the shadow. 0 is black; 255 is white.
-const shadowDarkness = (h) => 0;
+const shadowDarkness = (h) => 5;
 
 // Compute the size of the shadow.
 const shadowSize = (h) => 0;
