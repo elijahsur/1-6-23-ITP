@@ -26,7 +26,7 @@ const height = (t) => 5;
 const shadowDarkness = (h) => 5;
 
 // Compute the size of the shadow.
-const shadowSize = (h) => 0;
+const shadowSize = (h) => 5;
 
 // Call the animate function from the framework.
 animate(drawFrame);
