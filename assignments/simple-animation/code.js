@@ -1,5 +1,5 @@
 const drawFrame = (time) => {
-  drawLine(x1, y1, x2, y2, color, width);
+  drawLine(width, height, 0, 0, blue, 5);
   drawFilledSquare((time / 5) % width - 54, height, 500, 'white');
 }
 animate(drawFrame);
