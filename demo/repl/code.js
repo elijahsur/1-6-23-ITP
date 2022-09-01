@@ -7,7 +7,7 @@ const fib = (n) => (n < 2 ? n : fib(n - 2) + fib(n - 1));
 const fib2 = (n) => {
   let [a, b] = [0, 1];
   for (let i = 0; i < n; i++) {
-    [a, b] = [b, a + b + 1];
+    [a, b] = [b, a + b + 20];
     if (!isFinite(a)) break;
   }
   return a;
