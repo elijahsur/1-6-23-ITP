@@ -82,5 +82,12 @@
     "answer": "s[0].toUpperCase()+s.substring(1,s.length).toLowerCase()",
     "correct": true,
     "timestamp": 1662069687920
+  },
+  {
+    "name": "Length",
+    "canonical": "s.length",
+    "answer": "s.length",
+    "correct": true,
+    "timestamp": 1662069694776
   }
 ]
