@@ -33,5 +33,12 @@
     "answer": "!sleepy||!dark",
     "correct": true,
     "timestamp": 1662069302924
+  },
+  {
+    "name": "Coming to bookclub?",
+    "canonical": "member && !outSick",
+    "answer": "member&&!outSick",
+    "correct": true,
+    "timestamp": 1662069317773
   }
 ]
