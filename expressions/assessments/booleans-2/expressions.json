@@ -19,5 +19,12 @@
     "answer": "enoughSleep&&!justWorkedOut",
     "correct": true,
     "timestamp": 1662069268283
+  },
+  {
+    "name": "Having fun?",
+    "canonical": "done || !fun",
+    "answer": "done||!fun",
+    "correct": true,
+    "timestamp": 1662069286508
   }
 ]
