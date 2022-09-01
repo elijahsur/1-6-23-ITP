@@ -9,7 +9,7 @@ const drawFrame = (time) => {
     drawFilledCircle((time/10)%width, (time/10)%height, 25, 'red');
     drawFilledCircle((time/5)%width, (time/5)%height, 25, 'gold');
     drawFilledCircle((time/7)%width, (time/7)%height, 25, 'black');
-    drawFilledCircle((time/12)%width, (time/12)%height, 25, 'maroon');
+    drawFilledCircle((time/12)%width, (time/12)%height, 25, 'seafoamgreen');
 }
 
 // This is a function that we define to make it easier to draw a triangle. You
