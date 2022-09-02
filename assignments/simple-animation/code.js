@@ -1,6 +1,7 @@
 
 const drawFrame = (time) => {
     clear();
+   clear();
     drawFilledCircle((time/10)%width, (time/10)%height, 25, 'white');
     drawFilledCircle((time/10 + 40)%width, (time/10 + 40)%height, 25, 'blue');
     drawFilledCircle((time/10 + 80)%width, (time/10 + 80)%height, 25, 'black');
