@@ -34,7 +34,7 @@ const drawFrame = (time) => {
     drawFilledCircle((time/10 + 1000)%width, (time/10 + 1000)%height, 25, 'blue');
     drawFilledCircle((time/10 + 1040)%width, (time/10 + 1040)%height, 25, 'black');
     drawFilledCircle((time/10 + 1080)%width, (time/10 + 1080)%height, 25, 'red');
-    drawFilledCircle((time/10 + 1120))%width, (time/10 + 1120)%height, 25, 'white');
+    drawFilledCircle((time/10 + 1120)%width, (time/10 + 1120)%height, 25, 'white');
     drawFilledCircle((time/10 + 1160)%width, (time/10 + 1160)%height, 25, 'blue');
     drawFilledCircle((time/10 + 1200)%width, (time/10 + 1200)%height, 25, 'black');
     drawFilledCircle((time/10 + 1240)%width, (time/10 + 1240)%height, 25, 'red');
