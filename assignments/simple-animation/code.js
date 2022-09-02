@@ -1,55 +1,6 @@
 
 const drawFrame = (time) => {
     clear();
-    drawFilledCircle((time/10)%width, (time/10)%height, 25, 'white');
-    drawFilledCircle((time/10 + 40)%width, (time/10 + 40)%height, 25, 'blue');
-    drawFilledCircle((time/10 + 80)%width, (time/10 + 80)%height, 25, 'black');
-    drawFilledCircle((time/10 + 120)%width, (time/10 + 120)%height, 25, 'red');
-    drawFilledCircle((time/10 + 160)%width, (time/10 + 160)%height, 25, 'white');
-    drawFilledCircle((time/10 + 200)%width, (time/10 + 200)%height, 25, 'blue');
-    drawFilledCircle((time/10 + 240)%width, (time/10 + 240)%height, 25, 'black');
-    drawFilledCircle((time/10 + 280)%width, (time/10 + 280)%height, 25, 'red');
-    drawFilledCircle((time/10 + 320)%width, (time/10 + 320)%height, 25, 'white');
-    drawFilledCircle((time/10 + 360)%width, (time/10 + 360)%height, 25, 'blue');
-    drawFilledCircle((time/10 + 400)%width, (time/10 + 400)%height, 25, 'black');
-    drawFilledCircle((time/10 + 440)%width, (time/10 + 440)%height, 25, 'red');
-    drawFilledCircle((time/10 + 480)%width, (time/10 + 480)%height, 25, 'white');
-    drawFilledCircle((time/10 + 520)%width, (time/10 + 520)%height, 25, 'blue');
-    drawFilledCircle((time/10 + 560)%width, (time/10 + 560)%height, 25, 'black');
-    drawFilledCircle((time/10 + 600)%width, (time/10 + 600)%height, 25, 'red');
-    drawFilledCircle((time/10 + 640)%width, (time/10 + 640)%height, 25, 'white');
-    drawFilledCircle((time/10 + 680)%width, (time/10 + 680)%height, 25, 'blue');
-    drawFilledCircle((time/10 + 720)%width, (time/10 + 720)%height, 25, 'black');
-    drawFilledCircle((time/10 + 760)%width, (time/10 + 760)%height, 25, 'red');
-    drawFilledCircle((time/10 + 800)%width, (time/10 + 800)%height, 25, 'white');
-    drawFilledCircle((time/10 + 840)%width, (time/10 + 840)%height, 25, 'blue');
-    drawFilledCircle((time/10 + 880)%width, (time/10 + 880)%height, 25, 'black');
-    drawFilledCircle((time/10 + 920)%width, (time/10 + 920)%height, 25, 'red');
-    drawFilledCircle((time/10 + 960)%width, (time/10 + 960)%height, 25, 'white');
-    drawFilledCircle((time/10 + 1000)%width, (time/10 + 1000)%height, 25, 'blue');
-    drawFilledCircle((time/10 + 1040)%width, (time/10 + 1040)%height, 25, 'black');
-    drawFilledCircle((time/10 + 1080)%width, (time/10 + 1080)%height, 25, 'red');
-    drawFilledCircle((time/10 + 1120)%width, (time/10 + 1120)%height, 25, 'white');
-    drawFilledCircle((time/10 + 1160)%width, (time/10 + 1160)%height, 25, 'blue');
-    drawFilledCircle((time/10 + 1200)%width, (time/10 + 1200)%height, 25, 'black');
-    drawFilledCircle((time/10 + 1240)%width, (time/10 + 1240)%height, 25, 'red');
-    drawFilledCircle((time/10 + 1280)%width, (time/10 + 1280)%height, 25, 'white');
-    drawFilledCircle((time/10 + 1320)%width, (time/10 + 1320)%height, 25, 'blue');
-    drawFilledCircle((time/10 + 1360)%width, (time/10 + 1360)%height, 25, 'black');
-    drawFilledCircle((time/10 + 1400)%width, (time/10 + 1400)%height, 25, 'red');
-    drawFilledCircle((time/10 + 1440)%width, (time/10 + 1440)%height, 25, 'white');
-    drawFilledCircle((time/10 + 1480)%width, (time/10 + 1480)%height, 25, 'blue');
-    drawFilledCircle((time/10 + 1520)%width, (time/10 + 1520)%height, 25, 'black');
-    drawFilledCircle((time/10 + 1560)%width, (time/10 + 1560)%height, 25, 'red');
-    drawFilledCircle((time/10 + 1600)%width, (time/10 + 1600)%height, 25, 'white');
-    drawFilledCircle((time/10 + 1640)%width, (time/10 + 1640)%height, 25, 'blue');
-    drawFilledCircle((time/10 + 1680)%width, (time/10 + 1680)%height, 25, 'black');
-    drawFilledCircle((time/10 + 1720)%width, (time/10 + 1720)%height, 25, 'red');
-    drawFilledCircle((time/10 + 1760)%width, (time/10 + 1760)%height, 25, 'white');
-    drawFilledCircle((time/10 + 1800)%width, (time/10 + 1800)%height, 25, 'blue');
-    drawFilledCircle((time/10 + 1840)%width, (time/10 + 1840)%height, 25, 'black');
-    drawFilledCircle((time/10 + 1880)%width, (time/10 + 1880)%height, 25, 'red');
-    drawFilledCircle((time/10 + 1920)%width, (time/10 + 1920)%height, 25, 'turquoise');
-    drawFilledCircle((time/10 + 1960)%width, (time/10 + 1960)%height, 25, 'turquoise');
+   
 }
 animate(drawFrame);
