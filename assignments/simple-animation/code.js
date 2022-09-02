@@ -38,6 +38,10 @@ const drawFrame = (time) => {
     drawFilledCircle((time/10 + 1160)%width, (time/10 + 1160)%height, 25, 'blue');
     drawFilledCircle((time/10 + 1200)%width, (time/10 + 1200)%height, 25, 'black');
     drawFilledCircle((time/10 + 1240)%width, (time/10 + 1240)%height, 25, 'red');
+    drawFilledCircle((time/10 + 1280)%width, (time/10 + 1280)%height, 25, 'white');
+    drawFilledCircle((time/10 + 1320)%width, (time/10 + 1320)%height, 25, 'blue');
+    drawFilledCircle((time/10 + 1360)%width, (time/10 + 1360)%height, 25, 'black');
+    drawFilledCircle((time/10 + 1400)%width, (time/10 + 1400)%height, 25, 'red');
 }
 
 // This is a function that we define to make it easier to draw a triangle. You
