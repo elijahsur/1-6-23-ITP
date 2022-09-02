@@ -1,9 +1,4 @@
-// This is an example of a function definition. This function is called by the
-// underlying animation framework thanks to the call to animate below. This
-// function is responsible for drawing one frame of the animation. You can
-// change the code in here using the same functions you had in the simple
-// drawing exercise to draw shapes. The argument to this function, time, is the
-// number of milliseconds (one millionth of a second) since the program started.
+
 const drawFrame = (time) => {
     clear();
     drawFilledCircle((time/10)%width, (time/10)%height, 25, 'white');
@@ -54,16 +49,7 @@ const drawFrame = (time) => {
     drawFilledCircle((time/10 + 1800)%width, (time/10 + 1800)%height, 25, 'blue');
     drawFilledCircle((time/10 + 1840)%width, (time/10 + 1840)%height, 25, 'black');
     drawFilledCircle((time/10 + 1880)%width, (time/10 + 1880)%height, 25, 'red');
+    drawFilledCircle((time/10 + 1920)%width, (time/10 + 1920)%height, 25, 'hotpink');
+    drawFilledCircle((time/10 + 1960)%width, (time/10 + 1960)%height, 25, 'hotpink');
 }
-
-// This is a function that we define to make it easier to draw a triangle. You
-// may want to experiment with writing your own functions using this one as a
-// model to draw other shapes.
-
-// This draws a falling trangle of a particular shape whose bottom point is
-// positioned at x and whose y is a function of time.
-
-// Leave this code here or the animation won't run. Also don't change the name
-// of drawFrame either here or where it is defined. (Or, if you must, change it
-// the same way in both places.)
 animate(drawFrame);
