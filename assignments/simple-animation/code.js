@@ -49,7 +49,7 @@ const drawFrame = (time) => {
     drawFilledCircle((time/10 + 1800)%width, (time/10 + 1800)%height, 25, 'blue');
     drawFilledCircle((time/10 + 1840)%width, (time/10 + 1840)%height, 25, 'black');
     drawFilledCircle((time/10 + 1880)%width, (time/10 + 1880)%height, 25, 'red');
-    drawFilledCircle((time/10 + 1920)%width, (time/10 + 1920)%height, 25, 'hotpink');
-    drawFilledCircle((time/10 + 1960)%width, (time/10 + 1960)%height, 25, 'hotpink');
+    drawFilledCircle((time/10 + 1920)%width, (time/10 + 1920)%height, 25, 'turqoise');
+    drawFilledCircle((time/10 + 1960)%width, (time/10 + 1960)%height, 25, 'turqoise');
 }
 animate(drawFrame);
