@@ -1,2 +1,1 @@
-a = "bear"
-b = "honey"
+const add = (a,b) => (a+b);
