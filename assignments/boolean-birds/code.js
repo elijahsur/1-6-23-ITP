@@ -15,4 +15,10 @@
  *   - Flibble Birds eat fish, mice, and worms.
  *   - Globby Birds eat fish, mice, and nuts.
  *
- */
+ */ 
+const flo = 'flobby';
+const blo = 'bloggy';
+const fli = 'flibble';
+const glo = 'globby';
+
+const isRed = flo||blo||fli||glo
