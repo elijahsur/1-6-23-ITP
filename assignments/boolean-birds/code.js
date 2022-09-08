@@ -21,4 +21,4 @@ const blo = 'bloggy';
 const fli = 'flibble';
 const glo = 'globby';
 
-const isRed = () => flo||blo||flibble||globby
+const isRed = (flo||blo||fli||glo) => 'true'
