@@ -17,7 +17,8 @@
  *
  */ 
 const isFlobbyBird = (isRed,b)
-
+a = true
+b = true
 if isRed === true
   if b === true
   return true
