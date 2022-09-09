@@ -32,4 +32,4 @@
 // Feel free to play around in the REPL to make sure you understand how this
 // operator works.
 const pigLatin = (word) => 
-  (word.substring(word.search(/[aeiou]/))+word.substring(0,word.search(/[aeiou]/)+'ay'))
+  (word.substring(word.search(/[aeiou]/))+word.substring(0,word.search(/[aeiou]/)-1+'ay'))
