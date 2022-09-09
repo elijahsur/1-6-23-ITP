@@ -18,3 +18,4 @@
  */ 
 const isFlobbyBird = (a,b) => a&&b
 const isBloggyBird = (a,b) => a&&!b
+const isFlibbleBird = (a,b) => !a&&b
