@@ -22,3 +22,4 @@ const isFlibbleBird = (a,b) => !a&&b
 const isGlobbyBird = (a,b) => !a&&!b
 const eatsWorms = (a,b) => a&&b||!a&&b||a&&!b
 const eatsNuts = (a,b) => a&&b||!a&&!b||a&&!b
+const eatsFish = (a,b) => a&&b||!a&&!b||!a&&b
