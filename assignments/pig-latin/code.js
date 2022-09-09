@@ -31,4 +31,5 @@
 //
 // Feel free to play around in the REPL to make sure you understand how this
 // operator works.
-const pigLatin = (word) => (word.substring(word.search(/aeiou/))+word[0]+'ay')
+const pigLatin = (word) => 
+  (word.substring(word.search(/[aeiou]/))+word[0]+'ay')
