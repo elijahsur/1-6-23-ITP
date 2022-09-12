@@ -28,3 +28,4 @@ const eatsMice = (a,b) => a&&!b||!a&&!b||!a&&b
 
 const isRed = (a) => a === 'Bloggy' || a === 'Flobby'
 const isSpotted = (a) => a === 'Flobby' || a === 'Flibble'
+const isNotRed = (a) => a === !'Bloggy' || a === !'Flobby'
