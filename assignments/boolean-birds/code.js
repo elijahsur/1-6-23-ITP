@@ -26,5 +26,4 @@ const eatsNuts = (a,b) => a&&b||!a&&!b||a&&!b
 const eatsFish = (a,b) => a&&b||!a&&!b||!a&&b
 const eatsMice = (a,b) => a&&!b||!a&&!b||!a&&b
 
-const isRed = (a) => a === 'Flobby'
-const isRed = (a) => a === 'Bloggy'
+const isRed = (a) => a === 'Flobby' = (a) => a === 'Bloggy'
