@@ -23,3 +23,4 @@
  *
  *  clear()
  */
+const lineOfCircles = drawFilledCircle(x, y, r, color)
