@@ -26,4 +26,4 @@
 let size = 100
 let dif = width/2
 const lineOfCircles = drawFilledCircle(dif, height/2, size, 'black')
-drawFilledCircle (0,600,9)
+drawFilledCircle (9,9,9)
