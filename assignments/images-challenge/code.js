@@ -24,4 +24,4 @@
  *  clear()
  */
 let size = 100
-const lineOfCircles = drawFilledCircle(200, 200, size, 'black')
+const lineOfCircles = drawFilledCircle(200, height/2, size, 'black')
