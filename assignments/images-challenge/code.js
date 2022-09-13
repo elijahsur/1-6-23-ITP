@@ -23,4 +23,4 @@
  *
  *  clear()
  */
-const lineOfCircles = drawFilledCircle(200, 200, 100, black)
+const lineOfCircles = drawFilledCircle(200, 200, 100, 'black')
