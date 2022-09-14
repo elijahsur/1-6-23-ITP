@@ -23,7 +23,10 @@
  *
  *  clear()
  */
-let size = 73
+let size = 
 let dif = width/size+size
 
 const lineOfCircles = drawFilledCircle(dif, height/2, size, 'red')
+while (dif < 100) {
+  drawFilledCircle(dif, height/2, size, 'red')
+} 
