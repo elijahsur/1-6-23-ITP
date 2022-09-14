@@ -23,8 +23,8 @@
  *
  *  clear()
  */
-let size = 50
-let dif = width/size+size
+let size = 50;
+let dif = width/(size+size)
 
 let x = 1;
 while (x < 100) {
