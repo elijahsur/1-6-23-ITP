@@ -23,7 +23,7 @@
  *
  *  clear()
  */
-let radius = 25;
+let radius = 50;
 let dif = width/radius+radius;
 
 let x = 1;
