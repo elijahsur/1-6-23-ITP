@@ -27,7 +27,7 @@ let radius = 50;
 let dif = width/radius+radius;
 
 let x = 1;
-while (x < ) {
+while (x < 100) {
 
   drawFilledCircle(dif, height/2, radius, 'red')
   x = x+1
