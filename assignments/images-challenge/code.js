@@ -26,7 +26,7 @@
 let size = 50
 let dif = width/size+size
 
-let x = 0;
+let x = 100;
 while (x < 100) {
 
   drawFilledCircle(dif, height/2, size, 'red')
