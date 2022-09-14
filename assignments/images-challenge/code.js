@@ -31,5 +31,5 @@ while (x < 100) {
 
   drawFilledCircle(dif, height/2, size, 'red')
   x = x+1
-  dif = dif/size+size
+  dif = dif+1
 } 
