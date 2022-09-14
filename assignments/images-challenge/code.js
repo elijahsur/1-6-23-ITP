@@ -23,7 +23,7 @@
  *
  *  clear()
  */
-let radius = 15;
+let radius = 50;
 let dif = width/radius+radius;
 const aaa = drawFilledCircle(dif, height/2, radius, 'red')
 let x = 1;
