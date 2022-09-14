@@ -23,13 +23,13 @@
  *
  *  clear()
  */
-let size = 50;
-let dif = width/(size+size)
+let radius = 50;
+let dif = width/radius+radius;
 
 let x = 1;
 while (x < 100) {
 
-  drawFilledCircle(dif, height/2, size, 'red')
+  drawFilledCircle(dif, height/2, radius, 'red')
   x = x+1
   dif = dif+100
 } 
