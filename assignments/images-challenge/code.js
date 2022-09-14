@@ -23,10 +23,7 @@
  *
  *  clear()
  */
-let size = 50
-let dif = width/size+size
 
-const lineOfCircles = drawFilledCircle(dif, height/2, size, 'red')
 let x = 0;
 while (x < 100) {
 
