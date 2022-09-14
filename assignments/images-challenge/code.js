@@ -23,7 +23,7 @@
  *
  *  clear()
  */
-let size = 
+let size = 50
 let dif = width/size+size
 
 const lineOfCircles = drawFilledCircle(dif, height/2, size, 'red')
