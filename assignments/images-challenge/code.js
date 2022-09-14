@@ -30,6 +30,6 @@ let x = 1;
 while (x < dif) {
 
   drawFilledCircle(dif, height/2, radius, 'red')
-  x = x*24
+  x = x*2534644653422676
   dif = dif+radius*2
 } 
