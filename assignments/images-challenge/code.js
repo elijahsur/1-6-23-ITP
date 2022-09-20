@@ -24,7 +24,7 @@
  *  clear()
  */
 
-let radius = 190;
+let radius = 100;
 let dif = radius;
 let x = 0;
 while (x < Math.floor(width / (radius * 2))) {
