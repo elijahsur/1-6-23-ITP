@@ -23,14 +23,13 @@
  *
  *  clear()
  */
-
-
-const linecircle = () => {
-  let dif = radius;
+  let dif = r;
   let x = 0;
-  while (x < Math.floor(width / (radius * 2))) {
 
-  drawFilledCircle(dif, height / 2, radius, 'red')
+const linecircle = (r) => {
+  while (x < Math.floor(width / (r * 2))) {
+
+  drawFilledCircle(dif, height / 2, r, 'red')
   x = x + 1
   dif = dif + radius * 2
 }
