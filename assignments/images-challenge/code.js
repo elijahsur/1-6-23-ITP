@@ -31,5 +31,5 @@ while (x < width/radius ) {
 
   drawFilledCircle(dif, height/2, radius, 'red')
   x = x+1
-  dif = dif+radius*2
+  dif = dif*2
 } 
