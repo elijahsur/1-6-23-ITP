@@ -45,5 +45,6 @@ const fillWithCircles = (radius) => {
   while (count < Math.floor(width+height)) {
     drawCircle(sec, radius, radius, 'cyan', 1)
     count = count + 1
+    sec = sec + radius * 2
   }
 }
