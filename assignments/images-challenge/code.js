@@ -36,5 +36,5 @@ const lineOfCircles = (radius) => {
     dif = dif + radius * 2
     
   }
-  return "done :)"
+  return "done!"
 }
