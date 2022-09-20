@@ -23,12 +23,12 @@
  *
  *  clear()
  */
+  let r = 5;
   let dif = r;
   let x = 0;
 
 const linecircle = (r) => {
   while (x < Math.floor(width / (r * 2))) {
-  let r = 5
   drawFilledCircle(dif, height / 2, r, 'red')
   x = x + 1
   dif = dif + radius * 2
