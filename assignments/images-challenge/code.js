@@ -40,5 +40,7 @@ const lineOfCircles = (radius) => {
 }
 
 const fillWithCircles = (size) => {
-  drawCircle(width / 2, height / 2, size, 'cyan', 1)
-}
+  let count = 0;
+  while (count < width*height) {
+    drawCircle(size, height, size, 'cyan', 1)
+}}
