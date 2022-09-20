@@ -27,15 +27,8 @@
 let radius = 10;
 let dif = radius;
 let x = 0;
-//while (x < Math.floor(width / (radius * 2))) {
+while (x < Math.floor(width / (radius * 2))) {
 
   drawFilledCircle(dif, height / 2, radius, 'red')
   x = x + 1
   dif = dif + radius * 2
-//} 
-
-while (x < Math.floor(width / (radius * 2))) {
-
-  drawFilledCircle(dif, height / 2, radius, 'red')
-  x = x + 2
-  dif = dif + radius *
