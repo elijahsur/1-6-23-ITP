@@ -25,7 +25,7 @@
  */
 
 
-const linecircle = (radius) => {
+const linecircle = () => {
   let dif = radius;
   let x = 0;
   while (x < Math.floor(width / (radius * 2))) {
