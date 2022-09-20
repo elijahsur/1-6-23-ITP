@@ -24,15 +24,6 @@
  *  clear()
  */
 
-let radius = 50;
-let dif = radius;
-let x = 0;
-while (x < Math.floor(width / (radius * 2))) {
-
-  drawFilledCircle(dif, height / 2, radius, 'red')
-  x = x + 1
-  dif = dif + radius * 2
-}
 
 const linecircle = (radius) => {
   let dif = radius;
