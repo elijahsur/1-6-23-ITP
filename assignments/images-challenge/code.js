@@ -42,7 +42,7 @@ const lineOfCircles = (radius) => {
 const fillWithCircles = (radius) => {
   let sec = radius;
   let count = 0;
-  while (count < Math.floor(width+height)) {
+  while (count < Math.floor(width / (radius*2))) {
     drawCircle(sec, radius, radius, 'cyan', 1)
     count = count + 1
     sec = sec + radius * 2
