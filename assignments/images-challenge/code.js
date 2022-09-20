@@ -36,5 +36,3 @@ const lineOfCircles = (radius) => {
     dif = dif + radius * 2
   }
 }
-
-lineOfCircles(50);
