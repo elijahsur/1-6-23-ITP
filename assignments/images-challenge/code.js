@@ -23,7 +23,7 @@
  *
  *  clear()
  */
-let radius = 23;
+let radius = 22;
 let dif = radius;
 
 let x = -1;
