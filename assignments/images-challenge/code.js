@@ -39,12 +39,21 @@ const lineOfCircles = (radius) => {
   return "done!"
 }
 
-const fillWithCircles = (radius) => {
-  let sec = radius;
-  let count = 0;
-  while (count < Math.floor(width / (radius*2))) {
-    drawCircle(sec, radius, radius, 'cyan', 1)
-    count = count + 1
-    sec = sec + radius * 2
+const altLineOfCircles = (radius) => {
+  let dif = radius;
+  let x = 0;
+  let alt = 1;
+  let color = 'red'
+  while (x < Math.floor(width / (radius * 2))) {
+
+    drawFilledCircle(dif, height / 2, radius, color)
+    x = x + 1
+    dif = dif + radius * 2
+    if alt % 2 == 0
+      color = 'blue'
+      else
+        color = 'red'
+
   }
+  return "done!"
 }
