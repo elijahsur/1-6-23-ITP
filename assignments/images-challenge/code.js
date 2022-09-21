@@ -52,9 +52,8 @@ const altLineOfCircles = (radius) => {
     alt = alt + 1
     if (alt % 2 == 0);
       color = 'blue';
-    } else {
-        color = 'red';
-    }
+    if (alt % 2 == 1);
+      color = 'red';
   }
   return "done!"
 }
