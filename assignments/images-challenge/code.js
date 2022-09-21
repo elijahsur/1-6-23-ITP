@@ -39,11 +39,11 @@ const lineOfCircles = (radius) => {
   return "done!"
 }
 
-let dif = radius;
-let x = 0;
-let alt = 1;
-let color = 'red'
 const altLineOfCircles = (radius) => {
+  let dif = radius;
+  let x = 0;
+  let alt = 1;
+  let color = 'red'
   while (x < Math.floor(width / (radius * 2))) {
 
     drawFilledCircle(dif, height / 2, radius, color)
