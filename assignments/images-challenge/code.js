@@ -49,11 +49,11 @@ const altLineOfCircles = (radius) => {
     drawFilledCircle(dif, height / 2, radius, color)
     x = x + 1
     dif = dif + radius * 2
-    alt = alt + 1
     if (alt % 2 == 0);
-      color = 'blue';
+    color = 'blue';
     if (alt % 2 == 1);
-      color = 'red';
+    color = 'red';
+    alt = alt + 1
   }
   return "done!"
 }
