@@ -38,19 +38,35 @@ const lineOfCircles = (radius) => {
 
 const altLineOfCircles = (radius) => {
   let dif = radius;
-  let x = 0;
-  let alt = 0;
+  let count = 0;
+  let alternate = 0;
   let color = 'red';
-  while (x < Math.floor(width / (radius * 2))) {
+  while (count < Math.floor(width / (radius * 2))) {
     drawFilledCircle(dif, height / 2, radius, color);
-    x = x + 1;
+    count = count + 1;
     dif = dif + radius * 2;
-    if (alt % 2 == 0) {
+    if (alternate % 2 == 0) {
       color = 'blue';
     }
-    if (alt % 2 == 1) {
+    if (alternate % 2 == 1) {
       color = 'red';
     }
-    alt = alt + 1
+    alternate = alternate + 1
   }
 };
+
+  let dif = radius;
+  let count = 0;
+  let alternate = 0;
+  let color = 'red';
+  while (count < Math.floor(width / (radius * 2))) {
+    drawFilledCircle(dif, height / 2, radius, color);
+    count = count + 1;
+    dif = dif + radius * 2;
+    if (alternate % 2 == 0) {
+      color = 'blue';
+    }
+    if (alternate % 2 == 1) {
+      color = 'red';
+    }
+    alternate = alternate + 1
