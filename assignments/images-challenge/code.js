@@ -40,18 +40,17 @@ const altLineOfCircles = (radius) => {
   let dif = radius;
   let x = 0;
   let alt = 0;
-  let color = 'red'
+  let color = 'red';
   while (x < Math.floor(width / (radius * 2))) {
-    drawFilledCircle(dif, height / 2, radius, color)
-    x = x + 1
-    dif = dif + radius * 2
-    if (alt % 2 == 0)
-    color = 'blue'
-    if (alt % 2 == 1)
-    color = 'red'
+    drawFilledCircle(dif, height / 2, radius, color);
+    x = x + 1;
+    dif = dif + radius * 2;
+    if (alt % 2 == 0) {
+      color = 'blue';
+    }
+    if (alt % 2 == 1) {
+      color = 'red';
+    }
     alt = alt + 1
   }
-}
-
-
-drawFilledCircle(20, height / 2, 20, 'red')
+};
