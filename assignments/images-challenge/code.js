@@ -69,4 +69,4 @@ while (count < Math.floor(width / (radius * 2))) {
   if (alternate % 2 == 1) {
     color = 'red';
   }
-  alternate = alternate + 1
+  alternate = alternate + 1}
