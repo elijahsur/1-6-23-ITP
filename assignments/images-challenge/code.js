@@ -57,4 +57,4 @@ const conCircles = (radius) => {
   let 
 }
 
-drawFilledCircle(20, height / 2, radius, color)
+drawFilledCircle(20, height / 2, 20, 'red')
