@@ -54,7 +54,7 @@ const altLineOfCircles = (radius) => {
     alternate = alternate + 1
   }
 };
-let radius = 20
+let radius = 15
 let dif = radius;
 let count = 0;
 let alternate = 0;
