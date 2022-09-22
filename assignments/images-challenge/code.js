@@ -52,3 +52,9 @@ const altLineOfCircles = (radius) => {
     alt = alt + 1
   }
 }
+
+const conCircles = (radius) => {
+  let 
+}
+
+drawFilledCircle(20, height / 2, radius, color)
