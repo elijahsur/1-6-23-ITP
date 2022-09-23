@@ -61,13 +61,13 @@ const bigCircle = (count) => {
   drawFilledCircle(width / 2, height / 2, 250, color)
   for (let c = 0; c < count; c++) {
     drawFilledCircle(width / 2, height / 2, 212.5, color)
-      if (alternate % 2 == 0) {
+    if (alternate % 2 == 0) {
       color = 'blue';
     }
     if (alternate % 2 == 1) {
       color = 'red';
     }
     alternate = alternate + 1
-    factor = factor*.85
+    factor = factor * .85
   }
 }
