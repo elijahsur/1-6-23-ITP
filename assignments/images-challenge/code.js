@@ -68,6 +68,6 @@ const bigCircle = (count) => {
       color = 'red';
     }
     alternate = alternate + 1
-    factor = width+height - (width+height)/ count*c)
+    factor = width+height - ((width+height)/ count*c)
   }
 }
