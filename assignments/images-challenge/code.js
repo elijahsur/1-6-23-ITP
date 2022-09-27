@@ -28,7 +28,7 @@
 
 const forlineOfCircles = (radius) => {
   let dif = radius;
-  while (let c = 0; c < Math.floor(width / (radius * 2)); c++) {
+  for (let c = 0; c < Math.floor(width / (radius * 2)); c++) {
     drawFilledCircle(dif, height / 2, radius, 'red')
     x = x + 1
     dif = dif + radius * 2
