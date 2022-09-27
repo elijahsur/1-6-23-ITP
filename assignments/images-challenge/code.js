@@ -76,6 +76,6 @@ const bigCircle = (count) => {
       color = 'red';
     }
     alternate = alternate + 1
-    factor = factor - (width/(radius*2) / count * c)
+    factor = factor - (width/(height*2) / count * c)
   }
 }
