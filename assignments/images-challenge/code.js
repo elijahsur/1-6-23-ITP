@@ -32,8 +32,7 @@ const forlineOfCircles = (radius) => {
     drawFilledCircle(dif, height / 2, radius, 'red')
     dif = dif + radius * 2
   }
-}
-
+};
 const lineOfCircles = (radius) => {
   let dif = radius;
   let x = 0;
@@ -42,8 +41,7 @@ const lineOfCircles = (radius) => {
     x = x + 1
     dif = dif + radius * 2
   }
-}
-
+};
 const altLineOfCircles = (radius) => {
   let dif = radius;
   let count = 0;
@@ -78,5 +76,4 @@ const bigCircle = (count) => {
     alternate = alternate + 1
     factor = height / 2 - ((height/2) / count * c)
   }
-}
-bigCircle(40)
+};
