@@ -79,4 +79,4 @@ const bigCircle = (count) => {
     factor = 250 - (250 / count * c)
   }
 }
-bigCircle(500)
+bigCircle(40)
