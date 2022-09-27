@@ -79,3 +79,4 @@ const bigCircle = (count) => {
     factor = factor - (width/(height*2) / count * c)
   }
 }
+bigCircle(20)
