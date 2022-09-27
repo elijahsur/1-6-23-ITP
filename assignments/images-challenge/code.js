@@ -76,7 +76,7 @@ const bigCircle = (count) => {
       color = 'red';
     }
     alternate = alternate + 1
-    factor = 250 - (250 / count * c)
+    factor = height / 2 - ((height/2) / count * c)
   }
 }
 bigCircle(40)
