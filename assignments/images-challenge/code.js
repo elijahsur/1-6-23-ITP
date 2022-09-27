@@ -65,7 +65,7 @@ const altLineOfCircles = (radius) => {
 const bigCircle = (count) => {
   let color = 'red';
   let alternate = 0;
-  let factor = width/(height*2);
+  let factor = (width+height)/2;
   drawFilledCircle(width / 2, height / 2, 250, color)
   for (let c = 0; c < count + 1; c++) {
     drawFilledCircle(width / 2, height / 2, factor, color)
@@ -76,6 +76,6 @@ const bigCircle = (count) => {
       color = 'red';
     }
     alternate = alternate + 1
-    factor = factor - (width/(radius*2) / count * c)
+    factor = factor - (((width+height)/2) / count * c)
   }
 }
