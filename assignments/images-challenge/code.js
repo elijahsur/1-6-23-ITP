@@ -67,7 +67,7 @@ const bigCircle = (count) => {
   let alternate = 0;
   let factor = 250;
   drawFilledCircle(width / 2, height / 2, 250, color)
-  for (let c = 0; c < count+1; c++) {
+  for (let c = 0; c < count + 1; c++) {
     drawFilledCircle(width / 2, height / 2, factor, color)
     if (alternate % 2 == 0) {
       color = 'blue';
@@ -76,6 +76,6 @@ const bigCircle = (count) => {
       color = 'red';
     }
     alternate = alternate + 1
-    factor = 250 - (250/ count*c)
+    factor = 250 - (250 / count * c)
   }
 }
