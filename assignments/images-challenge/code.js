@@ -80,3 +80,7 @@ const bigCircle = (count) => {
   }
 }
 bigCircle(20)
+
+const checkB = (count) => {
+  
+}
