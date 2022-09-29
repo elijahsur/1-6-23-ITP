@@ -92,8 +92,8 @@ const lineC = (count) => {
   let yaxis = 1;
   for (let c = 0; c < width/count + 1;c++) {
     drawLine(0, yaxis, xaxis, height, 'black', 1)
-    xaxis = xaxis + (xaxis/count)
-    yaxis = yaxis + (yaxis/count)
+    xaxis = xaxis * (width/count)
+    yaxis = yaxis * (height/count)
   }
 }
 lineC(20)
