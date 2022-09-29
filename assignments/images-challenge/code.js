@@ -79,8 +79,18 @@ const bigCircle = (count) => {
     factor = height / 2 - ((height/2) / count * c)
   }
 }
-bigCircle(20)
 
 const checkB = (count) => {
-  
+  let color ='red';
+  let alternate = 0;
+  let size
+
+}
+
+const lineC = (count) => {
+  let xaxis = 0;
+  for (let c = 0; c < count + 1;c++) {
+    drawLine(0, 0, xaxis, height, 'black', 1)
+    xaxis = (width/count) * xaxis
+  }
 }
