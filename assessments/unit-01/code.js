@@ -42,3 +42,10 @@ const everyOther = (whole) => {
 const upDownLastCharacter = (whole) => {
   return whole.substring(whole.length - 1, whole.length).toUpperCase()+whole.substring(whole.length - 1, whole.length).toLowerCase()
 }
+
+const yesIfEven = (number) => {
+  if (yesIfEven % 2 == 0)
+    return 'yes'
+  if (yesIfEven % 2 == 1)
+    return 'no'
+}
