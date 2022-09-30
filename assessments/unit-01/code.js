@@ -32,5 +32,5 @@ const secondHalf = (whole) => {
 }
 
 const upDown = (whole) => {
-  return (whole.toUpperCase)+(whole.toLowerCase)
+  return (whole.toUpperCase())+(whole.toLowerCase())
 }
