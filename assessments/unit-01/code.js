@@ -13,11 +13,17 @@ const hypotenuse = (oneleg, twoleg) => {
   return Math.sqrt((oneleg * oneleg) + (twoleg * twoleg))
 }
 
-const maxRadius = (width, height) => {
+const canSleepIn = (weekday,vacation) => {
+  if (weekday == true);
+    if (vacation == true);
+    return true
+
+
+
+}
+
+// const maxRadius = (width, height) => {
   let radius = Math.pi*Math.min(width, height)*(Math.min(width,height))
   return radius
-}
 
-const offset = (width, figure) => {
 
-}
