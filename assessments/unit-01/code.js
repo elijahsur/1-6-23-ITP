@@ -26,3 +26,7 @@ const moreThanTwiceAsLong = (onestring, twostring) => {
 const firstHalf = (whole) => {
   return whole.substring(0, whole.length / 2)
 }
+
+const secondHalf = (whole) => {
+  return whole.substring(whole.length / 2, whole.length)
+}
