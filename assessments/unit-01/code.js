@@ -54,8 +54,4 @@ const yesIfEven = (number) => {
   };
 }
 
-const countXs = (whole) => {
-  let x = whole.search('x')
-  if (x)
-}
 
