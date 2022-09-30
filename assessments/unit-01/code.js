@@ -36,5 +36,5 @@ const upDown = (whole) => {
 }
 
 const everyOther = (whole) => {
-  return whole.substring(0,0)+whole.substring(2,2)+whole.substring(4,4)
+  return whole.string[0]+whole.string[2]+whole.string[4]
 }
