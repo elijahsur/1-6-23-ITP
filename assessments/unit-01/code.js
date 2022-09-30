@@ -18,10 +18,10 @@ const canSleepIn = (weekday, vacation) => {
 
 const moreThanTwiceAsLong = (oneword,twoword) => {
   if (oneword.length > twoword.length*2) {
-    return 'yes'
+    return true
   };
   if (oneword.length < twoword.length*2) {
-    return 'no'
+    return false
   };
 }
 
