@@ -23,5 +23,5 @@ const moreThanTwiceAsLong = (onestring, twostring) => {
 }
 
 const firstHalf = (whole) => {
-  return whole.substring(0, whole.length/2 + 1)
+  return whole.substring(0, whole.length/2)
 }
