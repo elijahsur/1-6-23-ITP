@@ -8,3 +8,8 @@ const emit = (a, b, product) => {
 const averageWeight = (weight, amount) => {
   return weight / amount
 }
+
+const hypotenus = (oneleg, twoleg) => {
+  let hypotenussquared = (oneleg^2) + (twoleg^2)
+  return Math.sqrt(hypotenussquared)
+}
