@@ -14,12 +14,14 @@ const hypotenuse = (oneleg, twoleg) => {
 }
 
 const canSleepIn = (weekday,vacation) => {
-  if (weekday == true);
-    if (vacation == true);
+}
+
+const moreThanTwiceAsLong = (onestring, twostring) => {
+  if (onestring.count * 2 < twostring)
     return true
+else
+  return false
 
 
 
 }
-
-
