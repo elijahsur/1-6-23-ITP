@@ -44,8 +44,8 @@ const upDownLastCharacter = (whole) => {
 }
 
 const yesIfEven = (number) => {
-  if (yesIfEven % 2 == 0)
-    return 'yes'
-  if (yesIfEven % 2 == 1)
-    return 'no'
+  if (yesIfEven % 2 == 0) {
+    return 'yes' };
+  if (yesIfEven % 2 == 1) {
+    return 'no' };
 }
