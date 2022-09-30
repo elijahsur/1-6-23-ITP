@@ -34,3 +34,7 @@ const secondHalf = (whole) => {
 const upDown = (whole) => {
   return whole.toUpperCase()+whole.toLowerCase()
 }
+
+const everyOther = (whole) => {
+  return whole.substring(0)+whole.substring(2)+whole.substring(4)
+}
