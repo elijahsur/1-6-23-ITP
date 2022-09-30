@@ -32,20 +32,22 @@ const secondHalf = (whole) => {
 }
 
 const upDown = (whole) => {
-  return whole.toUpperCase()+whole.toLowerCase()
+  return whole.toUpperCase() + whole.toLowerCase()
 }
 
 const everyOther = (whole) => {
-  return whole.substring(0,1)+whole.substring(2,3)+whole.substring(4,5)
+  return whole.substring(0, 1) + whole.substring(2, 3) + whole.substring(4, 5)
 }
 
 const upDownLastCharacter = (whole) => {
-  return whole.substring(whole.length - 1, whole.length).toUpperCase()+whole.substring(whole.length - 1, whole.length).toLowerCase()
+  return whole.substring(whole.length - 1, whole.length).toUpperCase() + whole.substring(whole.length - 1, whole.length).toLowerCase()
 }
 
 const yesIfEven = (number) => {
-  if (yesIfEven % 2 == 0) {
-    return 'yes' };
-  if (yesIfEven % 2 == 1) {
-    return 'no' };
+  if (yesIfEven % 2 == 0){
+    return 'yes'
+  };
+  if (yesIfEven % 2 == 1){
+    return 'no'
+  };
 }
