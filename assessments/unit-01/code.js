@@ -30,3 +30,7 @@ const firstHalf = (whole) => {
 const secondHalf = (whole) => {
   return whole.substring(whole.length / 2, whole.length)
 }
+
+const upDown = (whole) => {
+  return whole.toUpperCase+whole.toLowerCase
+}
