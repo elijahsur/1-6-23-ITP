@@ -13,14 +13,14 @@ const hypotenuse = (oneleg, twoleg) => {
   return Math.sqrt((oneleg * oneleg) + (twoleg * twoleg))
 }
 
-const canSleepIn = (weekday,vacation) => {
+const canSleepIn = (weekday, vacation) => {
 }
 
 const moreThanTwiceAsLong = (onestring, twostring) => {
   if (onestring.count * 2 < twostring.count)
     return true
-else
-  return false
+  else
+    return false
 
 
 
