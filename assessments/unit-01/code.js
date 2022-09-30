@@ -10,6 +10,5 @@ const averageWeight = (weight, amount) => {
 }
 
 const hypotenus = (oneleg, twoleg) => {
-  let hypotenussquared = (oneleg^2) + (twoleg^2)
-  return Math.sqrt(hypotenussquared)
+  return Math.sqrt((oneleg*oneleg)+(twoleg*twoleg))
 }
