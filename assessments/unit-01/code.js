@@ -16,12 +16,12 @@ const hypotenuse = (oneleg, twoleg) => {
 const canSleepIn = (weekday, vacation) => {
 }
 
-const moreThanTwiceAsLong = (onestring, twostring) => {
-  if (onestring.count > (twostring.count*2)) {
-    return true
+const moreThanTwiceAsLong = (oneword,twoword) => {
+  if (oneword.count() > twoword.count()*2) {
+    return 'yes'
   };
-  if (onestring.count < (twostring.count*2)) {
-    return false
+  if (oneword.count() < twoword.count()*2) {
+    return 'no'
   };
 }
 
