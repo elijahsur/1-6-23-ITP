@@ -10,5 +10,14 @@ const averageWeight = (weight, amount) => {
 }
 
 const hypotenuse = (oneleg, twoleg) => {
-  return Math.sqrt((oneleg*oneleg)+(twoleg*twoleg))
+  return Math.sqrt((oneleg * oneleg) + (twoleg * twoleg))
+}
+
+const maxRadius = (width, height) => {
+  let radius = Math.pi*Math.min(width, height)*(Math.min(width,height))
+  return radius
+}
+
+const offset = (width, figure) => {
+
 }
