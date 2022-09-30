@@ -51,3 +51,7 @@ const yesIfEven = (number) => {
     return 'no'
   };
 }
+
+const countXs = (whole) => {
+  return whole.search(x)
+}
