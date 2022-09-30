@@ -18,8 +18,9 @@ const canSleepIn = (weekday, vacation) => {
 
 const moreThanTwiceAsLong = (onestring, twostring) => {
   if (onestring.count * 2 > twostring.count)
-    return true;
-  else return false
+    return true
+  if (onestring.count * 2 < twostring.count)
+    return false
 }
 
 const firstHalf = (whole) => {
