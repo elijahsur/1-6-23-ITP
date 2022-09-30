@@ -38,3 +38,7 @@ const upDown = (whole) => {
 const everyOther = (whole) => {
   return whole.substring(0,1)+whole.substring(2,3)+whole.substring(4,5)
 }
+
+const upDownLastCharacter = (whole) => {
+  return whole.substring(s.length - 1, s.length).toUpperCase()+whole.substring(s.length - 1, s.length).toLowerCase()
+}
