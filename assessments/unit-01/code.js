@@ -9,6 +9,6 @@ const averageWeight = (weight, amount) => {
   return weight / amount
 }
 
-const hypotenus = (oneleg, twoleg) => {
+const hypotenuse = (oneleg, twoleg) => {
   return Math.sqrt((oneleg*oneleg)+(twoleg*twoleg))
 }
