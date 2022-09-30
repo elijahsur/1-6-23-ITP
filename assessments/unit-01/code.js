@@ -16,7 +16,7 @@ const hypotenuse = (oneleg, twoleg) => {
 const canSleepIn = (weekday,vacation) => {
   if (weekday == true);
     if (vacation == true);
-    return true
+    return 'true'
 
 
 
