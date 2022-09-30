@@ -22,8 +22,4 @@ const canSleepIn = (weekday,vacation) => {
 
 }
 
-// const maxRadius = (width, height) => {
-  let radius = Math.pi*Math.min(width, height)*(Math.min(width,height))
-  return radius
-
 
