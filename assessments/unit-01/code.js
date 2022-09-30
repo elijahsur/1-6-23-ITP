@@ -17,10 +17,12 @@ const canSleepIn = (weekday, vacation) => {
 }
 
 const moreThanTwiceAsLong = (onestring, twostring) => {
-  if (onestring.count * 2 > twostring.count)
+  if (onestring.count * 2 > twostring.count) {
     return true
-  if (onestring.count * 2 < twostring.count)
+  };
+  if (onestring.count * 2 < twostring.count) {
     return false
+  };
 }
 
 const firstHalf = (whole) => {
@@ -44,14 +46,16 @@ const upDownLastCharacter = (whole) => {
 }
 
 const yesIfEven = (number) => {
-  if (number % 2 == 0){
+  if (number % 2 == 0) {
     return 'yes'
   };
-  if (number % 2 == 1){
+  if (number % 2 == 1) {
     return 'no'
   };
 }
 
 const countXs = (whole) => {
-  return whole.search('x')
+  let x = whole.search('x')
+  if (x)
 }
+
