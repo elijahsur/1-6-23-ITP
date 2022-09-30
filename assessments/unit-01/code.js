@@ -53,5 +53,5 @@ const yesIfEven = (number) => {
 }
 
 const countXs = (whole) => {
-  return whole.search(x)
+  return whole.search('x')
 }
