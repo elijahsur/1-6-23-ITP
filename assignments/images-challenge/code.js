@@ -96,7 +96,7 @@ const lineC = (count) => {
     yaxis = yaxis + count
 }
 }
-lineC(100)
+lineC(200)
 
 
 const lineC2 = (count) => {
