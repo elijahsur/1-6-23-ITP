@@ -97,4 +97,4 @@ const lineC = (count) => {
 }
 }
 
-drawLine(0,0,width,height,'black',1)
+drawLine(0,0,0,height,'black',1)
