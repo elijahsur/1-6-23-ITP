@@ -96,4 +96,5 @@ const lineC = (count) => {
     yaxis = yaxis - 20
 }
 }
-lineC(20)
+
+drawLine(0,0,width,height,'black',1)
