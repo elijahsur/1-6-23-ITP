@@ -65,7 +65,7 @@ const altLineOfCircles = (radius) => {
 const bigCircle = (count) => {
   let color = 'red';
   let alternate = 0;
-  let factor = height /2 ;
+  let factor = height / 2;
   drawFilledCircle(width / 2, height / 2, height / 2, color)
   for (let c = 0; c < count + 1; c++) {
     drawFilledCircle(width / 2, height / 2, factor, color)
@@ -76,12 +76,12 @@ const bigCircle = (count) => {
       color = 'red';
     }
     alternate = alternate + 1
-    factor = height / 2 - ((height/2) / count * c)
+    factor = height / 2 - ((height / 2) / count * c)
   }
 }
 
 const checkB = (count) => {
-  let color ='red';
+  let color = 'red';
   let alternate = 0;
   let size
 
@@ -90,9 +90,9 @@ const checkB = (count) => {
 const lineC = (count) => {
   let xaxis = 0;
   let yaxis = 0;
-  for (let c = 0; c < count + 1;c++) {
+  for (let c = 0; c < count + 1; c++) {
     drawLine(0, yaxis, xaxis, height, 'black', 1)
-    xaxis = xaxis + (width/count)
-    yaxis = yaxis + (height/count)
-}
+    xaxis = xaxis + width / count
+    yaxis = yaxis + height / count
+  }
 }
