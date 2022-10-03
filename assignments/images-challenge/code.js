@@ -90,7 +90,7 @@ const checkB = (count) => {
 const lineC = (count) => {
   let xaxis = 1;
   let yaxis = 1;
-  for (let c = 0; c < count + 1;c++) {
+  for (let c = 0; c < width/count + 1;c++) {
     drawLine(0, yaxis, xaxis, height, 'black', 1)
     xaxis = xaxis + count
     yaxis = yaxis + count
