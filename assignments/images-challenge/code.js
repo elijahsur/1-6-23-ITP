@@ -88,17 +88,14 @@ const checkB = (count) => {
 }
 
 const lineC = (count) => {
-  let xaxis = 1;
-  let yaxis = 1;
+  let xaxis = 0;
+  let yaxis = 0;
   for (let c = 0; c < count + 1;c++) {
     drawLine(0, yaxis, xaxis, height, 'black', 1)
     xaxis = xaxis + count
     yaxis = yaxis + count
 }
 }
-lineC(200)
-
-
 const lineC2 = (count) => {
   let xaxis = 1;
   let yaxis = 1;
