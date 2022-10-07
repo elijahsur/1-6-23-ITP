@@ -40,6 +40,8 @@ const firstClassPostage = (weight) => {
   return 60+Math.ceil(weight-1)*24
 }
 
-const weightOnJupiter = (weightearth) => {}
+const weightOnJupiter = (weightearth) => {
+  return weightearth*(EARTH_GRAVITY/JUPITER_GRAVITY)
+}
 
 const gravity = (mass1, mass2, distance) => {}
