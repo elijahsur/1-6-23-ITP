@@ -15,3 +15,21 @@ const sum = (numbers) => {
   }
   return total
 }
+
+const evens = () => {
+
+}
+
+const anyOverOneHundred = (numbers) => {
+  let count = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] === 100) {
+      count++;
+    }
+  }
+  if (count = 100) {
+    return true
+  } else {
+    return false
+  }
+}
