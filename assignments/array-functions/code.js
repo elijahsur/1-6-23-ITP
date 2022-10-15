@@ -9,15 +9,15 @@ const countTens = (numbers) => {
 }
 
 const sum = (numbers) => {
-  let total = 0
+  let total = 0;
   for (let i = 0; i < numbers.length; i++) {
-    let total = total + numbers[i]
+  total = total + numbers[i]
   }
   return total
 }
 
 const evens = (numbers) => {
-    const evens = []
+  const evens = []
   for (let i = 0; i < numbers.length; i++) {
     if (numbers[i] % 2 == 0) {
       evens.push(numbers[i])
