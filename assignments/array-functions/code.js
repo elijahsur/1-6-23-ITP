@@ -27,7 +27,7 @@ const anyOverOneHundred = (numbers) => {
       count++;
     }
   }
-  if (count >= 100) {
+  if (count > 100) {
     return true
   } else {
     return false
