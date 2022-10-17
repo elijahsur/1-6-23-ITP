@@ -15,5 +15,9 @@ const fireAlarm = (pulled,smoke,planned) => {
 }
 
 const canBePresident = (age,citizen,years) => {
-  return !age || !citizen || !years
+  if (age => 35, citizen = true, years => 14) {
+    return true
+  } else {
+    return false
+  }
 }
