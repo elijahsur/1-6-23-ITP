@@ -46,4 +46,5 @@ const pyramid = (numbers) => {
     pyramid.push(numbers[i])
 
   }
+  return pyramid
 }
