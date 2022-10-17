@@ -33,3 +33,7 @@ const swapFrontAndBack = (string) => {
 const simplePigLatin = (string,number) => {
   return string.substring(number,string.length)+string.substring(0,number-1)+'ay'
 }
+
+const randomCharacter = (string) => {
+  return string[rand]
+}
