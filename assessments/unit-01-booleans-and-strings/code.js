@@ -31,5 +31,5 @@ const swapFrontAndBack = (string) => {
 }
 
 const simplePigLatin = (string,number) => {
-  return string.substring(number,string.length)+string.substring(0,number)+'ay'
+  return string.substring(number-1,string.length)+string.substring(0,number)+'ay'
 }
