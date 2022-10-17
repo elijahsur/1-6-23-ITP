@@ -11,5 +11,5 @@ const rand = (n) => Math.floor(Math.random() * n);
 // credit for a clear and simple working function.
 
 const fireAlarm = (pulled,smoke,planned) => {
-  return pulled || smoke || planned
+  return !pulled || !smoke || !planned
 }
