@@ -21,3 +21,7 @@ const canBePresident = (age,citizen,years) => {
     return false
   }
 }
+
+const firstAndLast = (string) => {
+  return string[0]+string[string.length - 1]
+}
