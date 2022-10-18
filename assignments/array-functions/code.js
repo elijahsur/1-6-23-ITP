@@ -47,3 +47,9 @@ const pyramid = (numbers) => {
   }
   return pyramid
 }
+
+const test = (numbers) => {
+  const pyramid = []
+  pyramid.push(numbers)
+  return pyramid
+}
