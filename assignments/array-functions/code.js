@@ -46,6 +46,6 @@ const pyramid = (numbers) => {
     for (let j = 0; j < numbers; j++) {
       pyramid.push[i]
     }
-  npart = npart++}
   return pyramid
+}
 }
