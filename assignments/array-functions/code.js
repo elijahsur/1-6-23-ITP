@@ -33,12 +33,6 @@ const anyOverOneHundred = (numbers) => {
     }
 return false  
 }
-  if (count >= 1) {
-    return true
-  } else {
-    return false
-  }
-}
 
 const pyramid = (numbers) => {
   const pyramid = []
