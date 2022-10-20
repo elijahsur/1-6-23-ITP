@@ -31,7 +31,7 @@ const anyOverOneHundred = (numbers) => {
     if (numbers[i] > 100) {
       return true
     }
-return false  
+return false  }
 }
 
 const pyramid = (numbers) => {
