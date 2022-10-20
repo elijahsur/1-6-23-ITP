@@ -28,8 +28,11 @@ const evens = (numbers) => {
 
 const anyOverOneHundred = (numbers) => {
   for (let i = 0; i < numbers.length; i++) {
-    return numbers[i] > 100;
-}
+    if (numbers[i] > 100) {
+      return true
+    }
+  }
+  return false
 }
 
 const pyramid = (numbers) => {
