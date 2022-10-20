@@ -34,7 +34,7 @@ const anyOverOneHundred = (numbers) => {
     }
   }
   if (count >= 1) {
-    return true
+    return condition
   }
 }
 
