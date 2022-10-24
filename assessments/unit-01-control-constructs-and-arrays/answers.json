@@ -16,5 +16,6 @@
   "0",
   "xs[2][1]",
   "Nothing, this code won’t run because xs was declared with const.",
-  "true"
+  "true",
+  "The sum of all but the last number in the array."
 ]
