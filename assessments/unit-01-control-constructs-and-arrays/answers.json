@@ -17,5 +17,6 @@
   "xs[2][1]",
   "Nothing, this code won’t run because xs was declared with const.",
   "true",
-  "The sum of all but the last number in the array."
+  "The sum of all but the last number in the array.",
+  "Produces a new array containing all the words in words in uppercase."
 ]
