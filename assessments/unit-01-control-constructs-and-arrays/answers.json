@@ -12,5 +12,5 @@
   "It tests whether there are more than limit prime numbers below max.",
   "10",
   "xs[xs.length - 1]",
-  "2"
+  "3"
 ]
