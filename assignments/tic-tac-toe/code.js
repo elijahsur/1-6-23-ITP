@@ -9,7 +9,7 @@ let stopcounter = 0;
 
 
 registerOnclick((x, y) => {
-  if (stopcounter <= 9){
+  if (stopcounter < 9){
       let xOrY = 'x'
   counter++
   stopcounter++
