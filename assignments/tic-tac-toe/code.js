@@ -4,7 +4,15 @@
 // of the equals sign in our normal `const foo = ...` function definition. This
 // is called an anonymous function. We'll discuss this in more detail in a few
 // weeks but for now you can just adapt this code.
-
+let counter = 0
 registerOnclick((x, y) => {
-  drawText('brootay', x, y, 'black', Math.min(width, height) * 0.3);
+  let xOrY = 'x'
+  drawText(xOrY, x, y, 'black', Math.min(width, height) * 0.3);
+  counter++
+    if (counter % 2 === 0){
+    let xOrY = 'x'
+  }
+  if (counter % 2 === 1){
+    let xOrY = 'o'
+  }
 });
