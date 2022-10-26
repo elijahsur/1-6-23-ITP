@@ -5,17 +5,21 @@
 // is called an anonymous function. We'll discuss this in more detail in a few
 // weeks but for now you can just adapt this code.
 let counter = 0;
-
+let stopcounter = 0;
 
 
 registerOnclick((x, y) => {
-  let xOrY = 'x'
+  if (stopcounter <= 9){
+      let xOrY = 'x'
   counter++
+  stopcounter++
   if (counter % 2 === 0) {
     xOrY = 'x'
   } else {
     xOrY = 'o'
   }
     drawText(xOrY, x, y, 'black', Math.min(width, height) * 0.3);
-
+  } else {
+    return 'ended!'
+  }
 });
