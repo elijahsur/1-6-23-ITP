@@ -10,9 +10,8 @@ registerOnclick((x, y) => {
   drawText(xOrY, x, y, 'black', Math.min(width, height) * 0.3);
   counter++
     if (counter % 2 === 0){
-    let xOrY = 'x'
-  }
-  if (counter % 2 === 1){
-    let xOrY = 'o'
+    xOrY = 'x'
+  } else {
+    xOrY = 'o'
   }
 });
