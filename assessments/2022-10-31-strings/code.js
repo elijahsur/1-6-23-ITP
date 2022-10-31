@@ -21,7 +21,7 @@ const upDown = (string) => {
 }
 const firstFewEveryOther = (string) => {
   let fin = ''
-  for (i = 0; i > string.length; i + 2) {
+  for (let i = 0; i > string.length; i + 2) {
     fin + string[i]
   }
   return fin
