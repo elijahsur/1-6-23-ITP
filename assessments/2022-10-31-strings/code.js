@@ -25,3 +25,6 @@ const upDown = (string) => {
 const upDownLastCharacter = (string) => {
   return string.substring(string.length-1,string.length).toUpperCase() + string.substring(string.length-1, string.length)
 }
+const firstAndLast = (string) => {
+  return string.substring(0,1) + string.substring (s.length-1,s.length)
+}
