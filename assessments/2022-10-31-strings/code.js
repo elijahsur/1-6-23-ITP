@@ -23,5 +23,5 @@ const upDown = (string) => {
 //  for(i = 0; i )
 // }
 const upDownLastCharacter = (string) => {
-  return string.substring(string.length-1,string.length).toUpperCase() + string[string.length]
+  return string.substring(string.length-1,string.length).toUpperCase() + string.substring(string.length)
 }
