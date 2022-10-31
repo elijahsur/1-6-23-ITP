@@ -53,5 +53,5 @@ const lastName = (string) => {
 
 }
 const initials = (string) => {
-
+  
 }
