@@ -57,5 +57,5 @@ const lastName = (string) => {
 return string.substring(string.search(' ') + 1, string.length)
 }
 const initials = (string) => {
-  
+  return string.substring(0,0) + string.search(string.search(' ')+ 1, string.search(' ')+ 1)
 }
