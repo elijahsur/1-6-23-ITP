@@ -51,7 +51,7 @@ const sameIgnoringCase = (string1, string2) => {
   return string1 === string2
 }
 const firstName = (string) => {
-
+ return string.substring(0,string.search(' '))
 }
 const lastName = (string) => {
 
