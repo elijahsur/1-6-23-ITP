@@ -28,3 +28,6 @@ const upDownLastCharacter = (string) => {
 const firstAndLast = (string) => {
   return string.substring(0,1) + string.substring (string.length-1,string.length)
 }
+const swapFrontAndBack = (string) => {
+  return string.substring(string.length/2,string.length) + string.substring(0,string.length/2)
+}
