@@ -19,9 +19,13 @@ const secondHalf = (string) => {
 const upDown = (string) => {
   return string.toUpperCase() + string
 }
-// const firstFewEveryOther = (string) => {
-//  for(i = 0; i )
-// }
+const firstFewEveryOther = (string) => {
+  let fin = ''
+  for (i = 0; i > string.length; i + 2) {
+    fin + string[i]
+  }
+  return fin
+}
 const upDownLastCharacter = (string) => {
   return string.substring(string.length-1,string.length).toUpperCase() + string.substring(string.length-1, string.length)
 }
