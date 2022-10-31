@@ -19,9 +19,9 @@ const secondHalf = (string) => {
 const upDown = (string) => {
   return string.toUpperCase() + string
 }
-const firstFewEveryOther = (string) => {
-  for(i = 0; i )
-}
+// const firstFewEveryOther = (string) => {
+//  for(i = 0; i )
+// }
 const upDownLastCharacter = (string) => {
   return string[string.length].toUpperCase() + string[string.length]
 }
