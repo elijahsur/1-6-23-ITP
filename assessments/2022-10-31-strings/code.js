@@ -43,3 +43,6 @@ const randomCharacterUpDown = (string) => {
 const isAllUpperCase = (string) => {
   return string === string.toUpperCase()
 }
+const sameIgnoringCase = (string1, string2) => {
+  return string1 === string2
+}
