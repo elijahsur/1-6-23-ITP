@@ -46,3 +46,12 @@ const isAllUpperCase = (string) => {
 const sameIgnoringCase = (string1, string2) => {
   return string1 === string2
 }
+const firstName = (string) => {
+
+}
+const lastName = (string) => {
+
+}
+const initials = (string) => {
+  
+}
