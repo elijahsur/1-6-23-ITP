@@ -31,3 +31,6 @@ const firstAndLast = (string) => {
 const swapFrontAndBack = (string) => {
   return string.substring(string.length/2,string.length) + string.substring(0,string.length/2)
 }
+const simplePigLatin = (string, number) => {
+  return string.substring(number, string.length) + string.substring(0,number-1) + 'ay'
+}
