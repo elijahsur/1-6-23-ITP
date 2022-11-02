@@ -21,3 +21,5 @@ registerOnclick((x, y) => {
     drawText(xOrY, x, y, 'black', Math.min(width, height) * 0.3);
   }
 });
+
+drawLine
