@@ -22,4 +22,4 @@ registerOnclick((x, y) => {
   }
 });
 
-drawLine(width/2.5, height/2.25, width/2.5, height/1.25, 'black', 4)
+drawLine(width/2.5, height/2.5, width/2.5, height/1.25, 'black', 4)
