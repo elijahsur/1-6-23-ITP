@@ -16,8 +16,8 @@ const hypotenuse = (oneleg, twoleg) => {
 const canSleepIn = (weekday, vacation) => {
 }
 
-const moreThanTwiceAsLong = (oneword,twoword) => {
-return oneword.length > twoword.length*2
+const moreThanTwiceAsLong = (oneword, twoword) => {
+  return oneword.length > twoword.length * 2
 }
 
 const firstHalf = (whole) => {
@@ -38,11 +38,11 @@ const everyOther = (whole) => {
 
 const upDownLastCharacter = (whole) => {
   const fincharacter = whole[whole.length - 1]
-  return fincharacter.toUpperCase()+fincharacter.toLowerCase()
+  return fincharacter.toUpperCase() + fincharacter.toLowerCase()
 }
 
 const yesIfEven = (number) => {
-return number % 2 === 0 ? 'yes' | 'no'
+  return number % 2 === 0 ? 'yes' | 'no'
 }
 
 
