@@ -25,7 +25,7 @@ const firstHalf = (whole) => {
 }
 
 const secondHalf = (whole) => {
-  return whole.substring(whole.length / 2, whole.length)
+  return whole.substring(whole.length / 2)
 }
 
 const upDown = (whole) => {
