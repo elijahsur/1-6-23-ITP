@@ -5,3 +5,43 @@ const emit = (a, b, product) => {
 };
 
 // Write your code here ...
+const averageWeight = (weight, amount) => {
+  return weight / amount
+}
+
+const hypotenuse = (oneleg, twoleg) => {
+  return Math.sqrt((oneleg * oneleg) + (twoleg * twoleg))
+}
+
+const canSleepIn = (weekday, vacation) => {
+}
+
+const moreThanTwiceAsLong = (oneword, twoword) => {
+  return oneword.length > twoword.length * 2
+}
+
+const firstHalf = (whole) => {
+  return whole.substring(0, whole.length / 2)
+}
+
+const secondHalf = (whole) => {
+  return whole.substring(whole.length / 2)
+}
+
+const upDown = (whole) => {
+  return whole.toUpperCase() + whole.toLowerCase()
+}
+
+const everyOther = (whole) => {
+  return whole.substring(0, 1) + whole.substring(2, 3) + whole.substring(4, 5)
+}
+
+const upDownLastCharacter = (whole) => {
+  const fincharacter = whole[whole.length - 1]
+  return fincharacter.toUpperCase() + fincharacter.toLowerCase()
+}
+
+const yesIfEven = (number) => {
+  return number % 2 === 0 ? 'yes' : 'no';
+
+}
