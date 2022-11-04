@@ -17,12 +17,7 @@ const canSleepIn = (weekday, vacation) => {
 }
 
 const moreThanTwiceAsLong = (oneword,twoword) => {
-  if (oneword.length > twoword.length*2) {
-    return true
-  };
-  if (oneword.length < twoword.length*2) {
-    return false
-  };
+return oneword.length > twoword.length*2
 }
 
 const firstHalf = (whole) => {
