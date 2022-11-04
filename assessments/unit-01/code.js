@@ -37,7 +37,8 @@ const everyOther = (whole) => {
 }
 
 const upDownLastCharacter = (whole) => {
-  return whole.substring(whole.length - 1, whole.length).toUpperCase() + whole.substring(whole.length - 1, whole.length).toLowerCase()
+  const fincharacter = whole[whole.length - 1]
+  return fincharacter.toUpperCase()+fincharacter.toLowerCase()
 }
 
 const yesIfEven = (number) => {
