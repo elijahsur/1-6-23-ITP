@@ -16,3 +16,10 @@ const midpoint = (pointa, pointb) => {
  let midpoint = {'x':(pointa.x+pointb.x)/2, 'y':(pointa.y+pointb.y)/2}
  return midpoint
 }
+const sumSalaries = (array) => {
+  let total = 0;
+ for (i = 0; i < array.length; i++) {
+   total = total +
+ }
+ return total
+}
