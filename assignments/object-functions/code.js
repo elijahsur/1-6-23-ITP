@@ -12,3 +12,9 @@ const emptyObject = () => {
 const distance = (pointa,pointb) => {
   return Math.sqrt((pointa['x']-pointb['x'])**2(+pointa['y']-pointb['y'])**2)
 }
+const midpoint = () => {
+
+}
+const sumSalaries = () => {
+  
+}
