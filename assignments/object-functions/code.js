@@ -10,15 +10,8 @@ const emptyObject = () => {
   return object
 }
 const distance = (pointa,pointb) => {
-  return Math.sqrt((pointa['x']-pointb['x'])**2+(+pointa['y']-pointb['y'])**2)
+  return Math.sqrt((pointa['x']-pointb['x'])**2 + (pointa['y']-pointb['y'])**2)
 }
 const midpoint = () => {
 
-}
-const sumSalaries = (array) => {
-  let total = 0;
- for (i = 0; i < array.length; i++) {
-   total = total +
- }
- return total
 }
