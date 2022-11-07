@@ -32,3 +32,6 @@ const newHighScore = (currenths,array) => {
  }
  return highscore
 }
+const summarizeBooks = (array) => {
+  return 
+}
