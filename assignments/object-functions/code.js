@@ -33,6 +33,6 @@ const newHighScore = (currenths, array) => {
   return highscore
 }
 const summarizeBooks = (array) => {
-  let summary = array.title[1]
+  let summary = array.title
   return summary
 }
