@@ -35,7 +35,7 @@ const newHighScore = (currenths, array) => {
 const summarizeBooks = (books) => {
   let summary = { "titles":[], "pages":0}
   for (let i = 0; i < books.length; i++) {
-    summary.title.push(books[i].title)
+    summary.titles.push(books[i].title)
     summary.pages = summary.pages + books[i].pages
 
   }
