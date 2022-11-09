@@ -24,4 +24,5 @@ registerOnclick((x, y) => {
 
 drawLine(width / 1.5, height, width / 1.5, 0, 'black', 4)
 drawLine(width / 3, height, width / 3, 0, 'black', 4)
-drawLine(0, height / 2, width, height / 2, 'black', 4)
+drawLine(0, height / 1.5, width, height / 1.5, 'black', 4)
+drawLine(0, height / 3, width, height / 3, 'black', 4)
