@@ -22,5 +22,5 @@ registerOnclick((x, y) => {
   }
 });
 
-drawLine(width / 2, height, width / 2, 0, 'black', 4)
+drawLine(width / 1.5, height, width / 1.5, 0, 'black', 4)
 drawLine(width / 3, height, width / 3, 0, 'black', 4)
