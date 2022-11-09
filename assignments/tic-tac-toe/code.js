@@ -18,7 +18,7 @@ registerOnclick((x, y) => {
     } else {
       xOrY = 'o'
     }
-    drawText(xOrY, x, y, 'black', Math.min(width, height) * .4);
+    drawText(xOrY, x / 2, y / 2, 'black', Math.min(width, height) * .4);
   }
 });
 
