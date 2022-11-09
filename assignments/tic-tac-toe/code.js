@@ -8,7 +8,7 @@ let counter = 0;
 let stopcounter = 0;
 
 
-registerOnclick((x / 2, y / 2) => {
+registerOnclick((x, y) => {
   if (stopcounter < 9) {
     let xOrY = 'x'
     counter++
