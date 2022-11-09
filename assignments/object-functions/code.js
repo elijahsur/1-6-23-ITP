@@ -11,7 +11,7 @@ const distance = (pointa, pointb) => {
   return Math.sqrt((pointa['x'] - pointb['x']) ** 2 + (pointa['y'] - pointb['y']) ** 2)
 }
 const midpoint = (pointa, pointb) => {
-  return { 'x': (pointa.x + pointb.x) / 2, 'y': (pointa.y + pointb.y) / 2 }
+  return { x: (pointa.x + pointb.x) / 2, y: (pointa.y + pointb.y) / 2 }
 }
 const sumSalaries = (array) => {
   let total = 0;
