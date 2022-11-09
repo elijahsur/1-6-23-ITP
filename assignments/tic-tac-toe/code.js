@@ -9,17 +9,17 @@ let stopcounter = 0;
 
 
 registerOnclick((x, y) => {
-  if (stopcounter < 9){
-      let xOrY = 'x'
-  counter++
-  stopcounter++
-  if (counter % 2 === 0) {
-    xOrY = 'x'
-  } else {
-    xOrY = 'o'
-  }
+  if (stopcounter < 9) {
+    let xOrY = 'x'
+    counter++
+    stopcounter++
+    if (counter % 2 === 0) {
+      xOrY = 'x'
+    } else {
+      xOrY = 'o'
+    }
     drawText(xOrY, x, y, 'black', Math.min(width, height) * 0.3);
   }
 });
 
-drawLine(width / 2, width / 2, height/3 + height/3, height/3, 'black', 4)
+drawLine(width / 2, height / 3 + height / 3, width / 2, height / 3, 'black', 4)
