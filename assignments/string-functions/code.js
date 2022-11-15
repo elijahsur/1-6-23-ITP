@@ -9,5 +9,5 @@ const stringContains = (string1,string2) => {
   }
 }
 const firstAndLast = (string) => {
-  return string[0]+string[string.length()]
+  return string[0]+string[string.length - 1]
 }
