@@ -15,7 +15,7 @@ const swapFrontAndBack = (string) => {
   return string.substring(string.length / 2, string.length) + string.substring(0, string.length / 2)
 }
 const simplePigLatin = (string, number) => {
-  return string.substring(number,string.length) + string.substring(0, number) + 'ay'
+  return string.substring(number, string.length) + string.substring(0, number) + 'ay'
 }
 const isAllUpperCase = (string) => {
   if (string.toUpperCase() === string) {
@@ -24,7 +24,7 @@ const isAllUpperCase = (string) => {
     return false
   }
 }
-const sameIgnoringCase = (string1,string2) => {
+const sameIgnoringCase = (string1, string2) => {
   if (string1.toLowerCase() === string2.toLowerCase()) {
     return true
   } else {
@@ -32,8 +32,11 @@ const sameIgnoringCase = (string1,string2) => {
   }
 }
 const firstHalf = (string) => {
-  return string.substring(0,string.length/2)
+  return string.substring(0, string.length / 2)
 }
 const secondHalf = (string) => {
-  return string.substring(string.length/2, string.length)
+  return string.substring(string.length / 2, string.length)
+}
+const upDown = (string) => {
+  return string.toUpperCase() + string.toLowerCase()
 }
