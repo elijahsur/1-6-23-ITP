@@ -43,7 +43,7 @@ const upDown = (string) => {
 const everyOther = (string) => {
   let fin = ''
   for (let i = 0; i > string.length; i + 2) {
-    fin + string[i]
+    fin = fin + string[i]
   }
   return fin
 }
