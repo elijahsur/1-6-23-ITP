@@ -24,3 +24,10 @@ const isAllUpperCase = (string) => {
     return false
   }
 }
+const sameIgnoringCase = (string1,string2) => {
+  if (string1.toLowerCase() === string2.toLowerCase()) {
+    return true
+  } else {
+    return false
+  }
+}
