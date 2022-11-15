@@ -15,5 +15,12 @@ const swapFrontAndBack = (string) => {
   return string.substring(string.length / 2, string.length) + string.substring(0, string.length / 2)
 }
 const simplePigLatin = (string, number) => {
-  return string + string.search('a','e','i','o','u') + 'ay'
+  return string + string.indexOf('a','e','i','o','u','y') + 'ay'
+}
+const isAllUpperCase = (string) => {
+  if (string.toUpperCase() = string) {
+    return true
+  } else {
+    return false
+  }
 }
