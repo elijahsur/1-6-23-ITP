@@ -18,7 +18,7 @@ const simplePigLatin = (string, number) => {
   return string + string.indexOf('a','e','i','o','u','y') + 'ay'
 }
 const isAllUpperCase = (string) => {
-  if (string.toUpperCase() = string) {
+  if (string.toUpperCase() == string) {
     return true
   } else {
     return false
