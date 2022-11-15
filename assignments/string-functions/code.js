@@ -31,3 +31,6 @@ const sameIgnoringCase = (string1,string2) => {
     return false
   }
 }
+const firstHalf = (string) => {
+  return string.substring(0,string.length/2)
+}
