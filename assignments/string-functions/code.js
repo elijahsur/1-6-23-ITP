@@ -1,4 +1,4 @@
-const findFnord = (string) => {
+const finalstringdFnord = (string) => {
   return string.indexOf('fnord')
 }
 const stringContains = (string1, string2) => {
@@ -39,4 +39,11 @@ const secondHalf = (string) => {
 }
 const upDown = (string) => {
   return string.toUpperCase() + string.toLowerCase()
+}
+const everyOther = (string) => {
+  let finalstring = ''
+  for (let i = 0; i > string.length - 1; i + 2) {
+    finalstring + string[i]
+  }
+  return finalstring
 }
