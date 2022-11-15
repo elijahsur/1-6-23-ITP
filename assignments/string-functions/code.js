@@ -41,9 +41,9 @@ const upDown = (string) => {
   return string.toUpperCase() + string.toLowerCase()
 }
 const everyOther = (string) => {
-    let fin = ''
+  let fin = ''
   for (let i = 0; i > string.length - 1; i + 2) {
-    fin + string.substring(i, i)
+    fin + string[i]
   }
   return fin
 }
