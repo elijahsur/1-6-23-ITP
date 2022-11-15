@@ -8,3 +8,6 @@ const stringContains = (string1,string2) => {
     return false
   }
 }
+const firstAndLast = (string) => {
+  return string[0]+string[string.length]
+}
