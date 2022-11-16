@@ -56,3 +56,6 @@ const everyOtherWrong = (string) => {
   }
   return fin
 }
+const lastName = (string) => {
+  return string.substring(string.indexOf(' '), string.length)
+}
