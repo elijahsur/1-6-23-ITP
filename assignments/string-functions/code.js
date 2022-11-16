@@ -62,3 +62,6 @@ const lastName = (string) => {
 const concatenate = (string1,string2) => {
   return string1+string2
 }
+const firstCharacter = (string) => {
+  return string[0]
+}
