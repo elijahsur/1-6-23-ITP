@@ -50,6 +50,7 @@ const bigWinners = (players) => {
       bigWins.push(players[i])
     }
   }
+  return bigWins
 };
 
 const fillTimesTable = (table) => {
