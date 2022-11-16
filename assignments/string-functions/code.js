@@ -44,7 +44,7 @@ const everyOther = (string) => {
   return string[0] + string[2] + string[4]
 }
 const upDownLastCharacter = (string) => {
-  return string[string.length].toUpperCase() + string[string.length].toLowerCase() 
+  return string[string.length - 1].toUpperCase() + string[string.length - 1].toLowerCase() 
 }
 const everyOtherWrong = (string) => {
   let fin = ''
