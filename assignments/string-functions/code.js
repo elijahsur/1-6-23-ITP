@@ -46,6 +46,9 @@ const everyOther = (string) => {
 const upDownLastCharacter = (string) => {
   return string[string.length - 1].toUpperCase() + string[string.length - 1].toLowerCase() 
 }
+const firstName = (string) => {
+  return string.substring(0,string.indexOf[' '])
+}
 const everyOtherWrong = (string) => {
   let fin = ''
   for (let i = 0; i < string.length; i = i + 2) {
