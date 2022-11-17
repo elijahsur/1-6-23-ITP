@@ -61,7 +61,7 @@ const sums = (n) => {
 for (let i = 0; i < n; i++) {
     array.push(i)
   }
-  return sums
+  return array
 };
 
 const rule110 = (cells) => {
