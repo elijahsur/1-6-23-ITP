@@ -60,7 +60,7 @@ const sums = (n) => {
   let array = []
   let before = 0
 for (let i = 0; i < n; i++) {
-    array.push(i)
+    array.push(i + before)
     before = before + i
   }
   return array
