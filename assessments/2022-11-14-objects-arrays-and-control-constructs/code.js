@@ -57,7 +57,7 @@ const fillTimesTable = (table) => {
   for (let i = 0; i < table.length; i++) {
     table[i][i] = (i + 1)**2
   }
-   for (let i = 0; i < table.length; i+ 2) {
+   for (let i = 0; i < table.length; i = i+ 2) {
     table[i][i] = (i + 1)**2
   }
   return table
