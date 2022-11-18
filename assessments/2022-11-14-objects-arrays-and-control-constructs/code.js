@@ -55,12 +55,11 @@ const bigWinners = (players) => {
 
 const fillTimesTable = (table) => {
   for (let i = 0; i < table.length; i++) {
-    table[i][0] = (i + 1)
-    table[i][1] = (i + 2)
-    table[i][2] = (i + 3)
+    table[i][i] = (i + 1)**2
   }
   return table
 };
+
 
 const sums = (n) => {
   let array = []
@@ -75,9 +74,3 @@ const sums = (n) => {
 const rule110 = (cells) => {
 };
 
-const fillTimesTableMaybe = (table) => {
-  for (let i = 0; i < table.length; i++) {
-    table[i][i] = (i + 1)**2
-  }
-  return table
-};
