@@ -74,5 +74,26 @@ const sums = (n) => {
 };
 
 const rule110 = (cells) => {
+  let newarray = []
+  newarray[0] = 0
+  for (let i = 1; i < cells.length; i++) {
+    if (cells[i - 1] = 0) {
+      if (cells[i] = 0) {
+        if (cells[i + 1] = 0) {
+          newarray.push(0)
+        }
+      }
+    } else {
+      if (cells[i] = 0) {
+        if (cells[i + 1] = 0) {
+          newarray.push(0)
+        }
+      } else {
+        newarray.push(1)
+      }
+    }
+  }
+  newarray[cells.length] = 0
+  return newarray
 };
 
