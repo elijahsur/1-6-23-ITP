@@ -72,3 +72,10 @@ const sums = (n) => {
 
 const rule110 = (cells) => {
 };
+
+const fillTimesTableMaybe = (table) => {
+  for (let i = 0; i < table.length; i++) {
+    table[i][i] = (i + 1)**2
+  }
+  return table
+};
