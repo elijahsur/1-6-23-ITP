@@ -38,6 +38,13 @@ const willSeeTweet = (followed, retweet, blocked) => {
     }
   }
 }
+const evenGreaterThanZero = (number) => {
+  if (number > 0) {
+    if (number % 2 === 0) {
+      return true
+    } else {return false}
+  } else {return false}
+}
 const firstAndLast = (string) => {
   return string[0] + string[string.length - 1]
 }
