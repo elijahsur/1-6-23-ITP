@@ -45,9 +45,19 @@ const evenGreaterThanZero = (number) => {
     } else {return false}
   } else {return false}
 }
+const isLeapYear = (year) => {
+  if (year % 4 === 0) {
+    if (year % 100 === 0) {
+      if (year % 400 === 0) {
+        return true
+      } else {return false}
+    } else {return true}
+  } else {return false}
+}
 const firstAndLast = (string) => {
   return string[0] + string[string.length - 1]
 }
+
 
 const swapFrontAndBack = (string) => {
   return string.substring(string.length / 2, string.length) + string.substring(0, string.length / 2)
@@ -58,5 +68,5 @@ const simplePigLatin = (string, number) => {
 }
 
 const randomCharacter = (string) => {
-  return string[rand]
+  return string.rand
 }
