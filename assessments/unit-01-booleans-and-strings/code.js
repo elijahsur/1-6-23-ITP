@@ -70,3 +70,8 @@ const simplePigLatin = (string, number) => {
 const randomCharacter = (string) => {
   return string[rand(string.length)]
 }
+
+const randomCharacterUpDown = (string) => {
+  let random = string[rand(string.length)]
+  return random.toUpperCase() + random.toLowerCase()
+}
