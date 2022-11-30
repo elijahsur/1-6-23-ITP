@@ -15,13 +15,14 @@ const fireAlarm = (pulled,smoke,planned) => {
 }
 
 const canBePresident = (age,citizen,years) => {
-  if (age >= 35, citizen = true, years >= 14) {
-    return true
-  } else {
-    return false
-  }
+  if (age >= 35) {
+    if (citizen = true) {
+      if (years >= 14) {
+        return true
+      } else {return false}
+    } else {return false}
+  } else {return false}
 }
-
 const firstAndLast = (string) => {
   return string[0]+string[string.length - 1]
 }
