@@ -68,5 +68,5 @@ const simplePigLatin = (string, number) => {
 }
 
 const randomCharacter = (string) => {
-  return string[rand()]
+  return string[rand(string.length)]
 }
