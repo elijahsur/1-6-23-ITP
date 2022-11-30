@@ -57,8 +57,6 @@ const isLeapYear = (year) => {
 const firstAndLast = (string) => {
   return string[0] + string[string.length - 1]
 }
-
-
 const swapFrontAndBack = (string) => {
   return string.substring(string.length / 2, string.length) + string.substring(0, string.length / 2)
 }
@@ -77,4 +75,7 @@ const randomCharacterUpDown = (string) => {
 }
 const isAllUpperCase = (string) => {
   return string === string.toUpperCase()
+}
+const sameIgnoringCase = (string1, string2) => {
+  return string1.toLowerCase() === string2.toLowerCase()
 }
