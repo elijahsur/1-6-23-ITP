@@ -23,7 +23,7 @@ const isVenemous = (striped, blueHead) => {
   } else {return true}
 }
 const okaySpeed = (speedLimit, speedOfCar) => {
-  return (speedOfCar - 10) < (speedLimit - 10) || (speedOfCar + 10) > (speedLimit + 10)
+  return (speedOfCar - 10) < speedLimit || (speedOfCar + 10) > speedLimit
 }
 const twiceAsExpensive = (price1, price2) => {
   return price1 > price2*2
@@ -34,3 +34,4 @@ const winningRecord = (numberOfWins, numberOfLosses, numberOfTies) => {
 const isMagicNumber = (number) => {
   return number === 42 || number === 17
 }
+// of course 42 is a magic number, its the answer to life, the universe, everything!
