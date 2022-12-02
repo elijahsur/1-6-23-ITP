@@ -23,5 +23,5 @@ const isVenemous = (striped, blueHead) => {
   } else {return true}
 }
 const okaySpeed = (speedLimit, speedOfCar) => {
-  return (speedOfCar - 10 < speedLimit - 10) || (speedOfCar + 10 > speedLimit + 10)
+  return (speedOfCar - 10) < (speedLimit - 10) || (speedOfCar + 10) > (speedLimit + 10)
 }
