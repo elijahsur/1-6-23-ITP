@@ -28,3 +28,6 @@ const okaySpeed = (speedLimit, speedOfCar) => {
 const twiceAsExpensive = (price1, price2) => {
   return price1 > price2*2
 }
+const winningRecord = (numberOfWins, numberOfLosses, numberOfTies) => {
+  return numberOfWins > (numberOfWins + numberOfLosses + numberOfTies)/3
+}
