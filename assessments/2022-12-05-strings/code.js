@@ -23,5 +23,5 @@ const capitalize = (string) => {
 }
 const capitalizeName = (string) => {
   let firstSpace = string.indexOf(' ')
-  return string[0].toUpperCase() + string.substring(1, firstSpace) + ' ' + string[firstSpace + 1].toUpperCase() + string.substring(firstSpace + 2, string.length)
+  return string.substring(0, firstSpace).capitalize() + ' ' + string.substring(firstSpace + 1).capitalize()
 }
