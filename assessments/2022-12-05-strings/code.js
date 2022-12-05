@@ -15,3 +15,6 @@ const containsX = (string) => {
     return false
   } else {return true}
 }
+const slug = (string1,string2,string3) => {
+  return string1.toLowerCase() + '-' + string2.toLowerCase() + '-' + string3.toLowerCase()
+}
