@@ -11,8 +11,5 @@ const pair = (string1, string2) => {
   return string1 + ' and ' + string2
 }
 const containsX = (string) => {
-  return string.indexOf('x')
-}
-const test = (string) => {
-  return string.indexOf('x')
+  return string.indexOf('x') === !-1
 }
