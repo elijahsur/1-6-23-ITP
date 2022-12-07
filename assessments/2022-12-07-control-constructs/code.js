@@ -54,7 +54,7 @@ const recordMeh = (x) => {
  * half of all possible values as okay and the other half as not okay. Which are
  * which is essentially random but is stable.
  */
-const isOk = (x) => hash(JSON.stringify(x)) % 2 == 0;
+const isOk = (x) => false
 
 /*
  * Return true if the argument is "meh".
