@@ -103,5 +103,13 @@ const classify = (arg) => {
   } else {recordNotOk(arg)}
 }
 const threewayClassify = (arg) => {
-  classification = isOk(arg) === true || isMeh(arg) === true || recordNotOk(arg) === true
+  if (isOk(arg) === true) {
+    recordOk(arg)
+  } else {
+    if (isMeh(arg) === true) {
+      recordMeh(arg)
+    } else {
+      recordNotOk(arg)
+    }
+}
 }
