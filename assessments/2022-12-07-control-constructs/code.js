@@ -118,4 +118,5 @@ const sumOfSquares = (arg) => {
   for (let i = 0; i < arg; i++) {
     total = total + i*i
   }
+  return total
 }
