@@ -120,3 +120,12 @@ const sumOfSquares = (arg) => {
   }
   return total
 }
+const pairs = (arg) => {
+  for (let i = 0; i - 1< arg; i++) {
+    let a = nextnumber(i)
+    pair(i, a)
+    pair(i, i)
+    pair(a, i)
+    pair(a, a)
+  }
+}
