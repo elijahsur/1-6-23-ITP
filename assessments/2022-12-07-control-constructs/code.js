@@ -79,7 +79,14 @@ const pair = (a, b) => {
 ////////////////////////////////////////////////////////////////////////
 // Write your code here ...
 const logIfOk = (arg) => {
- if (isOk(arg)) {
+ if (isOk(arg) === true) {
  log(arg)
+  }
+}
+const firstOk = (arg) => {
+  for (let i = 0; i < arg; i++) {
+    if (isOk(i) === true) {
+      return i
+    }
   }
 }
