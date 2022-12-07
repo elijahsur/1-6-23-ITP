@@ -54,7 +54,7 @@ const recordMeh = (x) => {
  * half of all possible values as okay and the other half as not okay. Which are
  * which is essentially random but is stable.
  */
-const isOk = (x) => false
+const isOk = (x) => hash(JSON.stringify(x)) % 2 == 0;
 
 /*
  * Return true if the argument is "meh".
@@ -112,4 +112,10 @@ const threewayClassify = (arg) => {
       recordNotOk(arg)
     }
 }
+}
+const sumOfSquares = (arg) => {
+  let total = 0
+  for (let i = 0; i < arg; i++) {
+    total = total + i*i
+  }
 }
