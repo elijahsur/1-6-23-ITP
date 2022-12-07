@@ -90,3 +90,10 @@ const firstOk = (arg) => {
     }
   }
 }
+const timeToLeet = () => {
+  for (let i = 0; i < 10000; i++) {
+    if (random10k() === 1337) {
+      return i
+    }
+  } 
+}
