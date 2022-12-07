@@ -121,7 +121,7 @@ const sumOfSquares = (arg) => {
   return total
 }
 const pairs = (arg) => {
-  for (let i = 0; i + 1< arg; i++) {
+  for (let i = 1; i + 1< arg; i++) {
     let a = i + 1
     pair(i, a)
     pair(i, i)
