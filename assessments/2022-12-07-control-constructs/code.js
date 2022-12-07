@@ -97,3 +97,8 @@ const timeToLeet = () => {
     }
   } 
 }
+const classify = (arg) => {
+  if (isOk(arg) === true) {
+    recordOk(arg)
+  } else {recordNotOk(arg)}
+}
