@@ -79,7 +79,7 @@ const pair = (a, b) => {
 ////////////////////////////////////////////////////////////////////////
 // Write your code here ...
 const logIfOk = (arg) => {
-  if (arg === isOk) {
-    log(arg)
+ if (isOk(arg)) {
+ log(arg)
   }
 }
