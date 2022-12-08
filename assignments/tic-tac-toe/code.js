@@ -20,7 +20,7 @@ registerOnclick((x, y) => {
     }
     drawText(xOrY, x - 40, y + 40, 'black', Math.min(width, height) * .4);
   }
-  return x, y
+  return x + ', ' + y
 });
 
 drawLine(width / 1.5, height, width / 1.5, 0, 'black', 10)
