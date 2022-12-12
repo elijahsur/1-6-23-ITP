@@ -15,7 +15,7 @@ const placeMark = (array, object) => {
   array[object.row][object.column] = object.mark
 }
 const allTheSame = (array) => {
-  return array[1] === array[2] === array[3]
+  return array[0] === array[1] === array[2]
 }
 const extractColumn = () => {}
 
