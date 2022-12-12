@@ -17,3 +17,7 @@ const placeMark = (array, object) => {
 const allTheSame = (array) => {
   return array[1] === array[2] === array[3]
 }
+
+let board = makeBoard();
+  let move = makeMove('X', 1, 1);
+  placeMark(board, move);
