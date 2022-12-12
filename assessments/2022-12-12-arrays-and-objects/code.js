@@ -9,7 +9,7 @@ const makeBoard = () => {
   ]
 }
 const makeMove = (xOrO, nrow, ncolumn) => {
-  return {mark = xOrO, row = nrow, column = ncolumn}
+  return [mark = xOrO, row = nrow, column = ncolumn]
 }
 const placeMark = (array, object) => {}
 const allTheSame = (array) => {
