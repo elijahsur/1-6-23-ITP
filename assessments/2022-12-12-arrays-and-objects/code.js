@@ -18,3 +18,7 @@ const allTheSame = (array) => {
   return array[1] === array[2] === array[3]
 }
 const extractColumn = () => {}
+
+let board = makeBoard();
+  let move = makeMove('X', 1, 1);
+  placeMark(board, move);
