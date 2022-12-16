@@ -214,5 +214,5 @@ const sumOfSquares = (arg) => {
 }
 //
 const totalWithTip = (object, number) => {
-  return {subtotal: object.subtotal, tip: object.subtotal*number, total: object.subtotal + object.subtotal*number)
+  return {subtotal: object.subtotal, tip: object.subtotal*number, total: object.subtotal + object.subtotal*number}
 }
