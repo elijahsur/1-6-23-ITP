@@ -171,6 +171,6 @@ const firstFewEveryOther = (string) => {
 const firstHalf = (string) => {
   return string.substring(0,string.length/2)
 }
-const secondHalff = (string) => {
+const secondHalf = (string) => {
   return string.substring(string.length/2,string.length)
 }
