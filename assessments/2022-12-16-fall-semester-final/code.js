@@ -168,3 +168,6 @@ const needSunscreen = (goingToBeach, goingSkiing) => {
 const firstFewEveryOther = (string) => {
   return string[0] + string[2] + string[4]
 }
+const firstHalf = (string) => {
+  return string.substring(0,string.length/2)
+}
