@@ -25,3 +25,6 @@ const extractColumn = (board, index) => {
   }
   return extract
 }
+const recordMove = (array, move) => {
+  array.push(move)
+}
