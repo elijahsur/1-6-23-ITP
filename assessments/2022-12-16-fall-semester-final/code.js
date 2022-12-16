@@ -135,5 +135,5 @@ const totalEggs = (nHardBoiled, nSoftBoiled) => {
   return nHardBoiled + nSoftBoiled
 }
 const chocolatesPerPerson = (nChocolates, nPeople) => {
-  nChocolates % nPeople
+  return nChocolates % nPeople
 }
