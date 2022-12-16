@@ -216,3 +216,8 @@ const sumOfSquares = (arg) => {
 const totalWithTip = (object, number) => {
   return {subtotal: object.subtotal, tip: object.subtotal*number, total: object.subtotal + object.subtotal*number}
 }
+const higherPaid = (employee1, employee2) => {
+  if (employee1.salary > employee2.salary) {
+    return employee1
+  } else {return employee2}
+}
