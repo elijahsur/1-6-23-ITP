@@ -221,3 +221,6 @@ const higherPaid = (employee1, employee2) => {
     return employee1
   } else {return employee2}
 }
+const isWinner = (object) => {
+  return object.score > 100
+}
