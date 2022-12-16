@@ -205,3 +205,10 @@ const classify = (arg) => {
 const threewayClassify = (arg) => {
 return isOk(arg) || isMeh(arg) || isNotOk(arg)
 }
+const sumOfSquares = (arg) => {
+  let final = 0
+  for (let i = 0; i < arg; i++) {
+    final = final + i**2
+  }
+  return final
+}
