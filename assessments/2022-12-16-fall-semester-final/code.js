@@ -140,3 +140,8 @@ const chocolatesPerPerson = (nChocolates, nPeople) => {
 const extraChocolates = (nChocolates, nPeople) => {
   return nChocolates % nPeople
 }
+const leftOut = (nChocolates, nPeople) => {
+  if (nChocolates < nPeople) {
+    return nPeople - nChocolates
+  } else {return 0}
+}
