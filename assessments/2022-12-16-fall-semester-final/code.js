@@ -188,3 +188,10 @@ const firstOk = (arg) => {
     }
   }
 }
+const timeToLeet = () => {
+  for (let i = 0; i < i + 1; i++) {
+    if (random10k() === isLeet()) {
+      return i
+    }
+  }
+}
