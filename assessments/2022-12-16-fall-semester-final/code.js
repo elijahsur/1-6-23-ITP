@@ -158,3 +158,6 @@ const canBePresident = (age, citizen, years) => {
 const willSeeTweet =  (followed, retweeted, blocked) => {
   return followed || retweeted && !blocked
 }
+const needHeavyCoat = (goingOutside, somewhereCold) => {
+  return goingOutside && somewhereCold
+}
