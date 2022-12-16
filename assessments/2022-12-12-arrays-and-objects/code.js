@@ -15,3 +15,6 @@ const makeMove = (xorO, row, column) => {
 const placeMark = (board, move) => {
   board[move.row][move.column] = move.mark
 }
+const allTheSame = (array) => {
+  return array[0] === array[1] && array[1] === array[2]
+}
