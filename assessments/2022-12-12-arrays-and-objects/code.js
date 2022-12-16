@@ -9,4 +9,6 @@ const makeBoard = () => {
     makeRow(),
     ]
 }
-const makeMove = (XorO, row, column) 
+const makeMove = (xorO, row, column) => {
+  return {mark: xorO, row, column}
+}
