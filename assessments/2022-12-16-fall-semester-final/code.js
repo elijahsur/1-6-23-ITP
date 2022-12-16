@@ -155,3 +155,6 @@ const fireAlarm = (pulled, smoke, planned) => {
 const canBePresident = (age, citizen, years) => {
   return age >= 35 && citizen && years >= 14
 }
+const willSeeTweet =  (followed, retweeted, blocked) => {
+  return followed || retweeted && !blocked
+}
