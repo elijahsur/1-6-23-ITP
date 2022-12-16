@@ -202,3 +202,6 @@ const classify = (arg) => {
     recordNotOk(arg)
   }
 }
+const threewayClassify = (arg) => {
+return isOk(arg) || isMeh(arg) || isNotOk(arg)
+}
