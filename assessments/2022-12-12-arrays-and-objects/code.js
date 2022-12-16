@@ -28,3 +28,6 @@ const extractColumn = (board, index) => {
 const recordMove = (array, move) => {
   array.push(move)
 }
+const rowForMove = (moveobjects, index) => {
+  return moves[index].row
+}
