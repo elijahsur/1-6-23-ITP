@@ -161,3 +161,6 @@ const willSeeTweet =  (followed, retweeted, blocked) => {
 const needHeavyCoat = (goingOutside, somewhereCold) => {
   return goingOutside && somewhereCold
 }
+const needSunscreen = (goingToBeach, goingSkiing) => {
+  return goingToBeach || goingSkiing
+}
