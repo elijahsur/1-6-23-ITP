@@ -164,6 +164,7 @@ const needHeavyCoat = (goingOutside, somewhereCold) => {
 const needSunscreen = (goingToBeach, goingSkiing) => {
   return goingToBeach || goingSkiing
 }
-const needMittens = (goingOutside, somewhereWarm) => {
-  return goingOutside && !somewhereWarm
+//
+const firstFewEveryOther = (string) => {
+  return string[0] + string[2] + string[4]
 }
