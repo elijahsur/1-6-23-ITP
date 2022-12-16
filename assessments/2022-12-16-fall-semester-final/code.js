@@ -174,3 +174,6 @@ const firstHalf = (string) => {
 const secondHalf = (string) => {
   return string.substring(string.length/2,string.length)
 }
+const swapFrontAndBack = (string) => {
+  secondHalf(string) + firstHalf(string) 
+}
