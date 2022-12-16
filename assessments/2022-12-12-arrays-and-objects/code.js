@@ -9,3 +9,4 @@ const makeBoard = () => {
     makeRow(),
     ]
 }
+const makeMove = (XorO, row, column) 
