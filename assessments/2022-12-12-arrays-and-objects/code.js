@@ -28,3 +28,5 @@ const extractColumn = (board, index) => {
 const recordMove = (array, move) => {
   array.push(move)
 }
+let array = []
+let move = {mark: 'X', row: 5, column: 4}
