@@ -31,3 +31,5 @@ const recordMove = (array, move) => {
 const rowForMove = (moveobjects, index) => {
   return moves[index].row
 }
+let moves = [];
+   recordMove(moves, makeMove('X', 1, 2));
