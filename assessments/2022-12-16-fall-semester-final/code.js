@@ -148,3 +148,7 @@ const leftOut = (nChocolates, nPeople) => {
 const probabilityAllHeads = (coinflipped) => {
   return 1 / (2**coinflipped)
 }
+//
+const fireAlarm = (pulled, smoke, planned) => {
+  return pulled || smoke || planned
+}
