@@ -195,3 +195,10 @@ const timeToLeet = () => {
     }
   }
 }
+const classify = (arg) => {
+  if (isOk(arg)) {
+    recordOk(arg)
+  } else {
+    recordNotOk(arg)
+  }
+}
