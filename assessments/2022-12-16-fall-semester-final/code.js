@@ -180,3 +180,11 @@ const swapFrontAndBack = (string) => {
 const upDown = (string) => {
   return string.toUpperCase() + string.toLowerCase()
 }
+//
+const firstOk = (arg) => {
+  for (let i = 0; i < arg; i++) {
+    if (isOk(arg)) {
+      return i
+    }
+  }
+}
