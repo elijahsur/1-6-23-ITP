@@ -18,3 +18,10 @@ const placeMark = (board, move) => {
 const allTheSame = (array) => {
   return array[0] === array[1] && array[1] === array[2]
 }
+const extractColumn = (board, index) => {
+  let extract = []
+  for (let i = 0; i < 3; i++) {
+    extract.push(board[i][index])
+  }
+  return extract
+}
