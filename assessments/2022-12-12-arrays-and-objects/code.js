@@ -25,3 +25,9 @@ const extractColumn = (board, index) => {
   }
   return extract
 }
+
+let board =  [
+     ['X', '', ''],
+     ['O', '', ''],
+     ['', 'X', '']
+   ]
