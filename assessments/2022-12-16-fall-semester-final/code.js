@@ -96,3 +96,131 @@ const pair = (a, b) => {
 
 ////////////////////////////////////////////////////////////////////////
 // Write your code here ...
+
+// code taken from the arrays and objects assignment, redone when the final was not working
+const makeRow = () => {
+  return ['','','']
+}
+const makeBoard = () => {
+  return [
+    makeRow(),
+    makeRow(),
+    makeRow(),
+    ]
+}
+const makeMove = (xorO, row, column) => {
+  return {mark: xorO, row, column}
+}
+const placeMark = (board, move) => {
+  board[move.row][move.column] = move.mark
+}
+const allTheSame = (array) => {
+  return array[0] === array[1] && array[1] === array[2]
+}
+const extractColumn = (board, index) => {
+  let extract = []
+  for (let i = 0; i < 3; i++) {
+    extract.push(board[i][index])
+  }
+  return extract
+}
+const recordMove = (array, move) => {
+  array.push(move)
+}
+const rowForMove = (moveobjects, index) => {
+  return moves[index].row
+}
+//
+const totalEggs = (nHardBoiled, nSoftBoiled) => {
+  return nHardBoiled + nSoftBoiled
+}
+const chocolatesPerPerson = (nChocolates, nPeople) => {
+  return Math.floor(nChocolates / nPeople)
+}
+const extraChocolates = (nChocolates, nPeople) => {
+  return nChocolates % nPeople
+}
+const leftOut = (nChocolates, nPeople) => {
+  if (nChocolates < nPeople) {
+    return nPeople - nChocolates
+  } else {return 0}
+}
+const probabilityAllHeads = (coinflipped) => {
+  return 1 / (2**coinflipped)
+}
+//
+const fireAlarm = (pulled, smoke, planned) => {
+  return pulled || smoke || planned
+}
+const canBePresident = (age, citizen, years) => {
+  return age >= 35 && citizen && years >= 14
+}
+const willSeeTweet =  (followed, retweeted, blocked) => {
+  return followed || retweeted && !blocked
+}
+const needHeavyCoat = (goingOutside, somewhereCold) => {
+  return goingOutside && somewhereCold
+}
+const needSunscreen = (goingToBeach, goingSkiing) => {
+  return goingToBeach || goingSkiing
+}
+//
+const firstFewEveryOther = (string) => {
+  return string[0] + string[2] + string[4]
+}
+const firstHalf = (string) => {
+  return string.substring(0,string.length/2)
+}
+const secondHalf = (string) => {
+  return string.substring(string.length/2,string.length)
+}
+const swapFrontAndBack = (string) => {
+  return secondHalf(string) + firstHalf(string) 
+}
+const upDown = (string) => {
+  return string.toUpperCase() + string.toLowerCase()
+}
+//
+const firstOk = (arg) => {
+  for (let i = 0; i < arg; i++) {
+    if (isOk(arg)) {
+      return i
+    }
+  }
+}
+const timeToLeet = () => {
+  for (let i = 0; i < i + 1; i++) {
+    if (random10k() === isLeet()) {
+      return i
+    }
+  }
+}
+const classify = (arg) => {
+  if (isOk(arg)) {
+    recordOk(arg)
+  } else {
+    recordNotOk(arg)
+  }
+}
+const threewayClassify = (arg) => {
+return isOk(arg) || isMeh(arg) || isNotOk(arg)
+}
+const sumOfSquares = (arg) => {
+  let final = 0
+  for (let i = 0; i < arg; i++) {
+    final = final + i**2
+  }
+  return final
+}
+//
+const totalWithTip = (object, number) => {
+  return {subtotal: object.subtotal, tip: object.subtotal*number, total: object.subtotal + object.subtotal*number}
+}
+const higherPaid = (employee1, employee2) => {
+  if (employee1.salary > employee2.salary) {
+    return employee1
+  } else {return employee2}
+}
+const isWinner = (object) => {
+  return object.score > 100
+}
