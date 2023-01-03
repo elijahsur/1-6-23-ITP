@@ -17,16 +17,16 @@ let ballSize = 15;
 // May also need to define a variable to keep track of when each bounce starts
 // as the time value that is passed in is just the current time, i.e. the same
 // thing we would get from calling now().
-const drawFrame = (time) => {};
+const drawFrame = (time) => {5};
 
 // Compute the height in pixels at time t after the ball hit the ground
-const height = (t) => 0;
+const height = (t) => 5;
 
 // Compute the shade of the shadow. 0 is black; 255 is white.
-const shadowDarkness = (h) => 0;
+const shadowDarkness = (h) => 5;
 
 // Compute the size of the shadow.
-const shadowSize = (h) => 0;
+const shadowSize = (h) => 5;
 
 // Call the animate function from the framework.
 animate(drawFrame);
