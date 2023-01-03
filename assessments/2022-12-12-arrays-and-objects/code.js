@@ -1,31 +1,35 @@
+// i removed the work, will redo all the questions :)
 const makeRow = () => {
   return ['','','']
 }
 const makeBoard = () => {
   return [
-    ['','',''],
-    ['','',''],
-    ['','','']
-  ]
+    makeRow(),
+    makeRow(),
+    makeRow(),
+    ]
 }
-const makeMove = (mark, row, column) => {
-  return {mark: mark, row: row, column: column}
+const makeMove = (xorO, row, column) => {
+  return {mark: xorO, row, column}
 }
-const placeMark = (array, object) => {
-  array[object.row][object.column] = object.mark
+const placeMark = (board, move) => {
+  board[move.row][move.column] = move.mark
 }
 const allTheSame = (array) => {
-  return array[0][0] === array[0][1] === array[0][2]
+  return array[0] === array[1] && array[1] === array[2]
 }
-const extractColumn = (array, index) => {
+const extractColumn = (board, index) => {
+  let extract = []
+  for (let i = 0; i < 3; i++) {
+    extract.push(board[i][index])
+  }
+  return extract
 }
 const recordMove = (array, move) => {
+  array.push(move)
 }
-const rowForMove = (arrayofMove, index) => {
+const rowForMove = (moveobjects, index) => {
+  return moves[index].row
 }
-const placeMoves = (array1, array2) => {
-}
-
-let board = makeBoard();
-  let move = makeMove('X', 1, 1);
-  placeMark(board, move);
+let moves = [];
+   recordMove(moves, makeMove('X', 1, 2));
