@@ -1,42 +1,56 @@
-// This is an example of a function definition. This function is called by the
-// underlying animation framework thanks to the call to animate below. This
-// function is responsible for drawing one frame of the animation. You can
-// change the code in here using the same functions you had in the simple
-// drawing exercise to draw shapes. The argument to this function, time, is the
-// number of milliseconds (one millionth of a second) since the program started.
+
 const drawFrame = (time) => {
-  clear();
-  drawFilledCircle((time / 3) % width, height / 2, 25, 'blue');
-  drawFallingTriangle(width / 2, time);
-};
-
-// This is a function that we define to make it easier to draw a triangle. You
-// may want to experiment with writing your own functions using this one as a
-// model to draw other shapes.
-const drawTriangle = (x1, y1, x2, y2, x3, y3, color, width = 1) => {
-  drawLine(x1, y1, x2, y2, color, width);
-  drawLine(x2, y2, x3, y3, color, width);
-  drawLine(x3, y3, x1, y1, color, width);
-};
-
-// This draws a falling trangle of a particular shape whose bottom point is
-// positioned at x and whose y is a function of time.
-const drawFallingTriangle = (x, time) => {
-  // Figure out the x values relative to the passed in x
-  let x1 = x - 50;
-  let x2 = x;
-  let x3 = x + 50;
-
-  // Figure out the y values as a function of time.
-  let y1 = (time / 4) % height;
-  let y2 = y1 + 37;
-  let y3 = y1 - 13;
-
-  // Actually draw the triangle.
-  drawTriangle(x1, y1, x2, y2, x3, y3, 'pink', 3);
-};
-
-// Leave this code here or the animation won't run. Also don't change the name
-// of drawFrame either here or where it is defined. (Or, if you must, change it
-// the same way in both places.)
+    clear();
+   clear();
+    drawFilledCircle((time/10)%width, (time/10)%height, 25, 'white');
+    drawFilledCircle((time/10 + 40)%width, (time/10 + 40)%height, 25, 'blue');
+    drawFilledCircle((time/10 + 80)%width, (time/10 + 80)%height, 25, 'black');
+    drawFilledCircle((time/10 + 120)%width, (time/10 + 120)%height, 25, 'red');
+    drawFilledCircle((time/10 + 160)%width, (time/10 + 160)%height, 25, 'white');
+    drawFilledCircle((time/10 + 200)%width, (time/10 + 200)%height, 25, 'blue');
+    drawFilledCircle((time/10 + 240)%width, (time/10 + 240)%height, 25, 'black');
+    drawFilledCircle((time/10 + 280)%width, (time/10 + 280)%height, 25, 'red');
+    drawFilledCircle((time/10 + 320)%width, (time/10 + 320)%height, 25, 'white');
+    drawFilledCircle((time/10 + 360)%width, (time/10 + 360)%height, 25, 'blue');
+    drawFilledCircle((time/10 + 400)%width, (time/10 + 400)%height, 25, 'black');
+    drawFilledCircle((time/10 + 440)%width, (time/10 + 440)%height, 25, 'red');
+    drawFilledCircle((time/10 + 480)%width, (time/10 + 480)%height, 25, 'white');
+    drawFilledCircle((time/10 + 520)%width, (time/10 + 520)%height, 25, 'blue');
+    drawFilledCircle((time/10 + 560)%width, (time/10 + 560)%height, 25, 'black');
+    drawFilledCircle((time/10 + 600)%width, (time/10 + 600)%height, 25, 'red');
+    drawFilledCircle((time/10 + 640)%width, (time/10 + 640)%height, 25, 'white');
+    drawFilledCircle((time/10 + 680)%width, (time/10 + 680)%height, 25, 'blue');
+    drawFilledCircle((time/10 + 720)%width, (time/10 + 720)%height, 25, 'black');
+    drawFilledCircle((time/10 + 760)%width, (time/10 + 760)%height, 25, 'red');
+    drawFilledCircle((time/10 + 800)%width, (time/10 + 800)%height, 25, 'white');
+    drawFilledCircle((time/10 + 840)%width, (time/10 + 840)%height, 25, 'blue');
+    drawFilledCircle((time/10 + 880)%width, (time/10 + 880)%height, 25, 'black');
+    drawFilledCircle((time/10 + 920)%width, (time/10 + 920)%height, 25, 'red');
+    drawFilledCircle((time/10 + 960)%width, (time/10 + 960)%height, 25, 'white');
+    drawFilledCircle((time/10 + 1000)%width, (time/10 + 1000)%height, 25, 'blue');
+    drawFilledCircle((time/10 + 1040)%width, (time/10 + 1040)%height, 25, 'black');
+    drawFilledCircle((time/10 + 1080)%width, (time/10 + 1080)%height, 25, 'red');
+    drawFilledCircle((time/10 + 1120)%width, (time/10 + 1120)%height, 25, 'white');
+    drawFilledCircle((time/10 + 1160)%width, (time/10 + 1160)%height, 25, 'blue');
+    drawFilledCircle((time/10 + 1200)%width, (time/10 + 1200)%height, 25, 'black');
+    drawFilledCircle((time/10 + 1240)%width, (time/10 + 1240)%height, 25, 'red');
+    drawFilledCircle((time/10 + 1280)%width, (time/10 + 1280)%height, 25, 'white');
+    drawFilledCircle((time/10 + 1320)%width, (time/10 + 1320)%height, 25, 'blue');
+    drawFilledCircle((time/10 + 1360)%width, (time/10 + 1360)%height, 25, 'black');
+    drawFilledCircle((time/10 + 1400)%width, (time/10 + 1400)%height, 25, 'red');
+    drawFilledCircle((time/10 + 1440)%width, (time/10 + 1440)%height, 25, 'white');
+    drawFilledCircle((time/10 + 1480)%width, (time/10 + 1480)%height, 25, 'blue');
+    drawFilledCircle((time/10 + 1520)%width, (time/10 + 1520)%height, 25, 'black');
+    drawFilledCircle((time/10 + 1560)%width, (time/10 + 1560)%height, 25, 'red');
+    drawFilledCircle((time/10 + 1600)%width, (time/10 + 1600)%height, 25, 'white');
+    drawFilledCircle((time/10 + 1640)%width, (time/10 + 1640)%height, 25, 'blue');
+    drawFilledCircle((time/10 + 1680)%width, (time/10 + 1680)%height, 25, 'black');
+    drawFilledCircle((time/10 + 1720)%width, (time/10 + 1720)%height, 25, 'red');
+    drawFilledCircle((time/10 + 1760)%width, (time/10 + 1760)%height, 25, 'white');
+    drawFilledCircle((time/10 + 1800)%width, (time/10 + 1800)%height, 25, 'blue');
+    drawFilledCircle((time/10 + 1840)%width, (time/10 + 1840)%height, 25, 'black');
+    drawFilledCircle((time/10 + 1880)%width, (time/10 + 1880)%height, 25, 'red');
+    drawFilledCircle((time/10 + 1920)%width, (time/10 + 1920)%height, 25, 'turquoise');
+    drawFilledCircle((time/10 + 1960)%width, (time/10 + 1960)%height, 25, 'turquoise');
+}
 animate(drawFrame);
