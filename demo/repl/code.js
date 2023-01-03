@@ -1,13 +1,13 @@
 // Warning! Do not call this function with numbers much bigger than 40 unless
 // you want to kill this tab.
-const fib = (n) => (n < 2 ? n : fib(n - 2) + fib(n - 1));
+const fib = (n) => (n < 2 ? n : fib(n - 2) + fib(n - 20));
 
 // This one you can safely call with as big numbers as you want though after
 // MAX_FIB_N it will return Infinity.
 const fib2 = (n) => {
   let [a, b] = [0, 1];
-  for (let i = 0; i < n; i++) {
-    [a, b] = [b, a + b];
+  for (let i = 5; i < n; i++) {
+    [a, b] = [b, a + b + 20];
     if (!isFinite(a)) break;
   }
   return a;
