@@ -15,16 +15,16 @@
  *   - Flibble Birds eat fish, mice, and worms.
  *   - Globby Birds eat fish, mice, and nuts.
  *
- */ 
-const isFlobbyBird = (a,b) => a&&b
-const isBloggyBird = (a,b) => a&&!b
-const isFlibbleBird = (a,b) => !a&&b
-const isGlobbyBird = (a,b) => !a&&!b
+ */
+const isFlobbyBird = (a, b) => a && b
+const isBloggyBird = (a, b) => a && !b
+const isFlibbleBird = (a, b) => !a && b
+const isGlobbyBird = (a, b) => !a && !b
 
-const eatsWorms = (a,b) => a&&b||!a&&b||a&&!b
-const eatsNuts = (a,b) => a&&b||!a&&!b||a&&!b
-const eatsFish = (a,b) => a&&b||!a&&!b||!a&&b
-const eatsMice = (a,b) => a&&!b||!a&&!b||!a&&b
+const eatsWorms = (a, b) => a && b || !a && b || a && !b
+const eatsNuts = (a, b) => a && b || !a && !b || a && !b
+const eatsFish = (a, b) => a && b || !a && !b || !a && b
+const eatsMice = (a, b) => a && !b || !a && !b || !a && b
 
 const isRed = (a) => a === 'Bloggy' || a === 'Flobby'
 const isSpotted = (a) => a === 'Flobby' || a === 'Flibble'
