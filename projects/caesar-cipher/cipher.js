@@ -1,17 +1,17 @@
+let alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 let encrypt = (text, key) => {
     let encrypted = ''
-    let key2 = 'abcdefghijklmnopqrstuvwxyz'
     for (let i = 0; i < text.length; i++) {
-        for (let j = 0; j < key2.length; j++) {
-            if (text[i] === key2[j]) {
+        for (let j = 0; j < alphabet.length; j++) {
+            if (text[i] === alphabet[j]) {
                 let change = j
                 if (change + key > 26) {
                     change = 27 - j
                 } else {
                     change = j + key
                 }
-                encrypted = encrypted + key2[change]
+                encrypted = encrypted + alphabet[change]
             }
         }
     }
@@ -20,16 +20,23 @@ let encrypt = (text, key) => {
 
 let decrypt = (text, key) => {
     let decrypted = ''
-    let key2 = 'abcdefghijklmnopqrstuvwxyz'
     for (let i = 0; i < text.length; i++) {
-        for (let j = 0; j < key2.length; j++) {
-            if (text[i] === key2[key + j]) {
-
-                decrypted = decrypted + key2[change]
+        for (let j = 0; j < alphabet.length; j++) {
+            if (text[i] === alphabet[j]) {
+                let change = j
+                if (change - key < 0) {
+                    change = 28 - key
+                } else {
+                    change = change - key
+                }
+                decrypted = decrypted + alphabet[change]
             }
         }
     }
     return decrypted
 }
-console.log(encrypt('pizza', 3))
-//console.log(decrypt('slccd', 3))
+let check = (encoded, key, decoded) => {
+    return decrypt(encoded, key) === decoded
+}
+
+console.log(check('slccd',3,'pizza'))
