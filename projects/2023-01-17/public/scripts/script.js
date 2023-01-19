@@ -58,14 +58,136 @@ q3.append(document.createTextNode('What are some of the main elements of HTML?')
 
 body.append(q3);
 
-const a3 = document.createElement('p');
 
-a3.append(
+const a3 = document.createElement('ol');
+const li1 = document.createElement('li');
+const code1 = document.createElement('code');
+code1.append(`<html>`)
+li1.append(code1)
+li1.append(
   document.createTextNode(`
-  i got no clue how to make a list
+  : This is the root element of an HTML document, and it contains all of the other elements.
   `)
 );
-
+const li2 = document.createElement('li');
+const code2 = document.createElement('code');
+code2.append(`<head>`)
+li2.append(code2)
+li2.append(
+  document.createTextNode(`
+  : This element contains information about the document, such as the title of the page, which is displayed in the browser's title bar or tab.
+  `)
+);
+const li3 = document.createElement('li');
+const code3 = document.createElement('code');
+code3.append(`<body>`)
+li3.append(code3)
+li3.append(
+  document.createTextNode(`
+  <body>: This element contains the content of the document that is displayed in the browser window.
+  `)
+);
+const li4 = document.createElement('li');
+const code4 = document.createElement('code');
+code4.append(`<h1> to <h6>`)
+li4.append(code4)
+li4.append(
+  document.createTextNode(`
+  : These elements are used for headings and subheadings. <h1> is the highest level heading, while <h6> is the lowest.
+  `)
+);
+const li5 = document.createElement('li');
+const code5 = document.createElement('code');
+code5.append(`<p>`)
+li5.append(code5)
+li5.append(
+  document.createTextNode(`
+  : This element is used for paragraphs of text.
+  `)
+);
+const li6 = document.createElement('li');
+const code6 = document.createElement('code');
+code6.append(`<a>`)
+li6.append(code6)
+li6.append(
+  document.createTextNode(`
+  : This element is used for hyperlinks, which allow users to navigate between pages on the web.
+  `)
+);
+const li7 = document.createElement('li');
+const code7 = document.createElement('code');
+code7.append(`<img>`)
+li7.append(code7)
+li7.append(
+  document.createTextNode(`
+  : This element is used to embed images in a web page.
+  `)
+);
+const li8 = document.createElement('li');
+const code8 = document.createElement('code');
+code8.append(`<ul> and <ol>`)
+li8.append(code8)
+li8.append(
+  document.createTextNode(`
+  : These elements are used for unordered and ordered lists, respectively.
+  `)
+);
+const li9 = document.createElement('li');
+const code9 = document.createElement('code');
+li9.append(
+  document.createTextNode(`
+  : This element is used for list items.
+  `)
+)
+const li10 = document.createElement('li');
+const code10 = document.createElement('code');
+code10.append(`<div> and <span>`)
+li10.append(code10)
+li10.append(
+  document.createTextNode(`
+   These elements are used for grouping and applying styles to elements on a web page.
+  `)
+)
+a3.append(li1,li2,li3,li4,li5,li6,li7,li8,li9,li10);
+const a3text = document.createElement('p');
+a3text.append(
+  document.createTextNode(`
+  These are some of the main elements, but there are many more available, like 
+  `)
+)
+const codetext1 = document.createElement('code');
+const codetext2 = document.createElement('code');
+const codetext3 = document.createElement('code');
+const codetext4 = document.createElement('code');
+const codetext5 = document.createElement('code');
+const codetext6 = document.createElement('code');
+const codetext7 = document.createElement('code');
+codetext1.append(` <header>`)
+codetext2.append(` <nav>`)
+codetext3.append(` <main>`)
+codetext4.append(` <footer>`)
+codetext5.append(` <form>`)
+codetext6.append(` <input>`)
+codetext7.append(` <select>`)
+a3text.append(codetext1)
+a3text.append(document.createTextNode(`,`))
+a3text.append(codetext2)
+a3text.append(document.createTextNode(`,`))
+a3text.append(codetext3)
+a3text.append(document.createTextNode(`,`))
+a3text.append(codetext4)
+a3text.append(document.createTextNode(`,`))
+a3text.append(codetext5)
+a3text.append(document.createTextNode(`,`))
+a3text.append(codetext6)
+a3text.append(document.createTextNode(`,`))
+a3text.append(codetext7)
+a3text.append(
+  document.createTextNode(`
+  , etc.
+  `)
+)
+a3.append(a3text)
 body.append(a3);
 
 const q4 = document.createElement('h1');
