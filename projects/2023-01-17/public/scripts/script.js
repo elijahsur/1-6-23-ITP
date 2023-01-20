@@ -58,15 +58,20 @@ q3.append(document.createTextNode('What are some of the main elements of HTML?')
 
 body.append(q3);
 
-
+const a3first = document.createElement('p')
+a3first.append(
+  document.createTextNode(`
+  Some of the main elements of HTML include:
+  `)
+)
 const a3 = document.createElement('ol');
 const li1 = document.createElement('li');
 const code1 = document.createElement('code');
+a3.append(a3first)
 code1.append(`<html>`)
 li1.append(code1)
 li1.append(
-  document.createTextNode(`
-  : This is the root element of an HTML document, and it contains all of the other elements.
+  document.createTextNode(`: This is the root element of an HTML document, and it contains all of the other elements.
   `)
 );
 const li2 = document.createElement('li');
@@ -74,8 +79,7 @@ const code2 = document.createElement('code');
 code2.append(`<head>`)
 li2.append(code2)
 li2.append(
-  document.createTextNode(`
-  : This element contains information about the document, such as the title of the page, which is displayed in the browser's title bar or tab.
+  document.createTextNode(`: This element contains information about the document, such as the title of the page, which is displayed in the browser's title bar or tab.
   `)
 );
 const li3 = document.createElement('li');
@@ -83,8 +87,7 @@ const code3 = document.createElement('code');
 code3.append(`<body>`)
 li3.append(code3)
 li3.append(
-  document.createTextNode(`
-  <body>: This element contains the content of the document that is displayed in the browser window.
+  document.createTextNode(`: This element contains the content of the document that is displayed in the browser window.
   `)
 );
 const li4 = document.createElement('li');
@@ -92,8 +95,7 @@ const code4 = document.createElement('code');
 code4.append(`<h1> to <h6>`)
 li4.append(code4)
 li4.append(
-  document.createTextNode(`
-  : These elements are used for headings and subheadings. <h1> is the highest level heading, while <h6> is the lowest.
+  document.createTextNode(`: These elements are used for headings and subheadings. <h1> is the highest level heading, while <h6> is the lowest.
   `)
 );
 const li5 = document.createElement('li');
@@ -101,8 +103,7 @@ const code5 = document.createElement('code');
 code5.append(`<p>`)
 li5.append(code5)
 li5.append(
-  document.createTextNode(`
-  : This element is used for paragraphs of text.
+  document.createTextNode(`: This element is used for paragraphs of text.
   `)
 );
 const li6 = document.createElement('li');
@@ -110,8 +111,7 @@ const code6 = document.createElement('code');
 code6.append(`<a>`)
 li6.append(code6)
 li6.append(
-  document.createTextNode(`
-  : This element is used for hyperlinks, which allow users to navigate between pages on the web.
+  document.createTextNode(`: This element is used for hyperlinks, which allow users to navigate between pages on the web.
   `)
 );
 const li7 = document.createElement('li');
@@ -119,8 +119,7 @@ const code7 = document.createElement('code');
 code7.append(`<img>`)
 li7.append(code7)
 li7.append(
-  document.createTextNode(`
-  : This element is used to embed images in a web page.
+  document.createTextNode(`: This element is used to embed images in a web page.
   `)
 );
 const li8 = document.createElement('li');
@@ -128,15 +127,15 @@ const code8 = document.createElement('code');
 code8.append(`<ul> and <ol>`)
 li8.append(code8)
 li8.append(
-  document.createTextNode(`
-  : These elements are used for unordered and ordered lists, respectively.
+  document.createTextNode(`: These elements are used for unordered and ordered lists, respectively.
   `)
 );
 const li9 = document.createElement('li');
 const code9 = document.createElement('code');
+code9.append('<li>')
+li9.append(code9)
 li9.append(
-  document.createTextNode(`
-  : This element is used for list items.
+  document.createTextNode(`: This element is used for list items.
   `)
 )
 const li10 = document.createElement('li');
@@ -144,8 +143,7 @@ const code10 = document.createElement('code');
 code10.append(`<div> and <span>`)
 li10.append(code10)
 li10.append(
-  document.createTextNode(`
-   These elements are used for grouping and applying styles to elements on a web page.
+  document.createTextNode(`: These elements are used for grouping and applying styles to elements on a web page.
   `)
 )
 a3.append(li1,li2,li3,li4,li5,li6,li7,li8,li9,li10);
@@ -197,10 +195,11 @@ q4.append(document.createTextNode('Can you find a picture of the inventor of the
 body.append(q4);
 
 const a4 = document.createElement('p');
-
+const a4img = document.createElement('img');
+a4img.setAttribute('src','/images/tim-berners-lee.jpg','alt','A young Tim Berner-Lee')
+a4.append(a4img)
 a4.append(
   document.createTextNode(`
-  (just imagine that a picture was here)
   
   I'm sorry, I am a text based model and I am not able to find or show images. However, I can
       tell you that the inventor of the World Wide Web (WWW) is Sir Tim Berners-Lee. He is a British
@@ -214,3 +213,31 @@ a4.append(
 );
 
 body.append(a4);
+
+const credits = document.createElement('p');
+const hyperlink = document.createElement('a');
+const superhyperlink = document.createElement('a');
+const cc = document.createElement('a');
+credits.append(
+  document.createTextNode(`
+Text from 2023-01-14 conversation with 
+`))
+hyperlink.setAttribute('href','https://chat.openai.com/chat')
+hyperlink.append(document.createTextNode(`ChatGPT`))
+credits.append(hyperlink)
+credits.append(
+  document.createTextNode(`
+  Photo of a young Tim Berners-Lee from 
+  `)
+)
+superhyperlink.setAttribute('href','https://www.flickr.com/photos/itupictures/16662336315')
+superhyperlink.append(document.createTextNode(`
+Flickr
+`))
+credits.append(superhyperlink)
+credits.append(document.createTextNode(` no thanks to ChatGPT. `))
+cc.setAttribute('href','https://creativecommons.org/licenses/by/2.0/')
+cc.append(document.createTextNode(`CC BY 2.0`))
+credits.append(cc)
+credits.append(document.createTextNode(`.`))
+body.append(credits)
