@@ -1,14 +1,35 @@
+const cel = (tag, text) => {
+  const e = document.createElement(tag);
+  e.append(document.createTextNode(text));
+  return e;
+};
+
+const list = (codetext, text) => {
+  const e = document.createElement('li');
+  const code = document.createElement('code');
+  code.append(codetext)
+  e.append(code)
+  e.append(
+    document.createTextNode(`: These elements are used for headings and subheadings. <h1> is the highest level heading, while <h6> is the lowest.
+    `)
+  );
+}
+
+
 // Get a reference to the object representing the BODY element so we can append stuff to it.
 const body = document.querySelector('body');
 
 // Create a new H1 element.
-const q1 = document.createElement('h1');
+
+
+
+//const q1 = document.createElement('h1');
 
 // Create a text node and add it to the H1
-q1.append(document.createTextNode('Can you tell me why HTML was developed?'));
+//q1.append(document.createTextNode('Can you tell me why HTML was developed?'));
 
 // Add the new H1 element to the body.
-body.append(q1);
+body.append(cel('h1','Can you tell me why HTML was developed?'));
 
 // Create a new P element.
 const a1 = document.createElement('p');
@@ -243,3 +264,4 @@ creditsall.setAttribute('class','credits')
 creditsall.append(chatgptcredits)
 creditsall.append(credits)
 body.append(creditsall)
+
