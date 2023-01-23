@@ -1,14 +1,35 @@
+const cel = (tag, text) => {
+  const e = document.createElement(tag);
+  e.append(document.createTextNode(text));
+  return e;
+};
+
+const list = (codetext, text) => {
+  const e = document.createElement('li');
+  const code = document.createElement('code');
+  code.append(codetext)
+  e.append(code)
+  e.append(
+    document.createTextNode(`: These elements are used for headings and subheadings. <h1> is the highest level heading, while <h6> is the lowest.
+    `)
+  );
+}
+
+
 // Get a reference to the object representing the BODY element so we can append stuff to it.
 const body = document.querySelector('body');
 
 // Create a new H1 element.
-const q1 = document.createElement('h1');
+
+
+
+//const q1 = document.createElement('h1');
 
 // Create a text node and add it to the H1
-q1.append(document.createTextNode('Can you tell me why HTML was developed?'));
+//q1.append(document.createTextNode('Can you tell me why HTML was developed?'));
 
 // Add the new H1 element to the body.
-body.append(q1);
+body.append(cel('h1','Can you tell me why HTML was developed?'));
 
 // Create a new P element.
 const a1 = document.createElement('p');
@@ -67,7 +88,7 @@ a3first.append(
 const a3 = document.createElement('ol');
 const li1 = document.createElement('li');
 const code1 = document.createElement('code');
-a3.append(a3first)
+body.append(a3first)
 code1.append(`<html>`)
 li1.append(code1)
 li1.append(
@@ -149,9 +170,7 @@ li10.append(
 a3.append(li1,li2,li3,li4,li5,li6,li7,li8,li9,li10);
 const a3text = document.createElement('p');
 a3text.append(
-  document.createTextNode(`
-  These are some of the main elements, but there are many more available, like 
-  `)
+  document.createTextNode(`These are some of the main elements, but there are many more available, like `)
 )
 const codetext1 = document.createElement('code');
 const codetext2 = document.createElement('code');
@@ -185,8 +204,8 @@ a3text.append(
   , etc.
   `)
 )
-a3.append(a3text)
 body.append(a3);
+body.append(a3text)
 
 const q4 = document.createElement('h1');
 
@@ -213,18 +232,19 @@ a4.append(
 );
 
 body.append(a4);
-
+const creditsall = document.createElement('div')
 const credits = document.createElement('p');
+const chatgptcredits = document.createElement('p');
 const hyperlink = document.createElement('a');
 const superhyperlink = document.createElement('a');
 const cc = document.createElement('a');
-credits.append(
+chatgptcredits.append(
   document.createTextNode(`
 Text from 2023-01-14 conversation with 
 `))
 hyperlink.setAttribute('href','https://chat.openai.com/chat')
 hyperlink.append(document.createTextNode(`ChatGPT`))
-credits.append(hyperlink)
+chatgptcredits.append(hyperlink)
 credits.append(
   document.createTextNode(`
   Photo of a young Tim Berners-Lee from 
@@ -237,7 +257,11 @@ Flickr
 credits.append(superhyperlink)
 credits.append(document.createTextNode(` no thanks to ChatGPT. `))
 cc.setAttribute('href','https://creativecommons.org/licenses/by/2.0/')
-cc.append(document.createTextNode(`CC BY 2.0`))
+cc.append(document.createTextNode(`(CC BY 2.0)`))
 credits.append(cc)
 credits.append(document.createTextNode(`.`))
-body.append(credits)
+creditsall.setAttribute('class','credits')
+creditsall.append(chatgptcredits)
+creditsall.append(credits)
+body.append(creditsall)
+
