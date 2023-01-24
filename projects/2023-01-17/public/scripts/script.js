@@ -10,57 +10,29 @@ const list = (codetext, text) => {
   code.append(codetext)
   e.append(code)
   e.append(
-    document.createTextNode(`: These elements are used for headings and subheadings. <h1> is the highest level heading, while <h6> is the lowest.
-    `)
+    document.createTextNode(text)
   );
+  return e
 }
 
 
 // Get a reference to the object representing the BODY element so we can append stuff to it.
 const body = document.querySelector('body');
 
-// Create a new H1 element.
-
-
-
-//const q1 = document.createElement('h1');
-
-// Create a text node and add it to the H1
-//q1.append(document.createTextNode('Can you tell me why HTML was developed?'));
-
-// Add the new H1 element to the body.
 body.append(cel('h1','Can you tell me why HTML was developed?'));
 
-// Create a new P element.
-const a1 = document.createElement('p');
-
-// Create a text node and add it to the P element. Note the use of `` rather
-// than '' which allows us to break the string across lines.
-a1.append(
-  document.createTextNode(`
- HTML (Hypertext Markup Language) was developed to create a standard way to
+body.append(cel('p',`
+HTML (Hypertext Markup Language) was developed to create a standard way to
  create and structure documents on the World Wide Web. It allows developers to
  create structured documents, including headings, paragraphs, images and links,
  that can be displayed in a web browser. It was created to simplify the process
  of creating and sharing documents online, so that anyone can create and view
  web pages with a consistent look and feel.
-`),
-);
+`))
+body.append(cel('h1','What about using HTML for GUIs?'))
 
-// Add the new P element to the body.
-body.append(a1);
-
-const q2 = document.createElement('h1');
-
-q2.append(document.createTextNode('What about using HTML for GUIs?'));
-
-body.append(q2);
-
-const a2 = document.createElement('p');
-
-a2.append(
-  document.createTextNode(`
-  HTML can be used to create user interfaces for web applications, but it is primarily designed
+body.append(cel('p',`
+HTML can be used to create user interfaces for web applications, but it is primarily designed
       as a markup language for creating structured documents to be displayed in web browsers. While
       it can be used to create basic user interfaces, it is not typically considered a good choice
       for creating complex, interactive user interfaces. Other technologies such as JavaScript and
@@ -68,106 +40,23 @@ a2.append(
       web applications. Additionally, there are other technologies such as Electron, React Native
       and NativeScript that allow to create cross-platform desktop and mobile apps using web
       technologies such as HTML, CSS, and JavaScript.
-  `)
-);
+`))
 
-body.append(a2);
+body.append(cel('h1','What are some of the main elements of HTML?'))
 
-const q3 = document.createElement('h1');
-
-q3.append(document.createTextNode('What are some of the main elements of HTML?'));
-
-body.append(q3);
-
-const a3first = document.createElement('p')
-a3first.append(
-  document.createTextNode(`
-  Some of the main elements of HTML include:
-  `)
-)
+body.append(cel('p','Some of the main elements of HTML include:'))
 const a3 = document.createElement('ol');
-const li1 = document.createElement('li');
-const code1 = document.createElement('code');
-body.append(a3first)
-code1.append(`<html>`)
-li1.append(code1)
-li1.append(
-  document.createTextNode(`: This is the root element of an HTML document, and it contains all of the other elements.
-  `)
-);
-const li2 = document.createElement('li');
-const code2 = document.createElement('code');
-code2.append(`<head>`)
-li2.append(code2)
-li2.append(
-  document.createTextNode(`: This element contains information about the document, such as the title of the page, which is displayed in the browser's title bar or tab.
-  `)
-);
-const li3 = document.createElement('li');
-const code3 = document.createElement('code');
-code3.append(`<body>`)
-li3.append(code3)
-li3.append(
-  document.createTextNode(`: This element contains the content of the document that is displayed in the browser window.
-  `)
-);
-const li4 = document.createElement('li');
-const code4 = document.createElement('code');
-code4.append(`<h1> to <h6>`)
-li4.append(code4)
-li4.append(
-  document.createTextNode(`: These elements are used for headings and subheadings. <h1> is the highest level heading, while <h6> is the lowest.
-  `)
-);
-const li5 = document.createElement('li');
-const code5 = document.createElement('code');
-code5.append(`<p>`)
-li5.append(code5)
-li5.append(
-  document.createTextNode(`: This element is used for paragraphs of text.
-  `)
-);
-const li6 = document.createElement('li');
-const code6 = document.createElement('code');
-code6.append(`<a>`)
-li6.append(code6)
-li6.append(
-  document.createTextNode(`: This element is used for hyperlinks, which allow users to navigate between pages on the web.
-  `)
-);
-const li7 = document.createElement('li');
-const code7 = document.createElement('code');
-code7.append(`<img>`)
-li7.append(code7)
-li7.append(
-  document.createTextNode(`: This element is used to embed images in a web page.
-  `)
-);
-const li8 = document.createElement('li');
-const code8 = document.createElement('code');
-code8.append(`<ul> and <ol>`)
-li8.append(code8)
-li8.append(
-  document.createTextNode(`: These elements are used for unordered and ordered lists, respectively.
-  `)
-);
-const li9 = document.createElement('li');
-const code9 = document.createElement('code');
-code9.append('<li>')
-li9.append(code9)
-li9.append(
-  document.createTextNode(`: This element is used for list items.
-  `)
-)
-const li10 = document.createElement('li');
-const code10 = document.createElement('code');
-code10.append(`<div> and <span>`)
-li10.append(code10)
-li10.append(
-  document.createTextNode(`: These elements are used for grouping and applying styles to elements on a web page.
-  `)
-)
-a3.append(li1,li2,li3,li4,li5,li6,li7,li8,li9,li10);
+a3.append(list('<html>',`: This is the root element of an HTML document, and it contains all of the other elements.`))
+a3.append(list('<head>',`: This element contains information about the document, such as the title of the page, which is displayed in the browser's title bar or tab.`))
+a3.append(list(`<body>`,`: This element contains the content of the document that is displayed in the browser window.`))
+a3.append(list(`<h1> to <h6>`,`: These elements are used for headings and subheadings. <h1> is the highest level heading, while <h6> is the lowest.`))
+a3.append(list(`<p>`,`This element is used for paragraphs of text.`))
+a3.append(list(`<a>`,`This element is used for hyperlinks, which allow users to navigate between pages on the web.`))
+a3.append(list(`<img>`,`: This element is used to embed images in a web page.`))
+a3.append(list(`<ul> and <ol>`,`: These elements are used for unordered and ordered lists, respectively.`))
+a3.append(list(`<li>`,`: This element is used for list items.`))
+a3.append(list(`<div> and <span>`,`: These elements are used for grouping and applying styles to elements on a web page.`))
+
 const a3text = document.createElement('p');
 a3text.append(
   document.createTextNode(`These are some of the main elements, but there are many more available, like `)
