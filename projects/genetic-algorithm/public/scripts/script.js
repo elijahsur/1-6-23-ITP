@@ -61,3 +61,4 @@ document.querySelectorAll('p').forEach((p) => {
   // And finally append the bold element to the paragraph.
   p.append(b);
 });
+
