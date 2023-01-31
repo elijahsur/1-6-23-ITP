@@ -1,26 +1,30 @@
 let alphabet = 'abcdefghijklmnopqrstuvwxyz '
+
+const randomPhrase = (length) => {
+        // generates random list of characters the same length as the text
+        let generation = ''
+        for (let i = 0; i < length; i++) {
+            generation = generation + alphabet[Math.floor(Math.random() * 27)]
+        }
+        return generation
+}
 let algorithm = (text) => {
     // generates random list of characters the same length as the text
-    let generation = ''
-    for (let i = 0; i < text.length; i++) {
-        generation = generation + alphabet[Math.floor(Math.random() * 27)]
-    }
-    let genarray = []
-    let genversion = 0
-    genarray.push(generation)
+    let answerarray = []
+    answerarray.push(randomPhrase(text.length))
     let limit = 1000;
-    while (genarray[genversion] != text && limit-- > 0) {
-        let gen = ''
-        for (let j = 0; j < genarray[genversion].length; j++) {
-            if (genarray[genversion][j] === text[j]) {
-                gen = gen + genarray[genversion][j]
+    let previous = answerarray[answerarray.length - 1]
+    while (answerarray[answerarray.length - 1] != text && limit-- > 0) {
+        let generation = ''
+        for (let j = 0; j < previous.length; j++) {
+            if (answerarray[answerarray.length - 1][j] === text[j]) {
+                generation += answerarray[answerarray.length - 1][j]
             } else {
-                gen = gen + alphabet[Math.floor(Math.random() * 27)]
+                generation += alphabet[Math.floor(Math.random() * 27)]
             }
         }
-        genarray.push(gen)
-        genversion++
+        answerarray.push(generation)
     }
-    return genarray
+    return answerarray
 }
-console.log(algorithm('pizza'))
+console.log(algorithm('foobar'))
