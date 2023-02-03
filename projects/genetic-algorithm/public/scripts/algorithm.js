@@ -1,24 +1,24 @@
-let alphabet = 'abcdefghijklmnopqrstuvwxyz '
+let key = 'abcdefghijklmnopqrstuvwxyz '
 
+// used to test separate functions of the algorithm
 const test = (batch, string) => {
     return top25(firstbatch(batch, string))
 }
 
 // constructs a random phrase, with "length" as the length of the string
 const randomPhrase = (length) => {
-    // generates random list of characters the same length as the text
     let generation = ''
     for (let i = 0; i < length; i++) {
-        generation = generation + alphabet[Math.floor(Math.random() * alphabet.length)]
+        generation = generation + key[Math.floor(Math.random() * key.length)]
     }
     return generation
 }
 // creates the first batch of random strings
-const firstbatch = (batchamount, text) => {
+const firstbatch = (text, batchlength) => {
     let batcharray = []
-    for (let i = 0; i < batchamount; i++) {
+    for (let i = 0; i < batchlength; i++) {
         let phrase = randomPhrase(text.length)
-        batcharray.push([phrase, fitness(phrase, text)])
+        batcharray.push({ phrase: phrase, fitness: fitness(phrase, text) });
     }
     return batcharray
 }
@@ -32,29 +32,32 @@ const fitness = (dna, text) => {
     }
     return fitness / text.length
 }
-// i think this code will work, im just not sure how to make it sort it from highest to lowest, not lowest to highest
-// currently, it deletes the highest numbers, but keeps the lowest
+// ranks the fitness of all strings, then returns the top 25% of the highest fitness
 const top25 = (batch) => {
-let fitnessOnly = []
-for (let i = 0; i < batch.length; i++) {
-    fitnessOnly.push(batch[i][1])
-}
-console.log(fitnessOnly.length)
-for (let j = 0; j < Math.floor(fitnessOnly.length / .25) ; j++) {
-    fitnessOnly.sort()
-    fitnessOnly.pop(j)
-}
-console.log(fitnessOnly)
+    batch.sort((a, b) => a.fitness - b.fitness)
+    return batch.slice(Math.floor(batch.length * (3 / 4)), batch.length)
 }
 
-let algorithm = (text, batch) => {
-    let batcharray = []
-    let finalarray = []
+let algorithm = (string, batchlength) => {
     let done = false
-    //provides the first batch
-    firstbatch(batch, text)
+    let batchHistory = []
+    let currentBatch = top25(firstbatch(string, batchlength))
     while (done === false) {
- 
+        batchHistory.push(currentBatch[currentBatch.length - 1])
+        for (let i = 0; i < batchlength; i++) {
+            let phrase = currentBatch[i].phrase.slice(0, Math.floor(Math.random() * string.length)) + currentBatch[i + 1].phrase.slice(0, Math.floor(Math.random() * string.length))
+            if (Math.floor(Math.random() * (4 - 1) + 1) === 1) {
+                
+            }
+            currentBatch.push({ phrase: phrase, fitness: fitness(phrase, string) })
+        }
+        currentBatch = top25(currentBatch)
+        if (currentBatch[currentBatch.length - 1].fitness === 1) {
+            return batchHistory
+        } else {
+            batchHistory.push(currentBatch[currentBatch.length - 1])
+            console.log(batchHistory)
+        }
     }
 }
-console.log(test(20, 'pizza'))
+console.log(algorithm('pizza', 100000))
