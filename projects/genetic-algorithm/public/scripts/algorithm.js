@@ -46,18 +46,20 @@ let algorithm = (string, batchlength) => {
         batchHistory.push(currentBatch[currentBatch.length - 1])
         for (let i = 0; i < batchlength; i++) {
             let phrase = currentBatch[i].phrase.slice(0, Math.floor(Math.random() * string.length)) + currentBatch[i + 1].phrase.slice(0, Math.floor(Math.random() * string.length))
+            phrase = phrase.slice(0, string.length)
             if (Math.floor(Math.random() * (4 - 1) + 1) === 1) {
-                
+                phrase.replace(phrase[Math.floor(Math.random() * phrase.length)], key[Math.floor(Math.random() * key.length)])
             }
             currentBatch.push({ phrase: phrase, fitness: fitness(phrase, string) })
         }
         currentBatch = top25(currentBatch)
         if (currentBatch[currentBatch.length - 1].fitness === 1) {
+            batchHistory.push(currentBatch[currentBatch.length - 1])
+            console.log(string + ' found in ' + batchHistory.length + ' attempts')
             return batchHistory
         } else {
-            batchHistory.push(currentBatch[currentBatch.length - 1])
             console.log(batchHistory)
         }
     }
 }
-console.log(algorithm('pizza', 100000))
+console.log(algorithm('pizza', 1000000))
