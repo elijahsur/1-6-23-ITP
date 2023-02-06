@@ -1,9 +1,4 @@
-let key = 'abcdefghijklmnopqrstuvwxyz '
-
-// used to test separate functions of the algorithm
-const test = (batch, string) => {
-    return top25(firstbatch(batch, string))
-}
+let key = 'abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ.,!?"1234567890#'
 
 // constructs a random phrase, with "length" as the length of the string
 const randomPhrase = (length) => {
@@ -37,6 +32,19 @@ const top25 = (batch) => {
     batch.sort((a, b) => a.fitness - b.fitness)
     return batch.slice(Math.floor(batch.length * (3 / 4)), batch.length)
 }
+// combines two strings next to each other to create a child, randomly mutates
+const evolve = (currentBatch, i, string) => {
+    let randomPlace = random(string.length)
+    let phrase = currentBatch[i].phrase.slice(0, randomPlace) + currentBatch[i + 1].phrase.substring(randomPlace, currentBatch[i + 1].phrase.length)
+    if (Math.random() < 1 / 3) {
+        phrase.replace(phrase[random(phrase.length)], key[random(key.length)])
+    }
+    return phrase
+}
+// simple random function for the algorithm function
+const random = (upto) => {
+    return Math.floor(Math.random() * upto)
+}
 
 let algorithm = (string, batchlength) => {
     let done = false
@@ -45,21 +53,18 @@ let algorithm = (string, batchlength) => {
     while (done === false) {
         batchHistory.push(currentBatch[currentBatch.length - 1])
         for (let i = 0; i < batchlength; i++) {
-            let phrase = currentBatch[i].phrase.slice(0, Math.floor(Math.random() * string.length)) + currentBatch[i + 1].phrase.slice(0, Math.floor(Math.random() * string.length))
-            phrase = phrase.slice(0, string.length)
-            if (Math.floor(Math.random() * (4 - 1) + 1) === 1) {
-                phrase.replace(phrase[Math.floor(Math.random() * phrase.length)], key[Math.floor(Math.random() * key.length)])
-            }
+            let phrase = evolve(currentBatch, i, string)
             currentBatch.push({ phrase: phrase, fitness: fitness(phrase, string) })
         }
-        currentBatch = top25(currentBatch)
-        if (currentBatch[currentBatch.length - 1].fitness === 1) {
-            batchHistory.push(currentBatch[currentBatch.length - 1])
-            console.log(string + ' found in ' + batchHistory.length + ' attempts')
-            return batchHistory
-        } else {
-            console.log(batchHistory)
-        }
+    currentBatch = top25(currentBatch)
+    if (currentBatch[currentBatch.length - 1].fitness === 1) {
+        batchHistory.push(currentBatch[currentBatch.length - 1])
+        console.log(string + ' found in ' + batchHistory.length + ' attempts')
+        return batchHistory
+    } else {
+        console.log(batchHistory)
     }
 }
-console.log(algorithm('pizza', 1000000))
+}
+// recommended to not do any numbers larger than 1000000
+console.log(algorithm('To be or not to be, that is the question.', 1000000))
