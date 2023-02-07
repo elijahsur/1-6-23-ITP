@@ -1,6 +1,10 @@
 body {
-  width: 40em;
+  width: min(40em, 80vw);
   margin: 1in auto;
+  padding: 50px;
+  background: #eef;
+  box-shadow: 5px 5px #aaa;
+  border-radius: 5px;
 }
 
 h1 {
