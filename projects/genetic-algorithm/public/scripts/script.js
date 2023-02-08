@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Genetic Algorithm Code
 let key = prompt('enter the possible characters the algorithm can use','abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ.,!?"1234567890#')
+let userbatch = prompt('enter amount per batch', 1000000)
 
 // constructs a random phrase, with "length" as the length of the string
 const randomPhrase = (length) => {
@@ -37,9 +38,9 @@ const top25 = (batch) => {
 // combines two strings next to each other to create a child, randomly mutates
 const evolve = (currentBatch, i, string) => {
   let randomPlace = random(string.length)
-  let phrase = currentBatch[i].phrase.slice(0, randomPlace) + currentBatch[i + 1].phrase.substring(randomPlace, currentBatch[i + 1].phrase.length)
+  let phrase = currentBatch[i].phrase.substring(0, randomPlace) + currentBatch[i + 1].phrase.substring(randomPlace)
   if (Math.random() < 1 / 3) {
-    phrase.replace(phrase[random(phrase.length)], key[random(key.length)])
+    phrase = phrase.replace(phrase[random(phrase.length)], key[random(key.length)])
   }
   return phrase
 }
@@ -48,11 +49,11 @@ const random = (upto) => {
   return Math.floor(Math.random() * upto)
 }
 
-let algorithm = (string, batchlength) => {
+const algorithm = (string, batchlength) => {
   let done = false
   let batchHistory = []
   let currentBatch = top25(firstbatch(string, batchlength))
-  while (done === false) {
+  while (!done) {
     batchHistory.push(currentBatch[currentBatch.length - 1])
     for (let i = 0; i < batchlength; i++) {
       let phrase = evolve(currentBatch, i, string)
@@ -68,42 +69,19 @@ let algorithm = (string, batchlength) => {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// This function is an event handler. (Similar to the functions we used with
-// registerOnclick in some of our old environments.)
-
-const recordClick = (e) => {
-  // Create a paragraph element.
-  let userstring = prompt('enter string to generate to')
-  let userbatch = prompt('enter amount per batch', 1000000)
-  const p = document.createElement('ol');
-  let answer = algorithm(userstring, userbatch)
-  for (let i = 0; i < answer.length; i++) {
-    let list = document.createElement('li')
-    list.append(document.createTextNode(answer[i].phrase))
-    p.append(list)
-  }
-  // Add the paragraph to the body of the document
-  document.getElementById('clicks').append(p);
-};
-
-////////////////////////////////////////////////////////////////////////////////
 // Add something to every existing paragraph.
 
-document.querySelectorAll('p').forEach((p) => {
-  // Create a bold element.
-  const b = document.createElement('b');
-
-  // Create some text and add it to the bold element.
-  b.append(document.createTextNode('click me to generate!'));
-
-  // Register the recordClick function to handle when the bold element is
-  // clicked.
-  b.onclick = recordClick;
-
-  // Append some text to the current paragraph.
-  p.append(document.createTextNode(' '));
-
-  // And finally append the bold element to the paragraph.
-  p.append(b);
-});
-
+const addOnChange = (element) => {
+  element.onchange = (e) => {
+    const p = document.createElement('ol');
+    let answer = algorithm(e.target.value, userbatch)
+    console.log(e.target.value)
+    for (let i = 0; i < answer.length; i++) {
+      let list = document.createElement('li')
+      list.append(document.createTextNode(answer[i].phrase))
+      p.append(list)
+    }
+    document.getElementById('clicks').append(p);
+  }
+};
+document.querySelectorAll('input').forEach(addOnChange);
