@@ -1,5 +1,7 @@
 let key = 'abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ.,!?"1234567890#'
 
+const setKey = (k) => key = k;
+
 // constructs a random phrase, with "length" as the length of the string
 const randomPhrase = (length) => {
     let generation = ''
@@ -67,4 +69,6 @@ let algorithm = (string, batchlength) => {
 }
 }
 // recommended to not do any numbers larger than 1000000
-console.log(algorithm('To be or not to be, that is the question. other quotes!', 1000000))
+//console.log(algorithm('To be or not to be, that is the question. other quotes!', 1000000))
+
+export { key, setKey, algorithm };
