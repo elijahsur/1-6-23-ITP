@@ -16,6 +16,7 @@ p {
 
 #clicks {
   border: 1px solid black;
+  background: #d8d9da;
   padding: 1em;
 }
 fieldset {

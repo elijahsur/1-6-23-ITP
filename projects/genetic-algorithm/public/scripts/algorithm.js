@@ -1,5 +1,7 @@
 let key = 'abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ.,!?"1234567890#'
 
+const setKey = (k) => key = k;
+
 // constructs a random phrase, with "length" as the length of the string
 const randomPhrase = (length) => {
     let generation = ''
@@ -47,24 +49,26 @@ const random = (upto) => {
 }
 
 let algorithm = (string, batchlength) => {
+    let limit = 0
     let done = false
     let batchHistory = []
     let currentBatch = top25(firstbatch(string, batchlength))
-    while (done === false) {
+    while (done === false && limit < 50) {
         batchHistory.push(currentBatch[currentBatch.length - 1])
         for (let i = 0; i < batchlength; i++) {
             let phrase = evolve(currentBatch, i, string)
             currentBatch.push({ phrase: phrase, fitness: fitness(phrase, string) })
         }
-    currentBatch = top25(currentBatch)
-    if (currentBatch[currentBatch.length - 1].fitness === 1) {
-        batchHistory.push(currentBatch[currentBatch.length - 1])
-        console.log(string + ' found in ' + batchHistory.length + ' attempts')
-        return batchHistory
-    } else {
-        console.log(batchHistory)
+        currentBatch = top25(currentBatch)
+        if (currentBatch[currentBatch.length - 1].fitness === 1) {
+            batchHistory.push(currentBatch[currentBatch.length - 1])
+            console.log(string + ' found in ' + batchHistory.length + ' attempts')
+            return batchHistory
+        } else {
+            console.log(batchHistory)
+            limit++
+        }
     }
 }
-}
-// recommended to not do any numbers larger than 1000000
-console.log(algorithm('To be or not to be, that is the question. other quotes!', 1000000))
+
+export { setKey, algorithm };
