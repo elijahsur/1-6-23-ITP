@@ -67,4 +67,4 @@ let algorithm = (string, batchlength) => {
 }
 }
 // recommended to not do any numbers larger than 1000000
-console.log(algorithm('To be or not to be, that is the question.', 1000000))
+console.log(algorithm('To be or not to be, that is the question. other quotes!', 1000000))
