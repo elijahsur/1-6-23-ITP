@@ -10,6 +10,7 @@ const randomPhrase = (length) => {
     }
     return generation
 }
+
 // creates the first batch of random strings
 const firstbatch = (text, batchlength) => {
     let batcharray = []
@@ -19,6 +20,7 @@ const firstbatch = (text, batchlength) => {
     }
     return batcharray
 }
+
 // judges the fitness of a group of strings
 const fitness = (dna, text) => {
     let fitness = 0
@@ -29,11 +31,13 @@ const fitness = (dna, text) => {
     }
     return fitness / text.length
 }
+
 // ranks the fitness of all strings, then returns the top 25% of the highest fitness
 const top25 = (batch) => {
     batch.sort((a, b) => a.fitness - b.fitness)
     return batch.slice(Math.floor(batch.length * (3 / 4)), batch.length)
 }
+
 // combines two strings next to each other to create a child, randomly mutates
 const evolve = (currentBatch, i, string) => {
     let randomPlace = random(string.length)
@@ -43,6 +47,7 @@ const evolve = (currentBatch, i, string) => {
     }
     return phrase
 }
+
 // simple random function for the algorithm function
 const random = (upto) => {
     return Math.floor(Math.random() * upto)
