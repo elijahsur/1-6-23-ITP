@@ -11,7 +11,7 @@ const addOnChange = (element) => {
       console.log('value is empty! at ' + e.target)
     } else {
       if (e.target.getAttribute('id') === 'generation') {
-        const p = document.createElement('ol');
+        const p = document.getElementById('list')
         let answer = algorithm(e.target.value, userbatch)
         console.log(e.target.value)
         for (let i = 0; i < answer.length; i++) {
@@ -31,7 +31,7 @@ const addOnChange = (element) => {
   };
 }
 const clearGenerations = (e) => {
-  document.getElementById('generation').textContent = ''
+  document.getElementById('list').textContent = ''
   console.log('generation cleared')
 }
 
