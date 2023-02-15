@@ -123,15 +123,15 @@ registerOnclick((x, y) => {
       const [r1, c1] = winner[0];
       const [r2, c2] = winner[winner.length - 1];
 
-      const x1 = boardLeft + c1 * cellSize + cellSize / 2;
-      const y1 = boardTop + r1 * cellSize + cellSize / 2;
-      const x2 = boardLeft + c2 * cellSize + cellSize / 2;
-      const y2 = boardTop + r2 * cellSize + cellSize / 2;
-
-      let adjX1 = x1;
-      let adjX2 = x2;
-      let adjY1 = y1;
-      let adjY2 = y2;
+      const location = (boardLocation, cr12) => {
+        let xOrY = boardLocation + cr12 * cellSize + cellSize / 2
+        return xOrY
+      }
+      
+      let adjX1 = location(boardLeft,c1);
+      let adjX2 = location(boardLeft, c2);
+      let adjY1 = location(boardTop, r1);
+      let adjY2 = location(boardTop, r2);
 
       if (y1 === y2 || x1 !== x2) {
         adjX1 -= lineEndAdjustment;
