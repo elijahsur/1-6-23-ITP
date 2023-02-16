@@ -39,8 +39,6 @@ const board = [
   ['', '', ''],
 ];
 
-let winner = null
-
 const checkWinner = (r,c,lines,board) => {
    for (let i = 0; i < lines.length; i++) {
       r = lines[i][0][0];
@@ -54,6 +52,7 @@ const checkWinner = (r,c,lines,board) => {
       const m2 = board[r][c];
       if (m0 !== '' && m0 === m1 && m0 === m2) {
         winner = lines[i];
+        return winner
       }
     }
 }
@@ -101,7 +100,7 @@ registerOnclick((x, y) => {
   let c;
 
   // Check if there's a winner already.
-  checkWinner(r,c,lines,board)
+  winner = checkWinner(r,c,lines,board)
 
   r = Math.floor((y - boardTop) / cellSize);
   c = Math.floor((x - boardLeft) / cellSize);
@@ -120,7 +119,7 @@ registerOnclick((x, y) => {
 
     // Check if there's a winner now
     winner = null;
-    checkWinner(r,c,lines,board)
+    winner = checkWinner(r,c,lines,board)
     if (winner !== null) {
       // Draw the line through three in a row
       const [r1, c1] = winner[0];
