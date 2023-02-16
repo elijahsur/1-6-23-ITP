@@ -48,8 +48,7 @@ const fillBoard = (fill) => {
   }
 return emptyboard
 }
-
-const lines = [
+const doesntwork = [
   // Rows
   fillBoard('000102'),
   fillBoard('101112'),
@@ -59,10 +58,26 @@ const lines = [
   fillBoard('001020'),
   fillBoard('011121'),
   fillBoard('021222'),
-
+  
   // Diagonals
   fillBoard('001122'),
   fillBoard('201102'),
+];
+
+const lines = [
+  // Rows
+  [[0, 0], [0, 1], [0, 2]],
+  [[1, 0], [1, 1], [1, 2]],
+  [[2, 0], [2, 1], [2, 2]],
+
+  // Cols
+  [[0, 0], [1, 0], [2, 0]],
+  [[0, 1], [1, 1], [2, 1]],
+  [[0, 2], [1, 2], [2, 2]],
+
+  // Diagonals
+  [[0, 0], [1, 1], [2, 2]],
+  [[2, 0], [1, 1], [0, 2]],
 ];
 
 // Draw the board
