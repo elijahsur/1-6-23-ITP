@@ -39,6 +39,8 @@ const board = [
   ['', '', ''],
 ];
 
+let winner = null
+
 const checkWinner = (r,c,lines,board) => {
    for (let i = 0; i < lines.length; i++) {
       r = lines[i][0][0];
