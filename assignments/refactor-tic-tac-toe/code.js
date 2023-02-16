@@ -48,21 +48,6 @@ const fillBoard = (fill) => {
   }
 return emptyboard
 }
-const doesntwork = [
-  // Rows
-  fillBoard('000102'),
-  fillBoard('101112'),
-  fillBoard('202122'),
-
-  // Cols
-  fillBoard('001020'),
-  fillBoard('011121'),
-  fillBoard('021222'),
-  
-  // Diagonals
-  fillBoard('001122'),
-  fillBoard('201102'),
-];
 
 const lines = [
   // Rows
