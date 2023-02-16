@@ -106,7 +106,7 @@ registerOnclick((x, y) => {
   c = Math.floor((x - boardLeft) / cellSize);
 
   // Only do anything if it's a legal move and the game isn't over.
-  if (checkWinner(r,c,lines,board) === null && 0 <= r && r < 3 && 0 <= c && c < 3 && board[r][c] === '') {
+  if (winner === null && 0 <= r && r < 3 && 0 <= c && c < 3 && board[r][c] === '') {
 
     // Draw the mark and record the move
     const marker = move % 2 === 0 ? 'X' : 'O';
@@ -120,7 +120,7 @@ registerOnclick((x, y) => {
     // Check if there's a winner now
     winner = null;
     checkWinner(r,c,lines,board)
-    if (checkWinner(r,c,lines,board) !== null) {
+    if (winner !== null) {
       // Draw the line through three in a row
       const [r1, c1] = winner[0];
       const [r2, c2] = winner[winner.length - 1];
