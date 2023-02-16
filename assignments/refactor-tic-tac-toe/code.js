@@ -48,31 +48,21 @@ const fillBoard = (fill) => {
   }
 return emptyboard
 }
-const test = [
-  // Rows
-  fillBoard('000102101112202122'),
-
-  // Cols
-  fillBoard('001020011121021222'),
-
-  // Diagonals
-  fillBoard('001122201102 ')
-];
 
 const lines = [
   // Rows
-  [[0, 0], [0, 1], [0, 2]],
-  [[1, 0], [1, 1], [1, 2]],
-  [[2, 0], [2, 1], [2, 2]],
+  fillBoard('000102'),
+  fillBoard('101112'),
+  fillBoard('202122'),
 
   // Cols
-  [[0, 0], [1, 0], [2, 0]],
-  [[0, 1], [1, 1], [2, 1]],
-  [[0, 2], [1, 2], [2, 2]],
+  fillBoard('001020'),
+  fillBoard('011121'),
+  fillBoard('021222'),
 
   // Diagonals
-  [[0, 0], [1, 1], [2, 2]],
-  [[2, 0], [1, 1], [0, 2]],
+  fillBoard('001122'),
+  fillBoard('201102'),
 ];
 
 // Draw the board
