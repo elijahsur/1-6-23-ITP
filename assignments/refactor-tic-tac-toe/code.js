@@ -38,7 +38,6 @@ const board = [
   ['', '', ''],
   ['', '', ''],
 ];
-
 const fillBoard = (fill) => {
   let emptyboard = board
   let j = 0
@@ -48,7 +47,6 @@ const fillBoard = (fill) => {
   }
 return emptyboard
 }
-
 const lines = [
   // Rows
   [[0, 0], [0, 1], [0, 2]],
