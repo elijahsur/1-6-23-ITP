@@ -51,8 +51,7 @@ const checkWinner = (r,c,lines,board) => {
       c = lines[i][2][1];
       const m2 = board[r][c];
       if (m0 !== '' && m0 === m1 && m0 === m2) {
-        let winner = lines[i];
-        return winner
+        winner = lines[i];
       }
     }
 }
@@ -95,6 +94,7 @@ drawLine(boardLeft, y2, boardLeft + boardSize, y2, 'grey', 2);
 
 registerOnclick((x, y) => {
 
+  let winner = null;
   let r;
   let c;
 
@@ -105,7 +105,7 @@ registerOnclick((x, y) => {
   c = Math.floor((x - boardLeft) / cellSize);
 
   // Only do anything if it's a legal move and the game isn't over.
-  if (checkWinner(r,c,lines,board) === null && 0 <= r && r < 3 && 0 <= c && c < 3 && board[r][c] === '') {
+  if (winner === null && 0 <= r && r < 3 && 0 <= c && c < 3 && board[r][c] === '') {
 
     // Draw the mark and record the move
     const marker = move % 2 === 0 ? 'X' : 'O';
@@ -117,12 +117,12 @@ registerOnclick((x, y) => {
     move++;
 
     // Check if there's a winner now
-    checkWinner(r,c,lines,board) = null;
+    winner = null;
     checkWinner(r,c,lines,board)
-    if (checkWinner(r,c,lines,board) !== null) {
+    if (winner !== null) {
       // Draw the line through three in a row
-      const [r1, c1] = checkWinner(r,c,lines,board)[0];
-      const [r2, c2] = checkWinner(r,c,lines,board)[checkWinner(r,c,lines,board).length - 1];
+      const [r1, c1] = winner[0];
+      const [r2, c2] = winner[winner.length - 1];
 
       const location = (boardLocation, cr12) => {
         let xOrY = boardLocation + cr12 * cellSize + cellSize / 2
