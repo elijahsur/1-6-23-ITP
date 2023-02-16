@@ -42,7 +42,7 @@ const board = [
 const fillBoard = (fill) => {
   let emptyboard = board
   let j = 0
-  for (let i = 0; i < fill.length; i = i + 2) {
+  for (let i = 0; i < fill.length - 10; i = i + 2) {
     emptyboard[j] = [fill[i],fill[i+1]]
     j++
   }
@@ -51,13 +51,18 @@ return emptyboard
 
 const lines = [
   // Rows
-  fillBoard('000102101112202122'),
+  [[0, 0], [0, 1], [0, 2]],
+  [[1, 0], [1, 1], [1, 2]],
+  [[2, 0], [2, 1], [2, 2]],
 
   // Cols
-  fillBoard('001020011121021222'),
+  [[0, 0], [1, 0], [2, 0]],
+  [[0, 1], [1, 1], [2, 1]],
+  [[0, 2], [1, 2], [2, 2]],
 
   // Diagonals
-  fillBoard('001122201102 ')
+  [[0, 0], [1, 1], [2, 2]],
+  [[2, 0], [1, 1], [0, 2]],
 ];
 
 // Draw the board
