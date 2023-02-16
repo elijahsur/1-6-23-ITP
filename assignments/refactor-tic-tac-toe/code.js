@@ -41,7 +41,7 @@ const board = [
 
 const fillBoard = (fill) => {
   let emptyboard = board
-  for (let i = 0; i < fill.length - 10; i = i + 2) {
+  for (let i = 0; i < fill.length; i = i + 2) {
     emptyboard[i] = [fill[i],fill[i+1]]
   }
 return emptyboard
