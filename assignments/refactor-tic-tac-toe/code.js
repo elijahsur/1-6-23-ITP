@@ -95,7 +95,6 @@ drawLine(boardLeft, y2, boardLeft + boardSize, y2, 'grey', 2);
 
 registerOnclick((x, y) => {
 
-  let checkWinner(r,c,lines,board) = null;
   let r;
   let c;
 
