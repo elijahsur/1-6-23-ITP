@@ -31,11 +31,11 @@ const cellSize = boardSize / 3;
 const fontSize = boardSize / 3;
 const lineEndAdjustment = cellSize * 0.7;
 
-const drawBoard = (x1, x2, y1, y2, boardTop, boardLeft) => {
-  drawLine(x1, boardTop, x1, boardTop + boardSize, 'grey', 2);
-  drawLine(x2, boardTop, x2, boardTop + boardSize, 'grey', 2);
-  drawLine(boardLeft, y1, boardLeft + boardSize, y1, 'grey', 2);
-  drawLine(boardLeft, y2, boardLeft + boardSize, y2, 'grey', 2);
+const drawBoard = (x1,x2,y1,y2,boardTop,boardLeft) => {
+drawLine(x1, boardTop, x1, boardTop + boardSize, 'grey', 2);
+drawLine(x2, boardTop, x2, boardTop + boardSize, 'grey', 2);
+drawLine(boardLeft, y1, boardLeft + boardSize, y1, 'grey', 2);
+drawLine(boardLeft, y2, boardLeft + boardSize, y2, 'grey', 2);
 }
 
 const between = (x) => {
@@ -50,39 +50,31 @@ const board = [
   ['', '', ''],
 ];
 
-const checkWinner = (r, c, lines, board) => {
-  for (let i = 0; i < lines.length; i++) {
-    r = lines[i][0][0];
-    c = lines[i][0][1];
-    const m0 = board[r][c];
-    r = lines[i][1][0];
-    c = lines[i][1][1];
-    const m1 = board[r][c];
-    r = lines[i][2][0];
-    c = lines[i][2][1];
-    const m2 = board[r][c];
-    if (m0 !== '' && m0 === m1 && m0 === m2) {
-      return lines[i]
+const checkWinner = (r,c,lines,board) => {
+   for (let i = 0; i < lines.length; i++) {
+      r = lines[i][0][0];
+      c = lines[i][0][1];
+      const m0 = board[r][c];
+      r = lines[i][1][0];
+      c = lines[i][1][1];
+      const m1 = board[r][c];
+      r = lines[i][2][0];
+      c = lines[i][2][1];
+      const m2 = board[r][c];
+      if (m0 !== '' && m0 === m1 && m0 === m2) {
+        return lines[i]
+      }
     }
-  }
-}
-
-const drawMark = (move, r, c, cellSize, boardLeft, boardTop, board) => {
-  const marker = move % 2 === 0 ? 'X' : 'O';
-  const x = boardLeft + c * cellSize + cellSize / 2;
-  const y = boardTop + r * cellSize + cellSize / 2;
-  const nudge = marker === 'O' ? cellSize / 9 : cellSize / 19;
-  drawText(marker, x - (fontSize * 0.3 + nudge), y + fontSize * 0.3, 'black', fontSize);
 }
 
 const fillBoard = (fill) => {
   let emptyboard = board
   let j = 0
   for (let i = 0; i < fill.length; i = i + 2) {
-    emptyboard[j] = [fill[i], fill[i + 1]]
+    emptyboard[j] = [fill[i],fill[i+1]]
     j++
   }
-  return emptyboard
+return emptyboard
 }
 
 const lines = [
@@ -106,7 +98,7 @@ const x1 = boardLeft + cellSize;
 const x2 = boardLeft + 2 * cellSize;
 const y1 = boardTop + cellSize;
 const y2 = boardTop + 2 * cellSize;;
-drawBoard(x1, x2, y1, y2, boardTop, boardLeft)
+drawBoard(x1,x2,y1,y2,boardTop,boardLeft)
 
 registerOnclick((x, y) => {
 
@@ -114,11 +106,10 @@ registerOnclick((x, y) => {
   let r;
   let c;
   let move;
-  let parts = [boardTop, boardLeft, r, c, cellSize, board]
 
   // Check if there's a winner already.
-  if (checkWinner(r, c, lines, board)) {
-    winner = checkWinner(r, c, lines, board);
+  if (checkWinner(r,c,lines,board)) {
+    winner = checkWinner(r,c,lines,board);
   }
 
   r = Math.floor((y - boardTop) / cellSize);
@@ -127,6 +118,7 @@ registerOnclick((x, y) => {
   // Only do anything if it's a legal move and the game isn't over.
   if (winner === null && between(r) && between(c) && board[r][c] === '') {
 
+    // Draw the mark and record the move
     const marker = move % 2 === 0 ? 'X' : 'O';
     const x = boardLeft + c * cellSize + cellSize / 2;
     const y = boardTop + r * cellSize + cellSize / 2;
@@ -137,8 +129,8 @@ registerOnclick((x, y) => {
 
     // Check if there's a winner now
     winner = null;
-    if (checkWinner(r, c, lines, board)) {
-      winner = checkWinner(r, c, lines, board);
+    if (checkWinner(r,c,lines,board)) {
+      winner = checkWinner(r,c,lines,board);
     }
     if (winner !== null) {
       // Draw the line through three in a row
@@ -150,7 +142,7 @@ registerOnclick((x, y) => {
         return xOrY
       }
 
-      let adjX1 = location(boardLeft, c1);
+      let adjX1 = location(boardLeft,c1);
       let adjX2 = location(boardLeft, c2);
       let adjY1 = location(boardTop, r1);
       let adjY2 = location(boardTop, r2);
