@@ -31,6 +31,13 @@ const cellSize = boardSize / 3;
 const fontSize = boardSize / 3;
 const lineEndAdjustment = cellSize * 0.7;
 
+const drawBoard = (x1,x2,y1,y2,boardTop,boardLeft) => {
+drawLine(x1, boardTop, x1, boardTop + boardSize, 'grey', 2);
+drawLine(x2, boardTop, x2, boardTop + boardSize, 'grey', 2);
+drawLine(boardLeft, y1, boardLeft + boardSize, y1, 'grey', 2);
+drawLine(boardLeft, y2, boardLeft + boardSize, y2, 'grey', 2);
+}
+
 const between = (x) => {
   return 0 <= x && x < 3
 }
@@ -91,10 +98,7 @@ const x1 = boardLeft + cellSize;
 const x2 = boardLeft + 2 * cellSize;
 const y1 = boardTop + cellSize;
 const y2 = boardTop + 2 * cellSize;;
-drawLine(x1, boardTop, x1, boardTop + boardSize, 'grey', 2);
-drawLine(x2, boardTop, x2, boardTop + boardSize, 'grey', 2);
-drawLine(boardLeft, y1, boardLeft + boardSize, y1, 'grey', 2);
-drawLine(boardLeft, y2, boardLeft + boardSize, y2, 'grey', 2);
+drawBoard(x1,x2,y1,y2,boardTop,boardLeft)
 
 registerOnclick((x, y) => {
 
@@ -136,7 +140,7 @@ registerOnclick((x, y) => {
         let xOrY = boardLocation + cr12 * cellSize + cellSize / 2
         return xOrY
       }
-      
+
       let adjX1 = location(boardLeft,c1);
       let adjX2 = location(boardLeft, c2);
       let adjY1 = location(boardTop, r1);
