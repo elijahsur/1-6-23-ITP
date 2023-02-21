@@ -67,16 +67,6 @@ const checkWinner = (r,c,lines,board) => {
     }
 }
 
-const fillBoard = (fill) => {
-  let emptyboard = board
-  let j = 0
-  for (let i = 0; i < fill.length; i = i + 2) {
-    emptyboard[j] = [fill[i],fill[i+1]]
-    j++
-  }
-return emptyboard
-}
-
 const lines = [
   // Rows
   [[0, 0], [0, 1], [0, 2]],
