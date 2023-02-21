@@ -73,8 +73,6 @@ const drawMark = (move, r, c, cellSize, boardLeft, boardTop, board) => {
       const y = boardTop + r * cellSize + cellSize / 2;
       const nudge = marker === 'O' ? cellSize / 9 : cellSize / 19;
       drawText(marker, x - (fontSize * 0.3 + nudge), y + fontSize * 0.3, 'black', fontSize);
-      board[r][c] = marker;
-      move++;
     }
 
 const fillBoard = (fill) => {
@@ -130,6 +128,8 @@ registerOnclick((x, y) => {
   if (winner === null && between(r) && between(c) && board[r][c] === '') {
 
     drawMark(move, parts[2], parts[3], parts[4], parts[1], board[0], board[5])
+    board[r][c] = marker;
+    move++;
 
     // Check if there's a winner now
     winner = null;
