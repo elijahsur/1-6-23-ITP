@@ -98,10 +98,7 @@ const x1 = boardLeft + cellSize;
 const x2 = boardLeft + 2 * cellSize;
 const y1 = boardTop + cellSize;
 const y2 = boardTop + 2 * cellSize;;
-drawLine(x1, boardTop, x1, boardTop + boardSize, 'grey', 2);
-drawLine(x2, boardTop, x2, boardTop + boardSize, 'grey', 2);
-drawLine(boardLeft, y1, boardLeft + boardSize, y1, 'grey', 2);
-drawLine(boardLeft, y2, boardLeft + boardSize, y2, 'grey', 2);
+drawBoard(x1,x2,y1,y2,boardTop,boardLeft)
 
 registerOnclick((x, y) => {
 
