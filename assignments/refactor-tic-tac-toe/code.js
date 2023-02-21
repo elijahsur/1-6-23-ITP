@@ -68,6 +68,7 @@ const checkWinner = (r, c, lines, board) => {
 }
 
 const drawMark = (move, r, c, cellSize, boardLeft, boardTop) => {
+      const marker = move % 2 === 0 ? 'X' : 'O';
       const x = boardLeft + c * cellSize + cellSize / 2;
       const y = boardTop + r * cellSize + cellSize / 2;
       const nudge = marker === 'O' ? cellSize / 9 : cellSize / 19;
