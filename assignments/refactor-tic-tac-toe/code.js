@@ -38,7 +38,7 @@ drawLine(boardLeft, y1, boardLeft + boardSize, y1, 'grey', 2);
 drawLine(boardLeft, y2, boardLeft + boardSize, y2, 'grey', 2);
 }
 
-const between = (x) => {
+const underThree = (x) => {
   return 0 <= x && x < 3
 }
 
@@ -105,7 +105,7 @@ registerOnclick((x, y) => {
   c = Math.floor((x - boardLeft) / cellSize);
 
   // Only do anything if it's a legal move and the game isn't over.
-  if (winner === null && between(r) && between(c) && board[r][c] === '') {
+  if (winner === null && underThree(r) && underThree(c) && board[r][c] === '') {
 
     // Draw the mark and record the move
     const marker = move % 2 === 0 ? 'X' : 'O';
