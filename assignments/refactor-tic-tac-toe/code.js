@@ -99,7 +99,7 @@ registerOnclick((x, y) => {
   let c;
 
   // Check if there's a winner already.
-  if (checkWinner(r,c,lines,board)[0]) {
+  if (checkWinner(r,c,lines,board).pull(0)) {
     winner = checkWinner(r,c,lines,board)[1];
   }
 
@@ -120,7 +120,7 @@ registerOnclick((x, y) => {
 
     // Check if there's a winner now
     winner = null;
-    if (checkWinner(r,c,lines,board)[0]) {
+    if (checkWinner(r,c,lines,board).pull(0)) {
       winner = checkWinner(r,c,lines,board)[1];
     }
     if (winner !== null) {
