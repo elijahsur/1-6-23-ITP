@@ -67,14 +67,13 @@ const checkWinner = (r, c, lines, board) => {
   }
 }
 
-const drawMark = (move, r, c, cellSize, boardLeft, boardTop) => {
-      const marker = move % 2 === 0 ? 'X' : 'O';
-      const x = boardLeft + c * cellSize + cellSize / 2;
-      const y = boardTop + r * cellSize + cellSize / 2;
-      const nudge = marker === 'O' ? cellSize / 9 : cellSize / 19;
-      drawText(marker, x - (fontSize * 0.3 + nudge), y + fontSize * 0.3, 'black', fontSize);
-      return 
-    }
+const drawMark = (move, r, c, cellSize, boardLeft, boardTop, board) => {
+  const marker = move % 2 === 0 ? 'X' : 'O';
+  const x = boardLeft + c * cellSize + cellSize / 2;
+  const y = boardTop + r * cellSize + cellSize / 2;
+  const nudge = marker === 'O' ? cellSize / 9 : cellSize / 19;
+  drawText(marker, x - (fontSize * 0.3 + nudge), y + fontSize * 0.3, 'black', fontSize);
+}
 
 const fillBoard = (fill) => {
   let emptyboard = board
@@ -128,8 +127,12 @@ registerOnclick((x, y) => {
   // Only do anything if it's a legal move and the game isn't over.
   if (winner === null && between(r) && between(c) && board[r][c] === '') {
 
-    drawMark(move, parts[2], parts[3], parts[4], parts[1], board[0], board[5])
-    board[r][c] = move % 2 === 0 ? 'X' : 'O';
+    const marker = move % 2 === 0 ? 'X' : 'O';
+    const x = boardLeft + c * cellSize + cellSize / 2;
+    const y = boardTop + r * cellSize + cellSize / 2;
+    const nudge = marker === 'O' ? cellSize / 9 : cellSize / 19;
+    drawText(marker, x - (fontSize * 0.3 + nudge), y + fontSize * 0.3, 'black', fontSize);
+    board[r][c] = marker;
     move++;
 
     // Check if there's a winner now
