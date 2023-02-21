@@ -99,8 +99,8 @@ registerOnclick((x, y) => {
   let c;
 
   // Check if there's a winner already.
-  if (checkWinner(r,c,lines,board).pull(0)) {
-    winner = checkWinner(r,c,lines,board)[1];
+  if (checkWinner(r,c,lines,board)[1]) {
+    winner = checkWinner(r,c,lines,board)[2];
   }
 
   r = Math.floor((y - boardTop) / cellSize);
@@ -120,8 +120,8 @@ registerOnclick((x, y) => {
 
     // Check if there's a winner now
     winner = null;
-    if (checkWinner(r,c,lines,board).pull(0)) {
-      winner = checkWinner(r,c,lines,board)[1];
+    if (checkWinner(r,c,lines,board)[1]) {
+      winner = checkWinner(r,c,lines,board)[2];
     }
     if (winner !== null) {
       // Draw the line through three in a row
