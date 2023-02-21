@@ -31,6 +31,10 @@ const cellSize = boardSize / 3;
 const fontSize = boardSize / 3;
 const lineEndAdjustment = cellSize * 0.7;
 
+const between = (x) => {
+  return 0 <= x && x < 3
+}
+
 let move = 0;
 
 const board = [
@@ -107,7 +111,7 @@ registerOnclick((x, y) => {
   c = Math.floor((x - boardLeft) / cellSize);
 
   // Only do anything if it's a legal move and the game isn't over.
-  if (winner === null && 0 <= r && r < 3 && 0 <= c && c < 3 && board[r][c] === '') {
+  if (winner === null && between(r) && between(c) && board[r][c] === '') {
 
     // Draw the mark and record the move
     const marker = move % 2 === 0 ? 'X' : 'O';
