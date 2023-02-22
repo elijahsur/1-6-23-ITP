@@ -50,7 +50,7 @@ const board = [
   ['', '', ''],
 ];
 
-const wackyFunction = (lines,board) => {
+const wackyFunction = (lines,board,i) => {
   let r = lines[i][0][0];
   let c = lines[i][0][1];
   const m0 = board[r][c];
@@ -65,7 +65,7 @@ const wackyFunction = (lines,board) => {
 
 const checkWinner = (lines, board) => {
   for (let i = 0; i < lines.length; i++) {
-    m = wackyFunction(lines,board)
+    m = wackyFunction(lines,board,i)
     if (m[0] !== '' && m[0] === m[1] && m[0] === m[2]) {
       return lines[i]
     }
