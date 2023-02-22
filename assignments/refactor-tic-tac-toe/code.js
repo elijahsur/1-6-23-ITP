@@ -36,11 +36,11 @@ const drawBoard = (x1, x2, y1, y2, boardTop, boardLeft) => {
   drawLine(x2, boardTop, x2, boardTop + boardSize, 'grey', 2);
   drawLine(boardLeft, y1, boardLeft + boardSize, y1, 'grey', 2);
   drawLine(boardLeft, y2, boardLeft + boardSize, y2, 'grey', 2);
-}
+};
 
 const underThree = (x) => {
   return 0 <= x && x < 3
-}
+};
 
 let move = 0;
 
@@ -61,7 +61,7 @@ const wackyFunction = (lines,board,i) => {
   c = lines[i][2][1];
   const m2 = board[r][c];
   return [m0,m1,m2]
-}
+};
 
 const checkWinner = (lines, board) => {
   for (let i = 0; i < lines.length; i++) {
@@ -71,7 +71,7 @@ const checkWinner = (lines, board) => {
     }
   }
   return null
-}
+};
 
 const adjust = (firsts, seconds, adjustment, adjustees) => {
   if (firsts[0] === firsts[1] || seconds[0] !== seconds[1]) {
@@ -81,7 +81,7 @@ const adjust = (firsts, seconds, adjustment, adjustees) => {
       adjustees[1] + (slope * adjustment)
     ];
   }
-}
+};
 
 const lines = [
   // Rows
