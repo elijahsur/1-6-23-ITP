@@ -140,12 +140,12 @@ registerOnclick((x, y) => {
       let adjY1 = location(boardTop, r1);
       let adjY2 = location(boardTop, r2);
 
-      adjust([y1, y2], [x1, x2], lineEndAdjustment, [adjX1, adjX2])
+      let xAdjustments = adjust([y1, y2], [x1, x2], lineEndAdjustment, [adjX1, adjX2])
 
 
-      adjust([x1, x2], [y1, y2], lineEndAdjustment, [adjY1, adjY2])
+      let yAdjustments = adjust([x1, x2], [y1, y2], lineEndAdjustment, [adjY1, adjY2])
 
-      drawLine(adjX1, adjY1, adjX2, adjY2, 'red', 15);
+      drawLine(xAdjustments[0], yAdjustments[0], xAdjustments[1], yAdjustments[1], 'red', 15);
     }
   }
 });
