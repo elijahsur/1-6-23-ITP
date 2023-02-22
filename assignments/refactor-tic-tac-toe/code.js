@@ -50,7 +50,7 @@ const board = [
   ['', '', ''],
 ];
 
-const checkWinner = (lines, board) => {
+const checkWinner = (r, c, lines, board) => {
 
   let r;
   let c;
@@ -106,10 +106,10 @@ drawBoard(x1, x2, y1, y2, boardTop, boardLeft)
 
 registerOnclick((x, y) => {
 
-  let winner = checkWinner(lines, board)
+  let winner = winner = checkWinner(r, c, lines, board)
 
-  let r = Math.floor((y - boardTop) / cellSize);
-  let c = Math.floor((x - boardLeft) / cellSize);
+  r = Math.floor((y - boardTop) / cellSize);
+  c = Math.floor((x - boardLeft) / cellSize);
 
   // Only do anything if it's a legal move and the game isn't over.
   if (winner === null && underThree(r) && underThree(c) && board[r][c] === '') {
@@ -124,7 +124,7 @@ registerOnclick((x, y) => {
     move++;
 
     // Check if there's a winner now
-    winner = winner = checkWinner(lines, board);
+    winner = winner = checkWinner(r, c, lines, board);
     if (winner !== null) {
       // Draw the line through three in a row
       const [r1, c1] = winner[0];
