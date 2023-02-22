@@ -50,9 +50,7 @@ const board = [
   ['', '', ''],
 ];
 
-const mark = () => {
-  let r = Math.floor((y - boardTop) / cellSize);
-  let c = Math.floor((x - boardLeft) / cellSize);
+const mark = (r,c) => {
   const marker = move % 2 === 0 ? 'X' : 'O';
   const x = boardLeft + c * cellSize + cellSize / 2;
   const y = boardTop + r * cellSize + cellSize / 2;
@@ -122,11 +120,14 @@ registerOnclick((x, y) => {
 
   let winner = checkWinner(lines, board)
 
+  let r = Math.floor((y - boardTop) / cellSize);
+  let c = Math.floor((x - boardLeft) / cellSize);
+
   // Only do anything if it's a legal move and the game isn't over.
   if (winner === null && underThree(r) && underThree(c) && board[r][c] === '') {
 
     // Draw the mark and record the move
-    mark()
+    mark(r,c)
 
     // Check if there's a winner now
     winner = checkWinner(lines, board);
