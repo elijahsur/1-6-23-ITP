@@ -50,7 +50,7 @@ const board = [
   ['', '', ''],
 ];
 
-const mark = () => {
+const mark = (r,c) => {
   const marker = move % 2 === 0 ? 'X' : 'O';
   const x = boardLeft + c * cellSize + cellSize / 2;
   const y = boardTop + r * cellSize + cellSize / 2;
@@ -127,7 +127,7 @@ registerOnclick((x, y) => {
   if (winner === null && underThree(r) && underThree(c) && board[r][c] === '') {
 
     // Draw the mark and record the move
-    mark()
+    mark(r,c)
 
     // Check if there's a winner now
     winner = checkWinner(lines, board);
