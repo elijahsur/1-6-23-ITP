@@ -108,8 +108,8 @@ registerOnclick((x, y) => {
 
   let winner = checkWinner(lines, board)
 
-  r = Math.floor((y - boardTop) / cellSize);
-  c = Math.floor((x - boardLeft) / cellSize);
+  let r = Math.floor((y - boardTop) / cellSize);
+  let c = Math.floor((x - boardLeft) / cellSize);
 
   // Only do anything if it's a legal move and the game isn't over.
   if (winner === null && underThree(r) && underThree(c) && board[r][c] === '') {
