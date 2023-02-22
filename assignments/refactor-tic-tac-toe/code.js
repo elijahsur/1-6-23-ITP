@@ -36,11 +36,11 @@ const drawBoard = (x1, x2, y1, y2, boardTop, boardLeft) => {
   drawLine(x2, boardTop, x2, boardTop + boardSize, 'grey', 2);
   drawLine(boardLeft, y1, boardLeft + boardSize, y1, 'grey', 2);
   drawLine(boardLeft, y2, boardLeft + boardSize, y2, 'grey', 2);
-};
+}
 
 const underThree = (x) => {
   return 0 <= x && x < 3
-};
+}
 
 let move = 0;
 
@@ -50,7 +50,17 @@ const board = [
   ['', '', ''],
 ];
 
-const wackyFunction = (lines,board,i) => {
+const mark = () => {
+  const marker = move % 2 === 0 ? 'X' : 'O';
+  const x = boardLeft + c * cellSize + cellSize / 2;
+  const y = boardTop + r * cellSize + cellSize / 2;
+  const nudge = marker === 'O' ? cellSize / 9 : cellSize / 19;
+  drawText(marker, x - (fontSize * 0.3 + nudge), y + fontSize * 0.3, 'black', fontSize);
+  board[r][c] = marker;
+  move++;
+}
+
+const wackyFunction = (lines, board, i) => {
   let r = lines[i][0][0];
   let c = lines[i][0][1];
   const m0 = board[r][c];
@@ -60,18 +70,18 @@ const wackyFunction = (lines,board,i) => {
   r = lines[i][2][0];
   c = lines[i][2][1];
   const m2 = board[r][c];
-  return [m0,m1,m2]
-};
+  return [m0, m1, m2]
+}
 
 const checkWinner = (lines, board) => {
   for (let i = 0; i < lines.length; i++) {
-    let m = wackyFunction(lines,board,i)
+    let m = wackyFunction(lines, board, i)
     if (m[0] !== '' && m[0] === m[1] && m[0] === m[2]) {
       return lines[i]
     }
   }
   return null
-};
+}
 
 const adjust = (firsts, seconds, adjustment, adjustees) => {
   if (firsts[0] === firsts[1] || seconds[0] !== seconds[1]) {
@@ -81,7 +91,7 @@ const adjust = (firsts, seconds, adjustment, adjustees) => {
       adjustees[1] + (slope * adjustment)
     ];
   }
-};
+}
 
 const lines = [
   // Rows
@@ -117,13 +127,7 @@ registerOnclick((x, y) => {
   if (winner === null && underThree(r) && underThree(c) && board[r][c] === '') {
 
     // Draw the mark and record the move
-    const marker = move % 2 === 0 ? 'X' : 'O';
-    const x = boardLeft + c * cellSize + cellSize / 2;
-    const y = boardTop + r * cellSize + cellSize / 2;
-    const nudge = marker === 'O' ? cellSize / 9 : cellSize / 19;
-    drawText(marker, x - (fontSize * 0.3 + nudge), y + fontSize * 0.3, 'black', fontSize);
-    board[r][c] = marker;
-    move++;
+    mark()
 
     // Check if there's a winner now
     winner = checkWinner(lines, board);
