@@ -75,8 +75,10 @@ const checkWinner = (lines, board) => {
 const adjust = (firsts, seconds, adjustment, adjustees) => {
   if (firsts[0] === firsts[1] || seconds[0] !== seconds[1]) {
     const slope = y1 < y2 ? 1 : -1;
-    adjustees[0] -= (slope * adjustment);
-    adjustees[1] += (slope * adjustment);
+    return [
+      adjustees[0] - (slope * adjustment),
+      adjustees[1] + (slope * adjustment)
+    ];
   }
 }
 
@@ -130,8 +132,7 @@ registerOnclick((x, y) => {
       const [r2, c2] = winner[winner.length - 1];
 
       const location = (boardLocation, cr12) => {
-        let xOrY = boardLocation + cr12 * cellSize + cellSize / 2
-        return xOrY
+        return xOrY = boardLocation + cr12 * cellSize + cellSize / 2
       }
 
       let adjX1 = location(boardLeft, c1);
