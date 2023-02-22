@@ -68,7 +68,8 @@ const checkWinner = (lines, board) => {
     if (m0 !== '' && m0 === m1 && m0 === m2) {
       return lines[i]
     }
-    return null
+  }
+  return null
 }
 
 const adjust = (firsts, seconds, adjustment, adjustees) => {
