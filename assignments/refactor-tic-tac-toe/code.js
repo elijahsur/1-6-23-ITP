@@ -106,7 +106,7 @@ drawBoard(x1, x2, y1, y2, boardTop, boardLeft)
 
 registerOnclick((x, y) => {
 
-  let winner = winner = checkWinner(lines, board)
+  let winner = checkWinner(lines, board)
 
   r = Math.floor((y - boardTop) / cellSize);
   c = Math.floor((x - boardLeft) / cellSize);
