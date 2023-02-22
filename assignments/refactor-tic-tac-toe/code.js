@@ -42,7 +42,7 @@ const wackyFunction = (lines, board, i) => {
   c = lines[i][1][1];
   const m1 = board[r][c];
   r = lines[i][2][0];
-  c = lines[i][2][2];
+  c = lines[i][2][1];
   const m2 = board[r][c];
   return [m0, m1, m2]
 }
