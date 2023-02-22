@@ -132,7 +132,7 @@ registerOnclick((x, y) => {
       const [r2, c2] = winner[winner.length - 1];
 
       const location = (boardLocation, cr12) => {
-        return xOrY = boardLocation + cr12 * cellSize + cellSize / 2
+        return boardLocation + cr12 * cellSize + cellSize / 2
       }
 
       let adjX1 = location(boardLeft, c1);
