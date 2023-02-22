@@ -42,7 +42,7 @@ const wackyFunction = (lines, board, i) => {
   c = lines[i][1][1];
   const m1 = board[r][c];
   r = lines[i][2][0];
-  c = lines[i][2][1];
+  c = lines[i][2][2];
   const m2 = board[r][c];
   return [m0, m1, m2]
 }
@@ -107,7 +107,7 @@ registerOnclick((x, y) => {
     winner = checkWinner(lines, board);
     if (winner !== null) {
       // Draw the line through three in a row
-      const [r1, c1] = winner[1];
+      const [r1, c1] = winner[0];
       const [r2, c2] = winner[winner.length - 1];
 
       const location = (boardLocation, cr12) => {
