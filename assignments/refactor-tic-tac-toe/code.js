@@ -67,9 +67,6 @@ const adjust = (firsts, seconds, adjustment, adjustees) => {
   }
 }
 
-const location = (boardLocation, cr12) => {
-  return boardLocation + cr12 * cellSize + cellSize / 2
-}
 
 const lines = [
   // Rows
