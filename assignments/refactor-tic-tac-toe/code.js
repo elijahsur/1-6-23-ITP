@@ -5,6 +5,10 @@ const cellSize = boardSize / 3;
 const fontSize = boardSize / 3;
 const lineEndAdjustment = cellSize * 0.7;
 
+const location = (boardLocation, cr12) => {
+        return boardLocation + cr12 * cellSize + cellSize / 2
+      }
+
 const drawBoard = (x1, x2, y1, y2, boardTop, boardLeft) => {
   drawLine(x1, boardTop, x1, boardTop + boardSize, 'grey', 2);
   drawLine(x2, boardTop, x2, boardTop + boardSize, 'grey', 2);
@@ -109,10 +113,6 @@ registerOnclick((x, y) => {
       // Draw the line through three in a row
       const [r1, c1] = winner[0];
       const [r2, c2] = winner[winner.length - 1];
-
-      const location = (boardLocation, cr12) => {
-        return boardLocation + cr12 * cellSize + cellSize / 2
-      }
 
       let adjX1 = location(boardLeft, c1);
       let adjX2 = location(boardLeft, c2);
