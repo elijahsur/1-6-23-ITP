@@ -58,7 +58,7 @@ let algorithm = (string, batchlength) => {
     let done = false
     let batchHistory = []
     let currentBatch = top25(firstbatch(string, batchlength))
-    while (done === false && limit < 50) {
+    while (done === false && limit < 50 && string !== '') {
         batchHistory.push(currentBatch[currentBatch.length - 1])
         for (let i = 0; i < batchlength; i++) {
             let phrase = evolve(currentBatch, i, string)
