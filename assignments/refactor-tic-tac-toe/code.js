@@ -5,7 +5,7 @@ const cellSize = boardSize / 3;
 const fontSize = boardSize / 3;
 const lineEndAdjustment = cellSize * 0.7;
 
-const location1 = (boardLocation, cr12) => {
+const bLocation = (boardLocation, cr12) => {
   return boardLocation + cr12 * cellSize + cellSize / 2
 }
 
@@ -114,10 +114,10 @@ registerOnclick((x, y) => {
       const [r1, c1] = winner[0];
       const [r2, c2] = winner[winner.length - 1];
 
-      let adjX1 = location(boardLeft, c1);
-      let adjX2 = location(boardLeft, c2);
-      let adjY1 = location(boardTop, r1);
-      let adjY2 = location(boardTop, r2);
+      let adjX1 = bLocation(boardLeft, c1);
+      let adjX2 = bLocation(boardLeft, c2);
+      let adjY1 = bLocation(boardTop, r1);
+      let adjY2 = bLocation(boardTop, r2);
 
       let xAdjustments = adjust([y1, y2], [x1, x2], lineEndAdjustment, [adjX1, adjX2])
 
