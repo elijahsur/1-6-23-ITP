@@ -5,10 +5,6 @@ const cellSize = boardSize / 3;
 const fontSize = boardSize / 3;
 const lineEndAdjustment = cellSize * 0.7;
 
-const location = (boardLocation, cr12) => {
-  return boardLocation + cr12 * cellSize + cellSize / 2
-}
-
 const drawBoard = (x1, x2, y1, y2, boardTop, boardLeft) => {
   drawLine(x1, boardTop, x1, boardTop + boardSize, 'grey', 2);
   drawLine(x2, boardTop, x2, boardTop + boardSize, 'grey', 2);
@@ -28,7 +24,7 @@ const board = [
   ['', '', ''],
 ];
 
-const mark = (r, c) => {
+const mark = (r,c) => {
   const marker = move % 2 === 0 ? 'X' : 'O';
   const x = boardLeft + c * cellSize + cellSize / 2;
   const y = boardTop + r * cellSize + cellSize / 2;
@@ -38,7 +34,7 @@ const mark = (r, c) => {
   move++;
 }
 
-const extractLine = (lines, board, i) => {
+const wackyFunction = (lines, board, i) => {
   let r = lines[i][0][0];
   let c = lines[i][0][1];
   const m0 = board[r][c];
@@ -70,7 +66,6 @@ const adjust = (firsts, seconds, adjustment, adjustees) => {
     ];
   }
 }
-
 
 const lines = [
   // Rows
@@ -106,7 +101,7 @@ registerOnclick((x, y) => {
   if (winner === null && underThree(r) && underThree(c) && board[r][c] === '') {
 
     // Draw the mark and record the move
-    mark(r, c)
+    mark(r,c)
 
     // Check if there's a winner now
     winner = checkWinner(lines, board);
@@ -114,6 +109,10 @@ registerOnclick((x, y) => {
       // Draw the line through three in a row
       const [r1, c1] = winner[0];
       const [r2, c2] = winner[winner.length - 1];
+
+      const location = (boardLocation, cr12) => {
+        return boardLocation + cr12 * cellSize + cellSize / 2
+      }
 
       let adjX1 = location(boardLeft, c1);
       let adjX2 = location(boardLeft, c2);
