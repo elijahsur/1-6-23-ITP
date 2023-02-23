@@ -5,9 +5,9 @@ const cellSize = boardSize / 3;
 const fontSize = boardSize / 3;
 const lineEndAdjustment = cellSize * 0.7;
 
-const location = (boardLocation, cr12) => {
-        return boardLocation + cr12 * cellSize + cellSize / 2
-      }
+const location1 = (boardLocation, cr12) => {
+  return boardLocation + cr12 * cellSize + cellSize / 2
+}
 
 const drawBoard = (x1, x2, y1, y2, boardTop, boardLeft) => {
   drawLine(x1, boardTop, x1, boardTop + boardSize, 'grey', 2);
@@ -28,7 +28,7 @@ const board = [
   ['', '', ''],
 ];
 
-const mark = (r,c) => {
+const mark = (r, c) => {
   const marker = move % 2 === 0 ? 'X' : 'O';
   const x = boardLeft + c * cellSize + cellSize / 2;
   const y = boardTop + r * cellSize + cellSize / 2;
@@ -105,7 +105,7 @@ registerOnclick((x, y) => {
   if (winner === null && underThree(r) && underThree(c) && board[r][c] === '') {
 
     // Draw the mark and record the move
-    mark(r,c)
+    mark(r, c)
 
     // Check if there's a winner now
     winner = checkWinner(lines, board);
