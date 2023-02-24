@@ -71,10 +71,13 @@ const drawPicture = (horizon, base, size) => {
   const x = width / 2;
   const proportions = [3, 4, 5];
   const [headP, torsoP, buttP] = proportions;
+  const total = proportions.reduce((tot, p) => tot + p, 0);
 
   const headY = (base - size) + indSize(headP) / 2;
   const torsoY = headY + indSize(headP) / 2 + indSize(torsoP / 2)
   const buttY = torsoY + indSize(torsoP) / 2 + indSize(buttP / 2)
+
+  background(horizon)
 
   const headRadius = (indSize(headP, size))
   const torsoRadius = (indSize(torsoP, size))
