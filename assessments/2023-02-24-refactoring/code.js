@@ -1,15 +1,12 @@
 const drawPicture = (horizon, base, size) => {
-
-  // Draw the background
+  const background = () => {
   drawFilledRect(0, 0, width, horizon, '#ddeeff');
   drawFilledRect(0, horizon, width, height, 'white');
   drawLine(0, horizon, width, horizon, '#bbb');
+  }
+  background()
 
   // Draw the snowman
-  const x = width / 2;
-  const proportions = [3, 4, 5];
-  const [headP, torsoP, buttP] = proportions;
-  const total = proportions.reduce((tot, p) => tot + p, 0);
 
   const headSize = size * (headP / total);
   const torsoSize = size * (torsoP / total)
