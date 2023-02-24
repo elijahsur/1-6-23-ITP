@@ -79,20 +79,20 @@ const drawPicture = (horizon, base, size) => {
 
   background(horizon)
 
-  const headRadius = indSize(headP, size, total)
-  const torsoRadius = indSize(torsoP, size, total)
+  const headRadius = (indSize(headP, size, total))
+  const torsoRadius = (indSize(torsoP, size, total))
 
   background(horizon)
 
   head(headRadius, x, headY)
 
-  eyes(headRadius, x, headY)
+  eyes(headRadius / 2, x, headY)
 
-  nose(headRadius, x, headY)
+  nose(headRadius / 2, x, headY)
 
   mouth(headRadius, x, headY)
 
-  hat(headRadius, x, headY)
+  hat(headRadius / 2, x, headY)
 
   torso(torsoRadius, x, torsoY)
 
