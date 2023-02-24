@@ -1,5 +1,7 @@
 const radius = (size) => { return size / 2 }
 
+const indSize = (p, size, total) => { return size * (p / total) }
+
 const background = (horizon) => {
   drawFilledRect(0, 0, width, horizon, '#ddeeff');
   drawFilledRect(0, horizon, width, height, 'white');
@@ -70,8 +72,6 @@ const drawPicture = (horizon, base, size) => {
   const proportions = [3, 4, 5];
   const [headP, torsoP, buttP] = proportions;
   const total = proportions.reduce((tot, p) => tot + p, 0);
-
-  const indSize = (p, size) => { return size * (p / total) }
 
   const headY = (base - size) + indSize(headP) / 2;
   const torsoY = headY + indSize(headP) / 2 + indSize(torsoP / 2)
