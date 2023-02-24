@@ -1,6 +1,6 @@
 const radius = (size) => { return size / 2 }
 
-const indSize = (p, size) => { return size * (p / total) }
+const indSize = (p, size, total) => { return size * (p / total) }
 
 const background = (horizon) => {
   drawFilledRect(0, 0, width, horizon, '#ddeeff');
@@ -79,8 +79,8 @@ const drawPicture = (horizon, base, size) => {
 
   background(horizon)
 
-  const headRadius = (indSize(headP, size))
-  const torsoRadius = (indSize(torsoP, size))
+  const headRadius = indSize(headP, size, total)
+  const torsoRadius = indSize(torsoP, size, total)
 
   background(horizon)
 
@@ -100,7 +100,7 @@ const drawPicture = (horizon, base, size) => {
 
   buttons(torsoRadius, x, torsoY)
 
-  butt(indSize(buttP, size), x, buttY)
+  butt(indSize(buttP, size, total), x, buttY)
 };
 
 drawPicture(height * 0.7, height * 0.9, height * 0.7);
