@@ -20,19 +20,19 @@ const drawPicture = (horizon, base, size) => {
   }
   background()
 
-  const head = () => {
+  const head = (headSize) => {
     const headRadius = headSize / 2;
     drawCircle(x, headY, headRadius + 2, 'black', 3);
     drawFilledCircle(x, headY, headRadius, 'white', 3);
   }
-  head()
+  head(headSize)
 
-  const eyes = () => {
+  const eyes = (headRadius) => {
     const eyeSpacing = headRadius * 0.25;
     drawFilledCircle(x - eyeSpacing, headY - eyeSpacing, 4, 'black');
     drawFilledCircle(x + eyeSpacing, headY - eyeSpacing, 4, 'black');
   }
-  eyes()
+  eyes(headRadius)
 
   const nose = () => {
     const noseLength = headRadius * 0.8;
