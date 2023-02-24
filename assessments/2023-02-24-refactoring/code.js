@@ -103,4 +103,4 @@ const drawPicture = (base, size) => {
 
 background(height * 0.7)
 
-drawPicture(height * 0.7, height * 0.9, height * 0.7);
+drawPicture(height * 0.9, height * 0.7);
