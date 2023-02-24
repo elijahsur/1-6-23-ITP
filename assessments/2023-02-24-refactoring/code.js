@@ -10,7 +10,7 @@ const background = (horizon) => {
 
 const head = (headSize, base, size) => {
   const x = width / 2
-  const headY = (base - size) + indSize(headP) / 2;
+  const headY = (base - size) + indSize(3) / 2;
     drawCircle(x, headY, radius(headSize) + 2, 'black', 3);
     drawFilledCircle(x, headY, radius(headSize), 'white', 3);
   }
