@@ -34,11 +34,11 @@ const drawPicture = (horizon, base, size) => {
   }
   eyes(headSize/2)
 
-  const nose = () => {
+  const nose = (headRadius) => {
     const noseLength = headRadius * 0.8;
     drawFilledTriangle(x, headY, x + noseLength, headY + noseLength * 0.2, x, headY + noseLength * 0.3, 'orange');
   }
-  nose()
+  nose(headSize/2)
 
   const mouth = () => {
   for (let i = 0; i < 5; i++) {
