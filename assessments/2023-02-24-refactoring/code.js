@@ -53,6 +53,12 @@ const arms = (torsoRadius, x, torsoY) => {
     drawLine(x1, torsoY - torsoRadius * 0.25, x2, torsoY - torsoRadius * 0.85, 'black', 3);
   }
 
+  const buttons = (torsoRadius, x, torsoY) => {
+    for (let i = 0; i < 3; i++) {
+      drawFilledCircle(x, torsoY - torsoRadius * 0.5 + i * torsoRadius * 0.5, 4, 'black');
+    }
+  }
+
 const drawPicture = (horizon, base, size) => {
 
   const x = width / 2;
@@ -65,12 +71,6 @@ const drawPicture = (horizon, base, size) => {
   const headY = (base - size) + indSize(headP) / 2;
   const torsoY = headY + indSize(headP) / 2 + indSize(torsoP / 2)
   const buttY = torsoY + indSize(torsoP) / 2 + indSize(buttP / 2)
-
-  const buttons = (torsoRadius) => {
-    for (let i = 0; i < 3; i++) {
-      drawFilledCircle(x, torsoY - torsoRadius * 0.5 + i * torsoRadius * 0.5, 4, 'black');
-    }
-  }
 
   const butt = (buttSize) => {
     drawCircle(x, buttY, radius(buttSize) + 2, 'black', 3);
@@ -93,7 +93,7 @@ const drawPicture = (horizon, base, size) => {
 
   arms(indSize(torsoP / 2), x, torsoY)
 
-  buttons(indSize(torsoP / 2))
+  buttons(indSize(torsoP / 2), x, torsoY)
 
   butt(indSize(buttP))
 };
