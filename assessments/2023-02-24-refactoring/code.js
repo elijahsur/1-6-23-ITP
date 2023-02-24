@@ -1,28 +1,14 @@
-const radius = (size) => {return size / 2}
-
-const indSize = (p,size) => {return size * (p / total)}
-
 const background = (horizon) => {
     drawFilledRect(0, 0, width, horizon, '#ddeeff');
     drawFilledRect(0, horizon, width, height, 'white');
     drawLine(0, horizon, width, horizon, '#bbb');
   }
 
-const head = (headSize, base, size) => {
-  const x = width / 2
-  const headY = (base - size) + indSize(3) / 2;
-    drawCircle(x, headY, radius(headSize) + 2, 'black', 3);
-    drawFilledCircle(x, headY, radius(headSize), 'white', 3);
-  }
-
-const drawPicture = (base, size) => {
+const drawPicture = (horizon, base, size) => {
 
   const x = width / 2;
-  
   const proportions = [3, 4, 5];
-
   const [headP, torsoP, buttP] = proportions;
-
   const total = proportions.reduce((tot, p) => tot + p, 0);
 
   const indSize = (p) => {return size * (p / total)}
@@ -91,7 +77,9 @@ const drawPicture = (base, size) => {
     drawFilledCircle(x, buttY, radius(buttSize), 'white', 3);
   }
 
-  background()
+  background(horizon)
+
+  head(indSize(headP))
 
   eyes(indSize(headP) / 2)
 
@@ -110,8 +98,4 @@ const drawPicture = (base, size) => {
   butt(indSize(buttP))
 };
 
-head(3, height * 0.9, height * 0.7)
-
-background(height * 0.7)
-
-drawPicture(height * 0.9, height * 0.7);
+drawPicture(height * 0.7, height * 0.9, height * 0.7);
