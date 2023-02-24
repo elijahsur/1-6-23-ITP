@@ -48,7 +48,7 @@ const drawPicture = (horizon, base, size) => {
   }
   mouth(headSize/2)
 
-  // Draw the hat
+ const hat = (headRadius) => {
   const brimTop = headY - headRadius * 0.9;
   const brimWidth = headRadius * 2.25;
   const brimHeight = brimWidth * 0.08;
@@ -56,6 +56,8 @@ const drawPicture = (horizon, base, size) => {
   const hatHeight = headRadius * 1.25;
   drawFilledRect(x - brimWidth / 2, brimTop, brimWidth, brimHeight, 'black');
   drawFilledRect(x - hatWidth / 2, brimTop - hatHeight, hatWidth, hatHeight, 'black');
+ }
+hat(headSize/2)
 
   // Draw the torso
   const torsoRadius = torsoSize / 2;
