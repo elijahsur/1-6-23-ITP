@@ -5,13 +5,11 @@ const drawPicture = (horizon, base, size) => {
   const [headP, torsoP, buttP] = proportions;
   const total = proportions.reduce((tot, p) => tot + p, 0);
 
-  const headSize = size * (headP / total);
-  const torsoSize = size * (torsoP / total)
-  const buttSize = size * (buttP / total);
+  const indSize = (p) => {return size * (p / total)}
 
-  const headY = (base - size) + headSize / 2;
-  const torsoY = headY + headSize / 2 + torsoSize / 2;
-  const buttY = torsoY + torsoSize / 2 + buttSize / 2;
+  const headY = (base - size) + indSize(headP) / 2;
+  const torsoY = headY + indSize(headP) / 2 + indSize(torsoP / 2;
+  const buttY = torsoY + indSize(torsoP / 2 + indSize(buttP / 2;
 
   const radius = (size) => {return size / 2}
 
@@ -81,23 +79,23 @@ const drawPicture = (horizon, base, size) => {
 
   background()
 
-  head(headSize)
+  head(indSize(headP))
 
-  eyes(headSize / 2)
+  eyes(indSize(headP) / 2)
 
-  nose(headSize / 2)
+  nose(indSize(headP) / 2)
 
-  mouth(headSize)
+  mouth(indSize(headP))
 
-  hat(headSize / 2)
+  hat(indSize(headP) / 2)
 
-  torso(torsoSize)
+  torso(indSize(torsoP)
 
-  arms(torsoSize / 2)
+  arms(indSize(torsoP / 2)
 
-  buttons(torsoSize / 2)
+  buttons(indSize(torsoP / 2)
 
-  butt(buttSize)
+  butt(indSize(buttP)
 };
 
 drawPicture(height * 0.7, height * 0.9, height * 0.7);
