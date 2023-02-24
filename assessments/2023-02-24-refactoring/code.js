@@ -83,7 +83,7 @@ arms(torsoSize/2)
   }
   buttons(torsoSize/2)
 
-  const but = (buttSize) => {
+  const butt = (buttSize) => {
   const buttRadius = buttSize / 2;
   drawCircle(x, buttY, buttRadius + 2, 'black', 3);
   drawFilledCircle(x, buttY, buttRadius, 'white', 3);
