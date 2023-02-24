@@ -26,7 +26,7 @@ const drawPicture = (base, size) => {
 
   const [headP, torsoP, buttP] = proportions;
 
-  const torsoY = headY + indSize(headP) / 2 + indSize(torsoP / 2)
+  const torsoY = (base - size) + indSize(headP) / 2 + indSize(headP) / 2 + indSize(torsoP / 2)
   const buttY = torsoY + indSize(torsoP) / 2 + indSize(buttP / 2)
 
   const head = (headSize) => {
