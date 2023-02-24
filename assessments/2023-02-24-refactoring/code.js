@@ -6,6 +6,11 @@ const background = (horizon) => {
     drawLine(0, horizon, width, horizon, '#bbb');
   }
 
+  const head = (headSize, x, headY) => {
+    drawCircle(x, headY, radius(headSize) + 2, 'black', 3);
+    drawFilledCircle(x, headY, radius(headSize), 'white', 3);
+  }
+
 const drawPicture = (horizon, base, size) => {
 
   const x = width / 2;
@@ -18,11 +23,6 @@ const drawPicture = (horizon, base, size) => {
   const headY = (base - size) + indSize(headP) / 2;
   const torsoY = headY + indSize(headP) / 2 + indSize(torsoP / 2)
   const buttY = torsoY + indSize(torsoP) / 2 + indSize(buttP / 2)
-
-  const head = (headSize) => {
-    drawCircle(x, headY, radius(headSize) + 2, 'black', 3);
-    drawFilledCircle(x, headY, radius(headSize), 'white', 3);
-  }
 
   const eyes = (headRadius) => {
     const eyeSpacing = headRadius * 0.25;
@@ -79,7 +79,7 @@ const drawPicture = (horizon, base, size) => {
 
   background(horizon)
 
-  head(indSize(headP))
+  head(indSize(headP), x headY)
 
   eyes(indSize(headP) / 2)
 
