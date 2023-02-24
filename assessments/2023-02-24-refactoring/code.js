@@ -30,7 +30,7 @@ const drawPicture = (base, size) => {
   const buttY = torsoY + indSize(torsoP) / 2 + indSize(buttP / 2)
 
   const head = (headSize) => {
-    drawCircle(x, headY, radius(headSize) + 2, 'black', 3);
+    drawCircle(x, (base - size) + indSize(headP) / 2, radius(headSize) + 2, 'black', 3);
     drawFilledCircle(x, headY, radius(headSize), 'white', 3);
   }
 
