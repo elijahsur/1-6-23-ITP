@@ -31,7 +31,7 @@ const drawPicture = (base, size) => {
 
   const head = (headSize) => {
     drawCircle(x, (base - size) + indSize(headP) / 2, radius(headSize) + 2, 'black', 3);
-    drawFilledCircle(x, headY, radius(headSize), 'white', 3);
+    drawFilledCircle(x, (base - size) + indSize(headP) / 2, radius(headSize), 'white', 3);
   }
 
   const eyes = (headRadius) => {
