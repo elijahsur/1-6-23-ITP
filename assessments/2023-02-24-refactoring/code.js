@@ -59,10 +59,12 @@ const drawPicture = (horizon, base, size) => {
  }
 hat(headSize/2)
 
-  // Draw the torso
+  const torso = (torsoSize) => {
   const torsoRadius = torsoSize / 2;
   drawCircle(x, torsoY, torsoRadius + 2, 'black', 3);
   drawFilledCircle(x, torsoY, torsoRadius, 'white', 3);
+  }
+  torso(torsoSize)
 
   // Draw the arms
   let x1 = x + torsoRadius * 0.6;
