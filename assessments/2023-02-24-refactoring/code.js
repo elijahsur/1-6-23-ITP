@@ -42,6 +42,7 @@ const drawPicture = (base, size) => {
   }
 
   const nose = (headRadius) => {
+    const headY = (base - size) + indSize(headP) / 2
     const noseLength = headRadius * 0.8;
     drawFilledTriangle(x, headY, x + noseLength, headY + noseLength * 0.2, x, headY + noseLength * 0.3, 'orange');
   }
@@ -49,12 +50,12 @@ const drawPicture = (base, size) => {
   const mouth = (headSize) => {
     for (let i = 0; i < 5; i++) {
       const dy = -2 * (2.1 ** Math.abs(i - 2));
-      drawFilledCircle(x - (i - 2.3) * radius(headSize) * 0.21, headY + radius(headSize) * 0.65 + dy, 4, 'black');
+      drawFilledCircle(x - (i - 2.3) * radius(headSize) * 0.21, (base - size) + indSize(headP) / 2 + radius(headSize) * 0.65 + dy, 4, 'black');
     }
   }
 
   const hat = (headRadius) => {
-    const brimTop = headY - headRadius * 0.9;
+    const brimTop = (base - size) + indSize(headP) / 2 - headRadius * 0.9;
     const brimWidth = headRadius * 2.25;
     const brimHeight = brimWidth * 0.08;
     const hatWidth = brimWidth * 0.7;
