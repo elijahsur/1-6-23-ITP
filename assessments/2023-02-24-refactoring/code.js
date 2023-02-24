@@ -1,14 +1,20 @@
-const radius = (size) => {return size / 2}
+const radius = (size) => { return size / 2 }
 
 const background = (horizon) => {
-    drawFilledRect(0, 0, width, horizon, '#ddeeff');
-    drawFilledRect(0, horizon, width, height, 'white');
-    drawLine(0, horizon, width, horizon, '#bbb');
-  }
+  drawFilledRect(0, 0, width, horizon, '#ddeeff');
+  drawFilledRect(0, horizon, width, height, 'white');
+  drawLine(0, horizon, width, horizon, '#bbb');
+}
 
-  const head = (headSize, x, headY) => {
-    drawCircle(x, headY, radius(headSize) + 2, 'black', 3);
-    drawFilledCircle(x, headY, radius(headSize), 'white', 3);
+const head = (headSize, x, headY) => {
+  drawCircle(x, headY, radius(headSize) + 2, 'black', 3);
+  drawFilledCircle(x, headY, radius(headSize), 'white', 3);
+}
+
+const eyes = (headRadius, x, headY) => {
+    const eyeSpacing = headRadius * 0.25;
+    drawFilledCircle(x - eyeSpacing, headY - eyeSpacing, 4, 'black');
+    drawFilledCircle(x + eyeSpacing, headY - eyeSpacing, 4, 'black');
   }
 
 const drawPicture = (horizon, base, size) => {
@@ -18,17 +24,11 @@ const drawPicture = (horizon, base, size) => {
   const [headP, torsoP, buttP] = proportions;
   const total = proportions.reduce((tot, p) => tot + p, 0);
 
-  const indSize = (p) => {return size * (p / total)}
+  const indSize = (p) => { return size * (p / total) }
 
   const headY = (base - size) + indSize(headP) / 2;
   const torsoY = headY + indSize(headP) / 2 + indSize(torsoP / 2)
   const buttY = torsoY + indSize(torsoP) / 2 + indSize(buttP / 2)
-
-  const eyes = (headRadius) => {
-    const eyeSpacing = headRadius * 0.25;
-    drawFilledCircle(x - eyeSpacing, headY - eyeSpacing, 4, 'black');
-    drawFilledCircle(x + eyeSpacing, headY - eyeSpacing, 4, 'black');
-  }
 
   const nose = (headRadius) => {
     const noseLength = headRadius * 0.8;
@@ -81,7 +81,7 @@ const drawPicture = (horizon, base, size) => {
 
   head(indSize(headP), x, headY)
 
-  eyes(indSize(headP) / 2)
+  eyes(indSize(headP) / 2, x, headY)
 
   nose(indSize(headP) / 2)
 
