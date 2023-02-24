@@ -87,7 +87,7 @@ const drawPicture = (horizon, base, size) => {
 
   nose(headSize / 2)
 
-  mouth(headSize / 2)
+  mouth(headSize)
 
   hat(headSize / 2)
 
