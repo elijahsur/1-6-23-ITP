@@ -1,4 +1,4 @@
-const background = () => {
+const background = (horizon) => {
     drawFilledRect(0, 0, width, horizon, '#ddeeff');
     drawFilledRect(0, horizon, width, height, 'white');
     drawLine(0, horizon, width, horizon, '#bbb');
@@ -101,6 +101,6 @@ const drawPicture = (base, size) => {
   butt(indSize(buttP))
 };
 
-background()
+background(height * 0.7)
 
 drawPicture(height * 0.7, height * 0.9, height * 0.7);
