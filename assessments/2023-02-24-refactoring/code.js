@@ -66,23 +66,29 @@ hat(headSize/2)
   }
   torso(torsoSize)
 
-  // Draw the arms
+const arms = (torsoRadius) => {
   let x1 = x + torsoRadius * 0.6;
   let x2 = x + torsoRadius * 2.35;
   drawLine(x1, torsoY - torsoRadius * 0.25, x2, torsoY - torsoRadius * 0.85, 'black', 3);
   x1 = x + torsoRadius * 0.6 * -1;
   x2 = x + torsoRadius * 2.35 * -1;
   drawLine(x1, torsoY - torsoRadius * 0.25, x2, torsoY - torsoRadius * 0.85, 'black', 3);
+}
+arms(torsoSize/2)
 
-  // Draw the buttons
+  const buttons = (torsoRadius) => {
   for (let i = 0; i < 3; i++) {
     drawFilledCircle(x, torsoY - torsoRadius * 0.5 + i * torsoRadius * 0.5, 4, 'black');
   }
+  }
+  buttons(torsoSize/2)
 
-  // Draw the butt
+  const but = (buttSize) => {
   const buttRadius = buttSize / 2;
   drawCircle(x, buttY, buttRadius + 2, 'black', 3);
   drawFilledCircle(x, buttY, buttRadius, 'white', 3);
+  }
+  butt(buttSize)
 };
 
 drawPicture(height * 0.7, height * 0.9, height * 0.7);
