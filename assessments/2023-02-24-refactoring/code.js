@@ -2,9 +2,11 @@ const x = width / 2
 
 const radius = (size) => { return size / 2 }
 
-const total = ((tot, p) => tot + p, 0);
+const total = proportions.reduce((tot, p) => tot + p, 0);
 
-const indSize = (size, p) => { return size * (p / total) }
+const indSize = (size, p,) => { 
+  const proportions = [3, 4, 5];
+  return size * (p / total) }
 
 const background = (horizon) => {
   drawFilledRect(0, 0, width, horizon, '#ddeeff');
