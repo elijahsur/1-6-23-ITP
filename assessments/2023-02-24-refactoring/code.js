@@ -39,6 +39,11 @@ const eyes = (headRadius, x, headY) => {
     drawFilledRect(x - hatWidth / 2, brimTop - hatHeight, hatWidth, hatHeight, 'black');
   }
 
+  const torso = (torsoSize, x, torsoY) => {
+    drawCircle(x, torsoY, radius(torsoSize) + 2, 'black', 3);
+    drawFilledCircle(x, torsoY, radius(torsoSize), 'white', 3);
+  }
+
 const drawPicture = (horizon, base, size) => {
 
   const x = width / 2;
@@ -51,11 +56,6 @@ const drawPicture = (horizon, base, size) => {
   const headY = (base - size) + indSize(headP) / 2;
   const torsoY = headY + indSize(headP) / 2 + indSize(torsoP / 2)
   const buttY = torsoY + indSize(torsoP) / 2 + indSize(buttP / 2)
-
-  const torso = (torsoSize) => {
-    drawCircle(x, torsoY, radius(torsoSize) + 2, 'black', 3);
-    drawFilledCircle(x, torsoY, radius(torsoSize), 'white', 3);
-  }
 
   const arms = (torsoRadius) => {
     let x1 = x + torsoRadius * 0.6;
@@ -89,7 +89,7 @@ const drawPicture = (horizon, base, size) => {
 
   hat(indSize(headP) / 2, x, headY)
 
-  torso(indSize(torsoP))
+  torso(indSize(torsoP), x, torsoY)
 
   arms(indSize(torsoP / 2))
 
