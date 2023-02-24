@@ -79,7 +79,7 @@ const drawPicture = (horizon, base, size) => {
 
   background(horizon)
 
-  head(indSize(headP), x headY)
+  head(indSize(headP), x, headY)
 
   eyes(indSize(headP) / 2)
 
