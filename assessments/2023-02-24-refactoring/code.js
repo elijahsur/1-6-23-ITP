@@ -79,23 +79,28 @@ const drawPicture = (horizon, base, size) => {
 
   background(horizon)
 
-  head(indSize(headP), x, headY)
+  const headRadius = (indSize(headP, size, total))
+  const torsoRadius = (indSize(torsoP, size, total))
 
-  eyes(indSize(headP) / 2, x, headY)
+  background(horizon)
 
-  nose(indSize(headP) / 2, x, headY)
+  head(headRadius, x, headY)
 
-  mouth(indSize(headP), x, headY)
+  eyes(headRadius / 2, x, headY)
 
-  hat(indSize(headP) / 2, x, headY)
+  nose(headRadius / 2, x, headY)
 
-  torso(indSize(torsoP), x, torsoY)
+  mouth(headRadius, x, headY)
 
-  arms(indSize(torsoP / 2), x, torsoY)
+  hat(headRadius / 2, x, headY)
 
-  buttons(indSize(torsoP / 2), x, torsoY)
+  torso(torsoRadius, x, torsoY)
 
-  butt(indSize(buttP), x, buttY)
+  arms(torsoRadius, x, torsoY)
+
+  buttons(torsoRadius, x, torsoY)
+
+  butt(indSize(buttP, size, total), x, buttY)
 };
 
 drawPicture(height * 0.7, height * 0.9, height * 0.7);
