@@ -8,8 +8,8 @@ const drawPicture = (horizon, base, size) => {
   const indSize = (p) => {return size * (p / total)}
 
   const headY = (base - size) + indSize(headP) / 2;
-  const torsoY = headY + indSize(headP) / 2 + indSize(torsoP / 2;
-  const buttY = torsoY + indSize(torsoP / 2 + indSize(buttP / 2;
+  const torsoY = headY + indSize(headP) / 2 + indSize(torsoP / 2)
+  const buttY = torsoY + indSize(torsoP) / 2 + indSize(buttP / 2)
 
   const radius = (size) => {return size / 2}
 
