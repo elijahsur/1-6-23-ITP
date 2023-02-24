@@ -36,6 +36,7 @@ const drawPicture = (base, size) => {
 
   const eyes = (headRadius) => {
     const eyeSpacing = headRadius * 0.25;
+    const headY = (base - size) + indSize(headP) / 2
     drawFilledCircle(x - eyeSpacing, headY - eyeSpacing, 4, 'black');
     drawFilledCircle(x + eyeSpacing, headY - eyeSpacing, 4, 'black');
   }
