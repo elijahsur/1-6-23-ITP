@@ -89,13 +89,13 @@ const drawPicture = (horizon, base, size) => {
 
   hat(indSize(headP) / 2)
 
-  torso(indSize(torsoP)
+  torso(indSize(torsoP))
 
-  arms(indSize(torsoP / 2)
+  arms(indSize(torsoP / 2))
 
-  buttons(indSize(torsoP / 2)
+  buttons(indSize(torsoP / 2))
 
-  butt(indSize(buttP)
+  butt(indSize(buttP))
 };
 
 drawPicture(height * 0.7, height * 0.9, height * 0.7);
