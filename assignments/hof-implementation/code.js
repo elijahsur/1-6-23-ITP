@@ -3,10 +3,11 @@
 const filter = (predicate, array) => {
   let nArray = []
   for (let i = 0; i < array.length; i++) {
-    if (predicate(n)) {
+    if (predicate(i)) {
       nArray.push[array[i]]
       }
   }
+  return nArray
 };
 
 const map = (fn, array) => {
