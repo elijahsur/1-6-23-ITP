@@ -17,6 +17,11 @@ const map = (fn, array) => {
 };
 
 const flatMap = (fn, array) => {
+  let tot = 0
+  for (let i = 0; i < array.length; i++) {
+    tot = fn(tot, i)
+  }
+  return tot
 };
 
 const reduce = (fn, initialValue, array) => {
