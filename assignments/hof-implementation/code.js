@@ -27,11 +27,10 @@ const flatMap = (fn, array) => {
 };
 
 const reduce = (fn, initialValue, array) => {
-  let nValue = initialValue
   for (let i = 0; i < array.length; i++) {
-    nValue = fn(nValue, i) 
+    initialValue = fn(initialValue, i) 
   }
-  return nValue
+  return initialValue
 };
 
 const every = (predicate, array) => {
