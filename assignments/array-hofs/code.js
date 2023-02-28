@@ -5,3 +5,4 @@ const names = (a) => a.flatMap((a) => a["name"])
 const grades = (a) => a.flatMap((a) => a["name"])
 const pairs = (a) => a.map((a) => [a, a])
 const averageGrade = (a) => a.flatMap((a) => a["grade"]).reduce((tot, a) => tot + a) / a.length
+const flatpairs = (a) => 
