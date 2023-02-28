@@ -7,3 +7,4 @@ const pairs = (a) => a.map((a) => [a, a])
 const averageGrade = (a) => a.flatMap((a) => a["grade"]).reduce((tot, a) => tot + a) / a.length
 const flatpairs = (a) => a.flatMap((a) => [a, a])
 const allEven = (a) => a.every((a) => a % 2 === 0)
+const someEven = (a) => a.some((a) => a % 2 === 0)
