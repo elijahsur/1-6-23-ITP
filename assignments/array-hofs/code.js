@@ -4,4 +4,4 @@ const big = (a) => a.filter((a) => a > 100)
 const names = (a) => a.flatMap((a) => a["name"])
 const grades = (a) => a.flatMap((a) => a["name"])
 const pairs = (a) => a.map((a) => [a, a])
-const averageGrade = (a) => a["grade"].reduce((tot, a) => tot + a) / a.length
+const averageGrade = (a) => a.flatMap((a) => a["grade"]).reduce((tot, a) => tot + a) / a.length
