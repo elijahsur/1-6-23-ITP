@@ -8,4 +8,4 @@ const averageGrade = (a) => a.flatMap((a) => a["grade"]).reduce((tot, a) => tot 
 const flatpairs = (a) => a.flatMap((a) => [a, a])
 const allEven = (a) => a.every((a) => a % 2 === 0)
 const someEven = (a) => a.some((a) => a % 2 === 0)
-const lengthOfNames = (a) => a.filter((a) => 1)
+const lengthOfNames = (a) => a.filter((a) => a[0] === "A","B","C")
