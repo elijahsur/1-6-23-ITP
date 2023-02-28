@@ -1,0 +1,1 @@
+const evens = (a) => a.filter((a) => a % 2 === 0)
