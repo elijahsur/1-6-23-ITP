@@ -10,5 +10,6 @@ const allEven = (a) => a.every((a) => a % 2 === 0)
 const someEven = (a) => a.some((a) => a % 2 === 0)
 const lengthOfNames = (a) => {
   let uppercase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-  return a.filter((a) => a.some((a) => uppercase = a))
+  a.filter((a) => a[0])
+  return a
 }
