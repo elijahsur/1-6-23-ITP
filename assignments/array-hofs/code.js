@@ -11,7 +11,8 @@ const someEven = (a) => a.some((a) => a % 2 === 0)
 const lengthOfNames = (a) => {
   let n = a.map((a) => a[0])
   let length = n.filter((n) => n.toUpperCase() === n)
-  console.log(length)
-  return length.map((a) => a.length)
+  let done = length.map((a) => a.length)
+  console.log(done)
+  return done
   }
 lengthOfNames(['Fred','Barney','car','Wilma','rock','Betty','dinosaur'])
