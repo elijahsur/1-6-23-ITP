@@ -9,7 +9,7 @@ const flatpairs = (a) => a.flatMap((a) => [a, a])
 const allEven = (a) => a.every((a) => a % 2 === 0)
 const someEven = (a) => a.some((a) => a % 2 === 0)
 const lengthOfNames = (a) => {
-  let length = a.filter((n) => n[0].toUpperCase() === n)
+  let length = a.filter((n) => n[1].toUpperCase() === n)
   console.log(length)
   return length
   }
