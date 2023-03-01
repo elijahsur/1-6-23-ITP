@@ -10,7 +10,5 @@ const allEven = (a) => a.every((a) => a % 2 === 0)
 const someEven = (a) => a.some((a) => a % 2 === 0)
 const lengthOfNames = (a) => {
   let uppercase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-  a.map((a) => a[0])
-  return a
-}
+  return a.map((a) => a[0])}
 lengthOfNames(['Fred','Barney','car','Wilma','rock','Betty','dinosaur'])
