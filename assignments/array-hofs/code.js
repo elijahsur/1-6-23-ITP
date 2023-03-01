@@ -12,4 +12,3 @@ const lengthOfNames = (a) => {
   let length = a.filter((n) => n[0].toUpperCase() === n[0])
   return length.map((a) => a.length)
   }
-lengthOfNames(['Fred','Barney','car','Wilma','rock','Betty','dinosaur'])
