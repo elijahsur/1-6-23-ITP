@@ -1,32 +1,43 @@
 // travelling salesman problem code
 
+const maxRandom = (max) => {
+    return Math.floor(Math.random() * max)
+}
+
 // makes random cities on a grid, represented with an x and y axis
 const makeCities = (nCities, boardSize) => {
     let cityArray = []
     for (let i = 0; i < nCities; i++) {
-        cityArray.push([Math.floor(Math.random() * boardSize), Math.floor(Math.random() * boardSize)])
+        cityArray.push([maxRandom(boardSize), maxRandom(boardSize)])
     }
     return cityArray
 }
-// judges based on if it goes to any city multiple times
-const fitness = (path) => {
+// not sure what im doing with this function
+const duplicateCities = (path) => {
     let fitness = 0
-    for (let i = 0; i < path.length; i++) {
+    for (let i = 1; i < path.length; i++) {
         if (!path.every((n) => path[i] === n)) {
-            fitness + 1 / path.length
-        } else {
-            fitness - 1 / path.length
-        }
+            fitness = fitness + (Math.abs(path[i][0] - path[i - 1][0]) + Math.abs(path[i][1] - path[i - 1][1]))
+        } else { }
     }
-    return fitness
+    return { path, fitness }
 }
 
 // creates the first batch of paths
-const firstBatch = (cityList) => {
+const firstBatch = (cityList, batchAmount) => {
     let batch = []
-    for (let i = 0; i < cityList.length; i++) {
-        batch.push()
+    for (let i = 0; i < batchAmount; i++) {
+        let indBatch = [...cityList]
+        for (let j = 0; j < cityList.length; j++) {
+            let random = cityList[maxRandom(cityList.length)]
+            indBatch.splice(indBatch.indexOf(random), 1)
+            indBatch.push(random)
+        }
+        console.log(indBatch)
+        batch.push(indBatch)
     }
+    console.log('end of individual batches')
+    return batch
 }
 
 const topPaths = (path) => {
@@ -40,4 +51,4 @@ const algorithm = (cityList) => {
     }
 }
 
-console.log(makeCities(20,500))
+console.log(firstBatch(makeCities(20, 500), 3))
