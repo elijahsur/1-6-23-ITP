@@ -13,14 +13,16 @@ const makeCities = (nCities, boardSize) => {
     return cityArray
 }
 // not sure what im doing with this function
-const duplicateCities = (path) => {
-    let fitness = 0
-    for (let i = 1; i < path.length; i++) {
-        if (!path.every((n) => path[i] === n)) {
-            fitness = fitness + (Math.abs(path[i][0] - path[i - 1][0]) + Math.abs(path[i][1] - path[i - 1][1]))
-        } else { }
+const fitness = (paths) => {
+    let nPaths = []
+    for (let j = 0; j < paths.length; j++) {
+        let fitness = 0
+        for (let i = 1; i < paths[j].length; i++) {
+            fitness = fitness + (Math.abs(paths[j][i][0] - paths[j][i - 1][0]) + Math.abs(paths[j][i][1] - paths[j][i - 1][1]))
+        }
+        nPaths.push({"path": paths[j], fitness })
     }
-    return { path, fitness }
+    return nPaths
 }
 
 // creates the first batch of paths
@@ -33,10 +35,8 @@ const firstBatch = (cityList, batchAmount) => {
             indBatch.splice(indBatch.indexOf(random), 1)
             indBatch.push(random)
         }
-        console.log(indBatch)
         batch.push(indBatch)
     }
-    console.log('end of individual batches')
     return batch
 }
 
@@ -51,4 +51,4 @@ const algorithm = (cityList) => {
     }
 }
 
-console.log(firstBatch(makeCities(20, 500), 3))
+console.log(fitness(firstBatch(makeCities(20, 500), 3)))
