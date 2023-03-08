@@ -66,9 +66,29 @@ const topOnly = (paths) => {
     return paths[0]
 }
 
-const algorithm = (cityCount, boardSize, batchAmount) => {
+const mutate = (paths) => {
+    for (let i = 1; i < paths.length; i++) {
+        let part = maxRandom(paths[i].path.length)
+        let nPart = paths[i].path[part]
+        let indexOfPart = paths[i].path.indexOf(nPart)
+        let pastIndex = paths[i - 1].path.indexOf(nPart)
+        let pastPart = paths[i - 1].path[indexOfPart]
+        paths[i - 1].path[indexOfPart] = nPart
+        paths[i - 1].path[pastIndex] = pastPart
+
+    }
+    return paths
+}
+
+const algorithm = (cityCount, boardSize, batchAmount, limit) => {
     let cityArray = makeCities(cityCount, boardSize)
     let firstBatch = createBatch(cityArray, batchAmount)
+    let currentBatch = firstBatch
+    for (let i = 0; i < limit; i++) {
+        let newBatch = sortByFitness(groupFitness(currentBatch))
+        currentBatch = mutate(topOnly(newBatch))
+    }
+    return currentBatch
 };
 
-console.log(JSON.stringify(sortByFitness(groupFitness(firstBatch(makeCities(20, 500), 12))), null, 2));
+console.log(JSON.stringify(algorithm(20, 500, 20, 50), null, 2));
