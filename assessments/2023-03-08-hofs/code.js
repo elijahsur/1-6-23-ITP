@@ -15,3 +15,7 @@ const shouty = (stringArray) => {
   }
   return nArray
 }
+
+const shouty2 = (strings) => {
+  return strings.map((s) => s.toUpperCase());
+};
