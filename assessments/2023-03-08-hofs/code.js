@@ -7,3 +7,7 @@ const evens = (numberArray) => {
   }
   return nArray
 }
+
+const evens2 = (numbers) => {
+  return numbers.filter((n) => n % 2 === 0);
+};
