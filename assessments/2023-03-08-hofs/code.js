@@ -8,6 +8,10 @@ const evens = (numberArray) => {
   return nArray
 }
 
-const evens2 = (numbers) => {
-  return numbers.filter((n) => n % 2 === 0);
-};
+const shouty = (stringArray) => {
+  let nArray = []
+  for (let i = 0; i < stringArray.length; i++) {
+    nArray.push(stringArray[i].toUpperCase())
+  }
+  return nArray
+}
