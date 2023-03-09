@@ -60,35 +60,34 @@ const sortByFitness = (paths) => {
     return paths.slice(Math.floor(paths.length / 2), paths.length)
 };
 
-// returns only the most fit path
-const topOnly = (paths) => {
-    paths.sort((a, b) => a.fitness - b.fitness);
-    return paths[0]
-}
 
+// something not quite working about this function
 const mutate = (paths) => {
     for (let i = 1; i < paths.length; i++) {
         let part = maxRandom(paths[i].path.length)
-        let nPart = paths[i].path[part]
-        let indexOfPart = paths[i].path.indexOf(nPart)
-        let pastIndex = paths[i - 1].path.indexOf(nPart)
-        let pastPart = paths[i - 1].path[indexOfPart]
-        paths[i - 1].path[indexOfPart] = nPart
-        paths[i - 1].path[pastIndex] = pastPart
-
+        let indPath = paths[i].path
+        let pastPath = paths[i - 1].path
+        let nPart = indPath[part]
+        let nIndex = indPath.indexOf(nPart)
+        let pastPart = pastPath[part]
+        let pastIndex = pastPath.indexOf(pastPart)
+        
+        pastPath[nIndex] = part
+        pastPath[pastIndex] = pastPart
     }
-    return paths
 }
 
 const algorithm = (cityCount, boardSize, batchAmount, limit) => {
     let cityArray = makeCities(cityCount, boardSize)
     let firstBatch = createBatch(cityArray, batchAmount)
-    let currentBatch = firstBatch
+    let currentBatch = [...firstBatch];
     for (let i = 0; i < limit; i++) {
         let newBatch = sortByFitness(groupFitness(currentBatch))
-        currentBatch = mutate(topOnly(newBatch))
+        currentBatch = mutate(newBatch)
+        console.log(currentBatch)
     }
     return currentBatch
 };
 
-console.log(JSON.stringify(algorithm(20, 500, 20, 50), null, 2));
+const foo = algorithm(10, 500, 10, 50);
+//console.log(JSON.stringify(foo, null, 2));
