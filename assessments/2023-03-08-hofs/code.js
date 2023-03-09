@@ -22,7 +22,7 @@ const join = (stringArray, delimiter) => {
     if (joined === null) {
       joined = stringArray[i]
     } else {
-      joined = joined + delimiter + stringArray[i]
+      joined = joined + stringArray[i] + delimiter
     }
   }
   return joined
