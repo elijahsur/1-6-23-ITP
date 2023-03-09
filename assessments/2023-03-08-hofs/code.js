@@ -28,6 +28,16 @@ const join = (stringArray, delimiter) => {
   return joined
 }
 
+const joinx = (strings, delimiter) => {
+  return strings.reduce((joined, s) => {
+    if (joined === null) {
+      return s;
+    } else {
+      return joined + delimiter + s;
+    }
+  }, null);
+};
+
 const allSiblings = (studentArray) => {
   let nArray = []
   for (let i = 0; i < studentArray.length; i++) {
