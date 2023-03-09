@@ -16,6 +16,52 @@ const shouty = (stringArray) => {
   return nArray
 }
 
-const shouty2 = (strings) => {
-  return strings.map((s) => s.toUpperCase());
-};
+const join = (stringArray, delimiter) => {
+  let joined = []
+  for (let i = 0; i < stringArray.length; i++) {
+    if (joined === null) {
+      joined = stringArray[i]
+    } else {
+      joined = joined + delimiter + stringArray[i]
+    }
+  }
+  return joined
+}
+
+const allSiblings = (studentArray) => {
+  let nArray = []
+  for (let i = 0; i < studentArray.length; i++) {
+    nArray.push(studentArray[i].siblings)
+  }
+  return nArray
+}
+
+const allPassing = (studentArray, passing) => {
+  for (let i = 0; i < studentArray.length; i++) {
+    if (studentArray[i].grade !== passing) {
+      return false
+    }
+  }
+  return true
+}
+
+const someonesFavorite = (peopleArray, food) => {
+  for (let i = 0; i < peopleArray.length; i++) {
+    if (peopleArray[i].favoriteFood === food) {
+      return true
+    }
+  }
+  return false
+}
+
+const strange = (people) => people.filter((a) => a.isStrange)
+
+const birthdays = (students) => students.map((a) => a.birthday)
+
+const heaviest = (animals) => animals.map((a) => a.weight)
+
+const allStudents = (grades) => grades.map((a) => a.students)
+
+const allCromulent = (things) => things.every((a) => isCromulent(a))
+
+const notAllTerrible = (things) => things.some((a) => !isTerrible(a))
