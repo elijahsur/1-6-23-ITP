@@ -54,37 +54,35 @@ const groupFitness = (paths) => {
     return nPaths
 };
 
+// to update the fitness of a path
+const updateFitness = (paths) => {
+    for (let i = 0; i < paths.length; i++) {
+        paths[i].fitness = indFitness(paths[i].path)
+    }
+}
+
 // sorts by fitness, best to worst, and cuts out lower half
 const sortByFitness = (paths) => {
     paths.sort((a, b) => a.fitness - b.fitness);
     return paths.slice(Math.floor(paths.length / 2), paths.length)
 };
 
-
-// something not quite working about this function
 const mutate = (paths) => {
-    for (let i = 1; i < paths.length; i++) {
-        let part = maxRandom(paths[i].path.length)
-        let indPath = paths[i].path
-        let pastPath = paths[i - 1].path
-        let nPart = indPath[part]
-        let nIndex = indPath.indexOf(nPart)
-        let pastPart = pastPath[part]
-        let pastIndex = pastPath.indexOf(pastPart)
-        
-        pastPath[nIndex] = part
-        pastPath[pastIndex] = pastPart
+    for (let i = 0; i < paths.length; i++) {
+        paths[i].path = arrayShuffler(paths[i].path)
     }
-}
+    return paths
+};
 
 const algorithm = (cityCount, boardSize, batchAmount, limit) => {
     let cityArray = makeCities(cityCount, boardSize)
     let firstBatch = createBatch(cityArray, batchAmount)
-    let currentBatch = [...firstBatch];
+    let currentBatch = sortByFitness(groupFitness([...firstBatch]))
+    console.log(currentBatch)
     for (let i = 0; i < limit; i++) {
-        let newBatch = sortByFitness(groupFitness(currentBatch))
+        let newBatch = sortByFitness(updateFitness(currentBatch))
+        //console.log(newBatch)
         currentBatch = mutate(newBatch)
-        console.log(currentBatch)
     }
     return currentBatch
 };
