@@ -42,14 +42,14 @@ const indFitness = (path) => {
     for (let i = 1; i < path.length; i++) {
         fitness = fitness + (Math.abs(path[i].x - path[i - 1].x) + Math.abs(path[i].y - path[i - 1].y))
     };
-    return { path, fitness }
+    return fitness
 };
 
 // meant to return an array with paths.length amount of objects, all of which contain the fitness and an array of x and y coordinates
 const groupFitness = (paths) => {
     let nPaths = [];
     for (let i = 0; i < paths.length; i++) {
-        nPaths.push(indFitness(paths[i]))
+        nPaths.push({'path': paths[i], 'fitness': indFitness(paths[i])})
     };
     return nPaths
 };
@@ -59,6 +59,7 @@ const updateFitness = (paths) => {
     for (let i = 0; i < paths.length; i++) {
         paths[i].fitness = indFitness(paths[i].path)
     }
+    return paths
 }
 
 // sorts by fitness, best to worst, and cuts out lower half
@@ -67,10 +68,20 @@ const sortByFitness = (paths) => {
     return paths.slice(Math.floor(paths.length / 2), paths.length)
 };
 
-const mutate = (paths) => {
-    for (let i = 0; i < paths.length; i++) {
-        paths[i].path = arrayShuffler(paths[i].path)
-    }
+const evolve = (paths, batchN) => {
+        for (let i = 1; i < paths.length; i++) {
+            let nPath = {'path': paths[i].path, 'fitness': paths[i].fitness}
+            let part = maxRandom(paths[i].path.length)
+            let indPath = paths[i].path
+            let pastPath = paths[i - 1].path
+            let nPart = indPath[part]
+            let nIndex = indPath.indexOf(nPart)
+            let pastPart = pastPath[part]
+            let pastIndex = pastPath.indexOf(pastPart)
+
+            pastPath[nIndex] = part
+            pastPath[pastIndex] = pastPart
+        }
     return paths
 };
 
@@ -78,14 +89,12 @@ const algorithm = (cityCount, boardSize, batchAmount, limit) => {
     let cityArray = makeCities(cityCount, boardSize)
     let firstBatch = createBatch(cityArray, batchAmount)
     let currentBatch = sortByFitness(groupFitness([...firstBatch]))
-    console.log(currentBatch)
     for (let i = 0; i < limit; i++) {
         let newBatch = sortByFitness(updateFitness(currentBatch))
-        //console.log(newBatch)
-        currentBatch = mutate(newBatch)
+        currentBatch = evolve(newBatch, batchAmount)
+        console.log(currentBatch.length)
     }
     return currentBatch
 };
 
-const foo = algorithm(10, 500, 10, 50);
-//console.log(JSON.stringify(foo, null, 2));
+console.log(algorithm(10, 500, 100, 200))
