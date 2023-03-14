@@ -1,4 +1,4 @@
-const evens = (numberArray) => {
+const evens = (numberArray) => { // correct
   let nArray = []
   for (let i = 0; i < numberArray.length; i++) {
     if (i % 2 === 0) {
@@ -8,7 +8,7 @@ const evens = (numberArray) => {
   return nArray
 }
 
-const shouty = (stringArray) => {
+const shouty = (stringArray) => { // correct
   let nArray = []
   for (let i = 0; i < stringArray.length; i++) {
     nArray.push(stringArray[i].toUpperCase())
@@ -16,7 +16,7 @@ const shouty = (stringArray) => {
   return nArray
 }
 
-const join = (stringArray, delimiter) => {
+const join = (stringArray, delimiter) => { // almost
   let joined = []
   for (let i = 0; i < stringArray.length; i++) {
     if (joined === null) {
@@ -28,7 +28,7 @@ const join = (stringArray, delimiter) => {
   return joined
 }
 
-const allSiblings = (studentArray) => {
+const allSiblings = (studentArray) => { // pattern
   let nArray = []
   for (let i = 0; i < studentArray.length; i++) {
     nArray.push(studentArray[i].siblings)
@@ -36,7 +36,7 @@ const allSiblings = (studentArray) => {
   return nArray
 }
 
-const allPassing = (studentArray, passing) => {
+const allPassing = (studentArray, passing) => { // almost
   for (let i = 0; i < studentArray.length; i++) {
     if (studentArray[i].grade !== passing) {
       return false
@@ -45,7 +45,7 @@ const allPassing = (studentArray, passing) => {
   return true
 }
 
-const someonesFavorite = (peopleArray, food) => {
+const someonesFavorite = (peopleArray, food) => { // correct
   for (let i = 0; i < peopleArray.length; i++) {
     if (peopleArray[i].favoriteFood === food) {
       return true
@@ -54,14 +54,14 @@ const someonesFavorite = (peopleArray, food) => {
   return false
 }
 
-const strange = (people) => people.filter((a) => a.isStrange)
+const strange = (people) => people.filter((a) => a.isStrange) // correct
 
-const birthdays = (students) => students.map((a) => a.birthday)
+const birthdays = (students) => students.map((a) => a.birthday) // correct
 
-const heaviest = (animals) => animals.map((a) => a.weight)
+const heaviest = (animals) => animals.map((a) => a.weight) // something
 
-const allStudents = (grades) => grades.map((a) => a.students)
+const allStudents = (grades) => grades.map((a) => a.students) // something
 
-const allCromulent = (things) => things.every((a) => isCromulent(a))
+const allCromulent = (things) => things.every((a) => isCromulent(a)) // correct
 
-const notAllTerrible = (things) => things.some((a) => !isTerrible(a))
+const notAllTerrible = (things) => things.some((a) => !isTerrible(a)) // correct
