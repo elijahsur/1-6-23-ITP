@@ -49,7 +49,7 @@ const indFitness = (path) => {
 const groupFitness = (paths) => {
     let nPaths = [];
     for (let i = 0; i < paths.length; i++) {
-        nPaths.push({'path': paths[i], 'fitness': indFitness(paths[i])})
+        nPaths.push({ 'path': paths[i], 'fitness': indFitness(paths[i]) })
     };
     return nPaths
 };
@@ -64,37 +64,45 @@ const updateFitness = (paths) => {
 
 // sorts by fitness, best to worst, and cuts out lower half
 const sortByFitness = (paths) => {
-    paths.sort((a, b) => a.fitness - b.fitness);
+    paths.sort((b, a) => a.fitness - b.fitness);
     return paths.slice(Math.floor(paths.length / 2), paths.length)
 };
 
 const evolve = (paths, batchN) => {
-        for (let i = 1; i < paths.length; i++) {
-            let nPath = {'path': paths[i].path, 'fitness': paths[i].fitness}
+    let limit = paths.length
+    for (let i = 1; i < batchN - limit; i++) {
+        let newPath = { 'path': paths[i - 1].path, 'fitness': paths[i - 1].fitness }
+        if (maxRandom(5) / 5 !== 1) {
             let part = maxRandom(paths[i].path.length)
-            let indPath = paths[i].path
-            let pastPath = paths[i - 1].path
-            let nPart = indPath[part]
-            let nIndex = indPath.indexOf(nPart)
-            let pastPart = pastPath[part]
-            let pastIndex = pastPath.indexOf(pastPart)
-
-            pastPath[nIndex] = part
-            pastPath[pastIndex] = pastPart
+            let switchedPart = { 'part': paths[i].path[part], 'index': paths[i].path.indexOf(paths[i].path[part]) }
+            let oldPart = { 'part': paths[i - 1].path[switchedPart.index], 'index': paths[i - 1].path.indexOf(paths[i].path[part]) }
+            newPath.path[switchedPart.index] = switchedPart.part
+            newPath.path[oldPart.index] = oldPart.part
+        } else {
+            let partLocation = maxRandom(newPath.path.length)
+            let randomReplacement = maxRandom(newPath.path.length)
+            let newPart = newPath.path[partLocation]
+            let previousPart = newPath.path[randomReplacement]
+            newPath.path[partLocation] = previousPart
+            newPath.part[randomReplacement] = newPart
         }
+        paths.push(newPath)
+    }
     return paths
 };
 
 const algorithm = (cityCount, boardSize, batchAmount, limit) => {
     let cityArray = makeCities(cityCount, boardSize)
     let firstBatch = createBatch(cityArray, batchAmount)
-    let currentBatch = sortByFitness(groupFitness([...firstBatch]))
+    let currentBatch = groupFitness([...firstBatch])
     for (let i = 0; i < limit; i++) {
         let newBatch = sortByFitness(updateFitness(currentBatch))
         currentBatch = evolve(newBatch, batchAmount)
-        console.log(currentBatch.length)
+        if (i % 4 === 0) {
+            console.log(currentBatch[0].fitness)
+        }
     }
-    return currentBatch
+    return currentBatch[0]
 };
 
 console.log(algorithm(10, 500, 100, 200))
