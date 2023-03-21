@@ -9,10 +9,19 @@
 </head>
 <body>
   <h1>vender algorithm</h1>
+  <canvas></canvas>
   <p> </p>
+  <div id="path"><fieldset>
+    <legend><p>path</p></legend>
+    <input id="generate" type="button"></input>
+    <p id="fitness"></p>
+    <ol id="generation"></ol>
+  </fieldset></div>
   <fieldset>
     <legend><p>settings</p></legend>
-    <p>cities</p>
+    <p>custom cities</p>
+    <input type="text" id="custom"></input>
+    <p>amount of cities</p>
     <input type="text" id="cities"></input>
     <p>size of board</p>
     <input type="text" id="boardSize"></input>
@@ -20,10 +29,8 @@
     <input type="text" id="batchSize"></input>
     <p>total generations</p>
     <input type="text" id="totGenerations"></input>
-    <p>use bruteforce</p>
+    <p>use bruteforce generation to compare</p>
     <input id="bruteForce" type="button"></input>
-    <p>clear generations</p>
-    <input id="clear" type="button"></input>
   </fieldset>
 </body>
 </html>
