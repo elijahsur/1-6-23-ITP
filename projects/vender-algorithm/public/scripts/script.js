@@ -40,25 +40,30 @@ const fullGenerate = () => {
   drawPath(generation)
 }
 
-const drawPath = (pandf) => {
-  // this part works but leaves out the lines for some reason
-  // for (let j = 0; j < pandf.path.length; j++) {
-    // can.beginPath()
-    // can.strokeStyle = "black"
-    // can.ellipse(pandf.path[j].x, pandf.path[j].y, 5, 5, 0, 0, 360)
-    // can.fill()
-  // }
-  can.beginPath()
-  can.strokeStyle = "black"
-  can.moveTo(pandf.path[0].x, pandf.path[0].y)
+const drawCities = (pandf) => {
+  for (let j = 0; j < pandf.path.length; j++) {
+      can.beginPath()
+      can.fillStyle = "black"
+      can.ellipse(pandf.path[j].x, pandf.path[j].y, 5, 5, 0, 0, 360)
+      can.fill()
+    }
+}
+
+const drawRoute = (pandf) => {
+  let colorAddition = 0
   for (let i = 1; i < pandf.path.length; i++) {
-    can.lineTo(pandf.path[i].x, pandf.path[i].y)
     can.beginPath()
-    can.ellipse(pandf.path[i].x, pandf.path[i].y, 5, 5, 0, 0, 360)
-    can.fill()
-    can.stroke
+    can.moveTo(pandf.path[i - 1].x, pandf.path[i - 1].y)
+    can.strokeStyle = `rgb(${colorAddition}, 0, 0)`
+    can.lineTo(pandf.path[i].x, pandf.path[i].y)
+    colorAddition = colorAddition + 255 / pandf.path.length
+    can.stroke()
   }
-  can.stroke()
+}
+
+const drawPath = (pandf) => {
+  drawCities(pandf)
+  drawRoute(pandf)
   console.log('path drawn')
 }
 
