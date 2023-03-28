@@ -84,9 +84,14 @@ const evolve = (paths, batchN) => {
 };
 
 //runs the functions from above
-const algorithm = (cityCount, boardSize, batchAmount, limit, useBruteForce) => {
+const algorithm = (cityCount, boardSize, batchAmount, limit, useBruteForce, useCustomCities) => {
     let cityArray = makeCities(cityCount, boardSize)
-    let firstBatch = createBatch(cityArray, batchAmount)
+    let firstBatch
+    if (useCustomCities !== undefined) {
+        firstBatch = useCustomCities
+    } else {
+        firstBatch = createBatch(cityArray, batchAmount)
+    }
     let currentBatch = groupFitness([...firstBatch])
     for (let i = 0; i < limit; i++) {
         let newBatch = sortByFitness(updateFitness(currentBatch))
@@ -95,7 +100,7 @@ const algorithm = (cityCount, boardSize, batchAmount, limit, useBruteForce) => {
     // use to check if algorithm is performing better than a bruteforce algorithm
     if (useBruteForce) {
         let bruteForceFitness = bruteForce(firstBatch, limit)[0].fitness
-        return { 'bruteforce fitness': bruteForceFitness, 'algorithm fitness': currentBatch[0].fitness, 'algorithm < bruteforce?': currentBatch[0].fitness < bruteForceFitness }
+        return { 'bruteforceFitness': bruteForceFitness, 'algorithmFitness': currentBatch[0].fitness, 'algorithm<bruteforce?': currentBatch[0].fitness < bruteForceFitness }
     };
     return currentBatch[0]
 };
