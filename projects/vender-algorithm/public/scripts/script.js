@@ -20,14 +20,11 @@ can.strokeStyle = "black"
 const fullGenerate = () => {
   document.querySelector('#generation').textContent = ''
   can.reset()
-  let generation
-  if (custom === undefined) {
-    generation = algorithm(cityCount, boardSize, batchAmount, totalGenerations, bruteForceValue, custom)
-  } else {
-    generation = algorithm(cityCount, boardSize, batchAmount, totalGenerations, bruteForceValue, custom)
-  }
+  let generation = algorithm(cityCount, boardSize, batchAmount, totalGenerations, bruteForceValue, custom)
   if (bruteForceValue) {
-    document.querySelector('#fitness').textContent = 'algorithm fitness: ' + Math.floor(1 / generation.algorithmFitness * 100000) + ', ' + 'bruteforce fitness: ' + Math.floor(1 / generation.bruteforceFitness * 100000)
+    let multiplyBy = Math.floor(10 ** (generation.algorithmFitness.toString().length + 1))
+    console.log(multiplyBy)
+    document.querySelector('#fitness').textContent = 'algorithm fitness: ' + Math.floor(1 / generation.algorithmFitness * multiplyBy) + ', ' + 'bruteforce fitness: ' + Math.floor(1 / generation.bruteforceFitness * multiplyBy)
   } else {
     document.querySelector('#fitness').textContent = 'fitness: ' + generation.fitness
     for (let i = 0; i < generation.path.length; i++) {
@@ -37,16 +34,23 @@ const fullGenerate = () => {
     }
   }
   console.log(generation)
-  drawPath(generation)
+  if (!bruteForceValue) {
+    canvas.width = boardSize
+    canvas.height = boardSize
+    drawPath(generation)
+  } else {
+    canvas.width = 0
+    canvas.height = 0
+  }
 }
 
 const drawCities = (pandf) => {
   for (let j = 0; j < pandf.path.length; j++) {
-      can.beginPath()
-      can.fillStyle = "black"
-      can.ellipse(pandf.path[j].x, pandf.path[j].y, 5, 5, 0, 0, 360)
-      can.fill()
-    }
+    can.beginPath()
+    can.fillStyle = "black"
+    can.ellipse(pandf.path[j].x, pandf.path[j].y, 5, 5, 0, 0, 360)
+    can.fill()
+  }
 }
 
 const drawRoute = (pandf) => {
