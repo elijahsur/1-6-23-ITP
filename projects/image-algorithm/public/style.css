@@ -4,9 +4,14 @@ body {
 }
 
 h1 {
-  font-family: sans-serif;
+  font-family: 'Trebuchet MS';
 }
 
 p {
   font-size: 18px;
+  font-family: 'Trebuchet MS';
+}
+
+canvas {
+  border: 1px solid black;
 }
