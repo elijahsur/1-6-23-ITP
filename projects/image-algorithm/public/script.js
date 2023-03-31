@@ -3,29 +3,52 @@ let image = document.querySelector('#mona-lisa');
 
 let canvas = document.querySelector('canvas');
 
-let circleCount = 50
+let picture = document.querySelector('#picture');
 
-canvas.height = image.height
-canvas.width = image.width
+let triangleCount = 50;
+
+picture.height = image.height / 2
+picture.width = image.width / 2
 
 let ctx = canvas.getContext("2d");
+let cdy = picture.getContext("2d");
+
+cdy.drawImage(image, -(image.width / 4), 0)
+
+canvas.height = picture.height
+canvas.width = picture.width
 
 //specific max amount, then generates random numbers
 const maxRandom = (max) => {
     return Math.floor(Math.random() * max)
 };
 
-//draws the first batch of random circles around the canvas
-const randomCircles = () => {
- for (let i = 0; i < circleCount; i++) {
-    let maxY = maxRandom(image.height)
-    let maxX = maxRandom(image.width)
-    ctx.globalAlpha = 0.5
-    ctx.beginPath()
-    ctx.fillStyle = 'black'
-    ctx.ellipse(maxX, maxY, 10, 10, 0, 0, 360)
-    ctx.fill()
- }
+//draws the first batch of random triangles around the canvas
+const randomTriangles = () => {
+    for (let i = 0; i < triangleCount; i++) {
+        ctx.globalAlpha = 0.5
+        ctx.beginPath()
+        ctx.strokeStyle = 'black'
+        let maxY = maxRandom(image.height)
+        let maxX = maxRandom(image.width)
+        ctx.moveTo(maxX, maxY)
+        for (let i = 0; i < 2; i++) {
+            let xDistance = maxX
+            if (maxRandom(2) === 1) {
+                xDistance = maxX + (maxRandom(50) + 50)
+            } else {
+                xDistance = maxX - (maxRandom(50) - 50)
+            }
+            let yDistance = maxY
+            if (maxRandom(2) === 1) {
+                yDistance = maxY + (maxRandom(50) + 50)
+            } else {
+                yDistance = maxY - (maxRandom(50) - 50)
+            }
+            ctx.lineTo(xDistance, yDistance)
+        }
+        ctx.fill()
+    }
 }
-document.querySelector('#generate').onclick = () => randomCircles();
-document.querySelector('#circles').onchange = (e) => { if (e.target.value !== '') { circleCount = e.target.value } else { console.log('triangle count is empty') } };
+    document.querySelector('#generate').onclick = () => randomTriangles();
+    document.querySelector('#triangles').onchange = (e) => { if (e.target.value !== '') { triangleCount = e.target.value } else { console.log('triangle count is empty') } };

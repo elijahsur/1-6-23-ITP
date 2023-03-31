@@ -15,3 +15,7 @@ p {
 canvas {
   border: 1px solid black;
 }
+
+#mona-lisa {
+  display: none;
+}
