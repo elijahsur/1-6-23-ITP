@@ -15,7 +15,7 @@ const triangular = (n) => {
 }
 
 const fibonacci = (n) => {
-  if (n === 1) {
+  if (n === 0) {
     return 0
   } else {
     return n - fibonacci(n - 1)
