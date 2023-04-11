@@ -38,6 +38,6 @@ const sum = (a) => {
   if (a === []) {
     return 0
   } else {
-    return sum()
+    return sum(a.slice(1))
   }
 }
