@@ -33,3 +33,11 @@ const gcd = (a, b) => {
     return gcd(b, a % b)
   }
 }
+
+const sum = (a) => {
+  if (a === []) {
+    return 0
+  } else {
+    return a + sum(a.slice(a.length))
+  }
+}
