@@ -55,5 +55,4 @@ const search = (a, v) => {
 }
 
 const reverseString = (s) => {
-  if ()
 }
