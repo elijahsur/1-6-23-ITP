@@ -43,7 +43,7 @@ const sum = (a) => {
 }
 
 const search = (a, v) => {
-  if (a.length === 0) {
+  if (a.length !== 0) {
   if (a[0] === v) {
     return true
   } else {
