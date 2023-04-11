@@ -44,7 +44,7 @@ const sum = (a) => {
 
 const search = (a, v) => {
   if (a[0] === v) {
-    return true
+    return false
   } else {
     return search(a.slice(1), v)
   }
