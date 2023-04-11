@@ -15,7 +15,7 @@ const triangular = (n) => {
 }
 
 const fibonacci = (n) => {
-  if (n === 0) {
+  if (n === ) {
     return 1
   } else {
     return fibonacci(n - 1) + fibonacci(n - 2)
@@ -26,6 +26,6 @@ const gcd = (a, b) => {
   if (b === 0) {
     return a
   } else {
-    return gcd(b) % a
+    return b - a % b
   }
 }
