@@ -38,6 +38,6 @@ const sum = (a) => {
   if (a.length === 0) {
     return 0
   } else {
-    return sum(a.slice(1))
+    return a[0] + sum(a.slice(1))
   }
 }
