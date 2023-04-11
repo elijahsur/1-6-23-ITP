@@ -35,7 +35,7 @@ const gcd = (a, b) => {
 }
 
 const sum = (a) => {
-  if (a.length = 0) {
+  if (a.length === 0) {
     return 0
   } else {
     return sum(a.slice(1))
