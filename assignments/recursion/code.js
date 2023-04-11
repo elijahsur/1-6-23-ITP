@@ -58,6 +58,6 @@ const reverseString = (s) => {
   if (s.length === 0) {
     return s
   } else {
-    return s
+    return s.substring(1, s.length)
   }
 }
