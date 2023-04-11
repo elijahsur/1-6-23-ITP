@@ -66,6 +66,6 @@ const treeMap = (t, f) => {
   if (isLeaf(t)) {
     return f(t)
   } else {
-    return 
+    return (t.left, t.right)
   }
 }
