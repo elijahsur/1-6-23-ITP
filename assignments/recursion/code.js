@@ -61,3 +61,7 @@ const reverseString = (s) => {
     return reverseString(s.substring(1, s.length)) + s[0]
   }
 }
+
+const treeMap = (t, f) => {
+  
+}
