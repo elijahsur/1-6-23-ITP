@@ -15,10 +15,10 @@ const triangular = (n) => {
 }
 
 const fibonacci = (n) => {
-  if (n === 0) {
+  if (n === 2) {
     return 0
   } else {
-    return fibonacci(n - 1) + n
+    return fibonacci(n - 1) + fibonacci(n - 2)
   }
 }
 
