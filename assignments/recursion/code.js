@@ -74,6 +74,8 @@ const change = (n, a) => {
   if (a.length === 0) {
     return 0
   } else {
-
+    if (n === 1) { return 1 } else {
+      return change()
+    }
   }
-  }
+}
