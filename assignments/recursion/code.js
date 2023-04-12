@@ -75,7 +75,7 @@ const change = (n, a) => {
     return 0
   } else {
       if (Math.trunc(n / a[0]) === (n / a[0])) {
-        return n / a[0] + change(n, a.slice(1))
+        return 1 + change(n, a.slice(1))
       }
     }
   }
