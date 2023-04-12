@@ -44,11 +44,11 @@ const sum = (a) => {
 
 const search = (a, v) => {
   if (a.length !== 0) {
-  if (a[0] === v) {
-    return true
-  } else {
-    return search(a.slice(1), v)
-  }
+    if (a[0] === v) {
+      return true
+    } else {
+      return search(a.slice(1), v)
+    }
   } else {
     return false
   }
@@ -71,5 +71,11 @@ const treeMap = (t, f) => {
 }
 
 const change = (n, a) => {
-  
+  if (a.length === 0) {
+    return 0
+  } else {
+    if (Math.trunc(n / a[0]) === (n / a[0])) {
+      return n / a[0] + change(n, a.slice(1))
+    }
+  }
 }
