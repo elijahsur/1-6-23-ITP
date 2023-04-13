@@ -25,6 +25,10 @@ const maxRandom = (max) => {
 
 //draws the first batch of random triangles around the canvas
 const randomTriangles = () => {
+    let testx = maxRandom(picture.width)
+    let testy = maxRandom(picture.height)
+    const data = cdy.getImageData(testx, testy, 1, 1).data
+    console.log(`rgba(${data[0]}, ${data[1]}, ${data[2]}, ${data[3] / 255}), ${testx}, ${testy}`)
     for (let i = 0; i < triangleCount; i++) {
         ctx.globalAlpha = 0.5
         ctx.beginPath()
