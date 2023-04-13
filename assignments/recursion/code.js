@@ -78,7 +78,7 @@ const change = (amt, coins) => {
       return 1
     } else {
       return change(amt - coins[0], coins)
-      change(amt - coins[0], coins)
+      change(amt, coins.slice(1))
     }
   }
 }
