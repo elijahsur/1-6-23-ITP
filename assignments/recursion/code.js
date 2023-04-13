@@ -17,8 +17,7 @@ const triangular = (n) => {
 const fibonacci = (n) => {
   if (n === 0) {
     return 0
-  } else {
-    if (n === 1) {
+  } else if (n === 1) {
       return 1
     } else {
       return fibonacci(n - 2) + fibonacci(n - 1)
@@ -43,14 +42,14 @@ const sum = (a) => {
 }
 
 const search = (a, v) => {
-  if (a.length !== 0) {
+  if (a.length === 0) {
+    return false;
+  } else {
     if (a[0] === v) {
       return true
     } else {
       return search(a.slice(1), v)
     }
-  } else {
-    return false
   }
 }
 
