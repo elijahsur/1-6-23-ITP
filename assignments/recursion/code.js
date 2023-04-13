@@ -75,7 +75,7 @@ const change = (n, a) => {
     if (n < 0 || a.length === 0) {
       return 0
     } else {
-      return 1 + change(n - a[0], a.slice(1))
+      return 1 + change(n - a[0], a.slice(1) + a[0])
     }
   }
 }
