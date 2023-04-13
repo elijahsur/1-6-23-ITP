@@ -77,8 +77,11 @@ const change = (amt, coins) => {
     if (amt === 0) {
       return 1
     } else {
-      return change(amt - coins[0], coins)
-      change(amt, coins.slice(1))
+      if (amt - coins[0] < 0) {
+        return change(amt - coins[0], coins)
+      } else {
+        change(amt, coins.slice(1))
+      }
     }
   }
 }
