@@ -71,12 +71,13 @@ const treeMap = (t, f) => {
 }
 
 const change = (amt, coins) => {
-  if (amt === 1) { return amt } else {
-    if (amt < 0 || coins.length === 0) {
-      return 0
+  if (amt < 0 || coins.length === 0) {
+    return 0
+  } else {
+    if (amt === 0) {
+      return 1
     } else {
-      //return 1 + change(n - a[0], a)
-      change(amt, coins.slice(1))
+      return change(amt, coins.slice(1))
       change(amt - coins[0], coins)
     }
   }
