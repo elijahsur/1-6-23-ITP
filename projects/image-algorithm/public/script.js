@@ -22,37 +22,68 @@ canvas.width = picture.width
 const maxRandom = (max) => {
     return Math.floor(Math.random() * max)
 };
+// returns a random value that is acceptable in RGBA
+const randomRGBA = () => {
+    return maxRandom(255)
+}
 
 //draws the first batch of random triangles around the canvas
 const randomTriangles = () => {
-    let testx = maxRandom(picture.width)
-    let testy = maxRandom(picture.height)
-    const data = cdy.getImageData(testx, testy, 1, 1).data
-    console.log(`rgba(${data[0]}, ${data[1]}, ${data[2]}, ${data[3] / 255}), ${testx}, ${testy}`)
+    let batch = []
     for (let i = 0; i < triangleCount; i++) {
         ctx.globalAlpha = 0.5
         ctx.beginPath()
-        ctx.strokeStyle = 'black'
+        ctx.fillStyle = `rgba(${randomRGBA()}, ${randomRGBA()}, ${randomRGBA()}, ${randomRGBA()})`
         let maxY = maxRandom(image.height)
         let maxX = maxRandom(image.width)
         ctx.moveTo(maxX, maxY)
+        let triObj = { 'xy1': [], 'xy2': [], 'xy3': [], 'rgb': ctx.fillStyle }
         for (let i = 0; i < 2; i++) {
             let xDistance = maxX
             if (maxRandom(2) === 1) {
                 xDistance = maxX + (maxRandom(50) + 50)
             } else {
-                xDistance = maxX - (maxRandom(50) - 50)
+                xDistance = maxX - (maxRandom(50) + 50)
             }
             let yDistance = maxY
             if (maxRandom(2) === 1) {
                 yDistance = maxY + (maxRandom(50) + 50)
             } else {
-                yDistance = maxY - (maxRandom(50) - 50)
+                yDistance = maxY - (maxRandom(50) + 50)
             }
             ctx.lineTo(xDistance, yDistance)
+            if (i === 0) {
+                triObj.xy1 = [xDistance, yDistance]
+            } else if (i === 1) {
+                triObj.xy2 = [xDistance, yDistance]
+            } else {
+                triObj.xy3 = [xDistance, yDistance]
+            }
         }
         ctx.fill()
+        batch.push(triObj)
     }
+    return batch
 }
-    document.querySelector('#generate').onclick = () => randomTriangles();
-    document.querySelector('#triangles').onchange = (e) => { if (e.target.value !== '') { triangleCount = e.target.value } else { console.log('triangle count is empty') } };
+
+const fitness = () => {
+    let totFitness = 0
+    for (let i = 0; i < (picture.height); i++) {
+        for (let j = 0; j < picture.width; j++) {
+            let genPixel = ctx.getImageData(j, i, 1, 1).data
+            let picPixel = cdy.getImageData(j, i, 1, 1).data
+            totFitness = totFitness + (picPixel[0] - genPixel[0] + picPixel[1] - genPixel[1] + picPixel[2] - genPixel[2] + picPixel[3] - genPixel[3])
+        }
+    }
+    return totFitness
+}
+
+const batchFitness = () => {
+    ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
+    let batch = randomTriangles()
+    console.log({'fitness' : fitness(), 'batch': batch})
+    return {'fitness' : fitness(), 'batch': batch}
+}
+
+document.querySelector('#generate').onclick = () => batchFitness();
+document.querySelector('#triangles').onchange = (e) => { if (e.target.value !== '') { triangleCount = e.target.value } else { console.log('triangle count is empty') } };
