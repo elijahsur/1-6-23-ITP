@@ -13,3 +13,11 @@ const multiply = (a, b) => {
     return b + multiply(a - 1, b)
   }
 }
+
+const double = (a, b) => {
+  if (b === 0) {
+    return a * 2
+  } else {
+    return a * double(a, b - 1)
+  }
+}
