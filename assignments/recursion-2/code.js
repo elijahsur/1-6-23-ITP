@@ -5,3 +5,7 @@ const add = (a, b) => {
     return 1 + add(a - 1, b)
   }
 }
+
+const multiply = () => {
+  
+}
