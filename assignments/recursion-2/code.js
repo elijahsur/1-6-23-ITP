@@ -42,10 +42,10 @@ const deleteXs = (str) => {
   if (str.length === 0) {
     return str
   } else {
-    if (str[0] === 'x') {
-      return deleteXs(str.slice(1))
+    if (str[0] !== 'x') {
+      return str[0] + deleteXs(str.slice(1))
     } else {
-      return deleteXs(str)
+      return deleteXs(str.slice(1))
     }
   }
 }
