@@ -26,6 +26,6 @@ const triple = (a, b) => {
   if (b === 0) {
     return a
   } else {
-    return 3 * double(a, b - 1)
+    return 3 * triple(a, b - 1)
   }
 }
