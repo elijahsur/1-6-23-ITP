@@ -63,5 +63,13 @@ const countXs = (str) => {
 }
 
 const maximum = (ary) => {
-  
+  if (ary.length === 0) {
+    return -Infinity
+  } else {
+    if (ary[0] < ary[1]) {
+      return maximum(ary.slice(1))
+    } else {
+      return ary[0] + maximum(ary.slice(1))
+    }
+  }
 }
