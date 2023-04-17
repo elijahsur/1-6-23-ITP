@@ -49,3 +49,15 @@ const deleteXs = (str) => {
     }
   }
 }
+
+const countXs = (str) => {
+  if (str.length === 0) {
+    return 0
+  } else {
+    if (str[0] === 'x') {
+      return 1 + countXs(str.slice(1))
+    } else {
+      return countXs(str.slice(1))
+    }
+  }
+}
