@@ -6,6 +6,10 @@ const add = (a, b) => {
   }
 }
 
-const multiply = () => {
-  
+const multiply = (a, b) => {
+  if (a === 1) {
+    return b
+  } else {
+    return multiply(a, b)
+  }
 }
