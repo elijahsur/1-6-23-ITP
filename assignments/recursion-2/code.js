@@ -29,3 +29,11 @@ const triple = (a, b) => {
     return 3 * triple(a, b - 1)
   }
 }
+
+const power = (a, b) => {
+  if (b === 0) {
+    return a
+  } else {
+    return power(a, b - 1)**b
+  }
+}
