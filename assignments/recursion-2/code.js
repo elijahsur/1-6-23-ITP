@@ -18,6 +18,6 @@ const double = (a, b) => {
   if (b === 0) {
     return a
   } else {
-    return a * double(a, b - 1)
+    return 2 * double(a, b - 1)
   }
 }
