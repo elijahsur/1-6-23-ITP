@@ -32,7 +32,7 @@ const triple = (a, b) => {
 
 const power = (a, b) => {
   if (b === 0) {
-    return a
+    return 1
   } else {
     return a**power(a, b - 1)
   }
