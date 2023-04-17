@@ -1,7 +1,7 @@
 const add = (a, b) => {
-  if (a === 0) {
+  if (b - a === 0) {
     return 0
   } else {
-    return b + add(a - 1, b + 1)
+    return b + add(a, b + 1)
   }
 }
