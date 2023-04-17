@@ -37,3 +37,15 @@ const power = (a, b) => {
     return a * power(a, b - 1)
   }
 }
+
+const deleteXs = (str) => {
+  if (str.length === 0) {
+    return str
+  } else {
+    if (str[0] === 'x') {
+      return deleteXs(str.slice(1))
+    } else {
+      return deleteXs(str)
+    }
+  }
+}
