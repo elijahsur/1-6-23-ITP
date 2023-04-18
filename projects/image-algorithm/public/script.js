@@ -33,11 +33,16 @@ const randomTriangles = () => {
     for (let i = 0; i < triangleCount; i++) {
         ctx.globalAlpha = 0.5
         ctx.beginPath()
-        ctx.fillStyle = `rgba(${randomRGBA()}, ${randomRGBA()}, ${randomRGBA()}, ${randomRGBA()})`
+        let r = randomRGBA()
+        let g = randomRGBA()
+        let b = randomRGBA()
+        let a = randomRGBA()
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${a})`
         let maxY = maxRandom(image.height)
         let maxX = maxRandom(image.width)
         ctx.moveTo(maxX, maxY)
-        let triObj = { 'xy1': [], 'xy2': [], 'xy3': [], 'rgb': ctx.fillStyle }
+        let triObj = { 'points': [], 'color': { r, g, b, a } }
+        triObj.points.push({ 'x': maxX, 'y': maxY })
         for (let i = 0; i < 2; i++) {
             let xDistance = maxX
             if (maxRandom(2) === 1) {
@@ -52,13 +57,7 @@ const randomTriangles = () => {
                 yDistance = maxY - (maxRandom(50) + 50)
             }
             ctx.lineTo(xDistance, yDistance)
-            if (i === 0) {
-                triObj.xy1 = [xDistance, yDistance]
-            } else if (i === 1) {
-                triObj.xy2 = [xDistance, yDistance]
-            } else {
-                triObj.xy3 = [xDistance, yDistance]
-            }
+            triObj.points.push({ 'x': xDistance, 'y': yDistance })
         }
         ctx.fill()
         batch.push(triObj)
@@ -81,9 +80,40 @@ const fitness = () => {
 const batchFitness = () => {
     ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
     let batch = randomTriangles()
-    console.log({'fitness' : fitness(), 'batch': batch})
-    return {'fitness' : fitness(), 'batch': batch}
+    console.log({ 'fitness': fitness(), 'batch': batch })
+    return { 'fitness': fitness(), 'batch': batch }
 }
 
-document.querySelector('#generate').onclick = () => batchFitness();
+const mutate = (batches) => {
+    for (let i = 1; i < batches.length; i++) {
+        let random = maxRandom(batches[i].length)
+        let newTri = batches[i][random]
+        let oldTri = batches[i - 1][random]
+        batches[i - 1][random] = newTri
+        batches[i][random] = oldTri
+    }
+    return batches
+}
+
+const drawBatch = (batch) => {
+    ctx.globalAlpha = 0.5
+    ctx.beginPath()
+    ctx.fillStyle = `rgba(${batch.color.r}, ${batch.color.g}, ${batch.color.b}, ${batch.color.a})`
+    ctx.moveTo(batch.points[0].x, batch.points[0].y)
+    for (let i = 1; i < 2; i++) {
+        ctx.lineTo(batch.points[i].x, batch.points[0].y)
+    }
+    ctx.fill()
+}
+
+const run = (batchcount, limit) => {
+    let batches = []
+    for (let j = 0; j < limit; j++) {
+        for (let i = 0; i < batchcount; i++) {
+            batches.push(batchFitness())
+        }
+        mutate(batches)
+    }
+}
+document.querySelector('#generate').onclick = () => run(10, 5);
 document.querySelector('#triangles').onchange = (e) => { if (e.target.value !== '') { triangleCount = e.target.value } else { console.log('triangle count is empty') } };
