@@ -74,6 +74,14 @@ const maximum = (ary) => {
   }
 }
 
-const every = (ary) => {
-  
+const every = (ary, fnct) => {
+  if (ary.length === 0) {
+    return true
+  } else {
+    if (fnct(ary[0])) {
+      return every(ary.slice(1))
+    } else {
+      return false
+    }
+  }
 }
