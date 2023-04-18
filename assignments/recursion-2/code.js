@@ -66,7 +66,6 @@ const maximum = (ary) => {
   if (ary.length === 0) {
     return -Infinity
   } else {
-    return Math.max(maximum(ary.slice(1)))
     if (ary[0] < ary[1]) {
       return Math.max(ary[0], maximum(ary.slice(1)))
     } else {
