@@ -79,7 +79,7 @@ const every = (ary, fnct) => {
     return true
   } else {
     if (fnct(ary[0])) {
-      return every(ary.slice(1))
+      return every(ary.slice(1), fnct)
     } else {
       return false
     }
