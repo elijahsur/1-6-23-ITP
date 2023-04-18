@@ -85,3 +85,15 @@ const every = (ary, fnct) => {
     }
   }
 }
+
+const some = (ary, fnct) => {
+  if (ary.length === 0) {
+    return false
+  } else {
+    if (fnct(ary[0])) {
+      return true
+    } else {
+      return some(ary.slice(1))
+    }
+  }
+}
