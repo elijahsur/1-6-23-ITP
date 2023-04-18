@@ -93,7 +93,7 @@ const some = (ary, fnct) => {
     if (fnct(ary[0])) {
       return true
     } else {
-      return some(ary.slice(1))
+      return some(ary.slice(1), fnct)
     }
   }
 }
