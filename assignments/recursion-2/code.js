@@ -69,7 +69,7 @@ const maximum = (ary) => {
     if (ary[0] < ary[1]) {
       return maximum(ary.slice(1))
     } else {
-      return maximum(ary[0] + ary.slice(1))
+      return maximum([ary[0]].concat(ary.slice(1)))
     }
   }
 }
