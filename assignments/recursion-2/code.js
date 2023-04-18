@@ -73,3 +73,7 @@ const maximum = (ary) => {
     }
   }
 }
+
+const every = (ary) => {
+  
+}
