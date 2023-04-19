@@ -55,10 +55,12 @@ const sumNested = (aryN) => {
 }
 
 const searchNested = (ary, n) => {
-  if (ary.length === 0) {
+  if (isNumber(ary)) {
+    if (ary === n) {
+      return true
+    }
+  } else if (ary.length === 0) {
     return false
-  } else if (ary === n) {
-    return true
   } else if (ary[0] === n) {
     return true
   } else {
