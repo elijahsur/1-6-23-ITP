@@ -31,7 +31,7 @@ const isAscending = (ary) => {
     return isAscending(ary.slice(1))
   } else {
     return false
-    }
+  }
 }
 
 const isDescending = (ary) => {
@@ -41,13 +41,18 @@ const isDescending = (ary) => {
     return isDescending(ary.slice(1))
   } else {
     return false
-    }
+  }
 }
 
 const sumNested = (aryN) => {
+
   if (isNumber(aryN)) {
     return aryN
   } else {
-    return sumNested(aryN[0]) + sumNested(aryN.slice(1)[0])
+    if (aryN.length === 0) {
+      return 0
+    } else {
+      return sumNested(aryN[0]) + sumNested(aryN.slice(1))
+    }
   }
 }
