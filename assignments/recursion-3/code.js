@@ -33,3 +33,13 @@ const isAscending = (ary) => {
     return false
     }
 }
+
+const isDescending = (ary) => {
+  if (ary.length === 1) {
+    return true
+  } else if (ary[0] >= ary[1]) {
+    return isDescending(ary.slice(1))
+  } else {
+    return false
+    }
+}
