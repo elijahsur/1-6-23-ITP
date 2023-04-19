@@ -65,3 +65,13 @@ const searchNested = (ary, n) => {
     return false
   } else {return searchNested(ary.slice(1), n)}
 }
+
+const searchNested2 = (ary, n) => {
+  if (isNumber(ary)) {
+    if (ary === n) { return true } else {
+      return searchNested(ary.slice(1), n)
+    }
+  } else {
+    return searchNested(ary, n)
+  }
+}
