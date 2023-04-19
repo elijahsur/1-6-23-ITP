@@ -61,7 +61,7 @@ const searchNested = (ary, n) => {
     return false
   } else if (ary[0] === n) {
     return true
-  } else if (isNumber(ary)) {
-    return false
-  } else {return searchNested(ary.slice(1))}
+  } else {
+    return searchNested(ary.slice(1))
+  }
 }
