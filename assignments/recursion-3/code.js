@@ -23,3 +23,11 @@ const lucas = (n) => {
     return lucas(n - 2) + lucas(n - 1)
   }
 }
+
+const isAscending = (ary) => {
+  if (ary.length === 0) {
+    return true
+  } else if (ary[0] <= ary[1]) {
+    return isAscending(ary.slice(1))
+  } else {return false}
+}
