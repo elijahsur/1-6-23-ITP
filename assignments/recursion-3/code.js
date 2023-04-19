@@ -25,9 +25,11 @@ const lucas = (n) => {
 }
 
 const isAscending = (ary) => {
-  if (ary.length === 0) {
+  if (ary.length === 1) {
     return true
   } else if (ary[0] <= ary[1]) {
     return isAscending(ary.slice(1))
-  } else {return false}
+  } else {
+    return false
+    }
 }
