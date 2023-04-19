@@ -48,8 +48,7 @@ const sumNested = (aryN) => {
 
   if (isNumber(aryN)) {
     return aryN
-  } else {
-    if (aryN.length === 0) {
+  } else if (aryN.length === 0) {
       return 0
     } else {
       return sumNested(aryN[0]) + sumNested(aryN.slice(1))
