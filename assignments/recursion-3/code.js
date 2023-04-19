@@ -45,7 +45,6 @@ const isDescending = (ary) => {
 }
 
 const sumNested = (aryN) => {
-
   if (isNumber(aryN)) {
     return aryN
   } else if (aryN.length === 0) {
