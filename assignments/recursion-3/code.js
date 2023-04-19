@@ -48,20 +48,24 @@ const sumNested = (aryN) => {
   if (isNumber(aryN)) {
     return aryN
   } else if (aryN.length === 0) {
-      return 0
-    } else {
-      return sumNested(aryN[0]) + sumNested(aryN.slice(1))
-    }
+    return 0
+  } else {
+    return sumNested(aryN[0]) + sumNested(aryN.slice(1))
   }
+}
 
 const searchNested = (ary, n) => {
   if (ary.length === 0) {
     return false
   } else {
-    if (ary[0] === n) {
-      return true
+    if (!isNumber(ary)) {
+      return searchNested(ary)
     } else {
-      return searchNested(ary.slice(1))
+      if (ary[0] === n) {
+        return true
+      } else {
+        return searchNested(ary.slice(1))
+      }
     }
   }
 }
