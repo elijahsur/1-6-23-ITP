@@ -44,10 +44,10 @@ const isDescending = (ary) => {
     }
 }
 
-const sumNested = (aryILIn) => {
-  if (isNumber(aryILIn)) {
-    return aryILIn
+const sumNested = (aryN) => {
+  if (isNumber(aryN)) {
+    return aryN
   } else {
-    return sumNested(aryILIn[0]) + sumNested(aryILIn.slice(1))
+    return sumNested(aryN[0]) + sumNested(aryN.slice(1))
   }
 }
