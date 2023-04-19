@@ -72,6 +72,6 @@ const searchNested2 = (ary, n) => {
       return searchNested(ary.slice(1), n)
     }
   } else {
-    return searchNested(ary, n)
+    return searchNested(ary.slice(1), n)
   }
 }
