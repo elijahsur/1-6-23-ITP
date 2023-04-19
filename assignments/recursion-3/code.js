@@ -5,3 +5,7 @@ const product = (ary) => {
     return ary[0] * product(ary.slice(1))
   }
 }
+
+const sumSquares = () => {
+  
+}
