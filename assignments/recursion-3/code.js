@@ -54,7 +54,7 @@ const sumNested = (aryN) => {
   }
 }
 
-const searchNested = (ary, n) => {
+const searchNested2 = (ary, n) => {
   if (ary === n) {
     return true
   } else if (ary.length === 0) {
@@ -66,7 +66,7 @@ const searchNested = (ary, n) => {
   } else {return searchNested(ary.slice(1), n)}
 }
 
-const searchNested2 = (ary, n) => {
+const searchNested = (ary, n) => {
   if (isNumber(ary)) {
     if (ary === n) { return true } else {
       return searchNested(ary.slice(1), n)
