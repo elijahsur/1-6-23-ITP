@@ -13,3 +13,7 @@ const sumSquares = (n) => {
     return n ** 2 + sumSquares(n - 1)
   }
 }
+
+const lucas = (n) => {
+  
+}
