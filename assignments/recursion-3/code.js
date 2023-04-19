@@ -53,3 +53,5 @@ const sumNested = (aryN) => {
       return sumNested(aryN[0]) + sumNested(aryN.slice(1))
     }
   }
+
+const searchNested = () => {}
