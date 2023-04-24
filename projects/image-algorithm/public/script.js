@@ -95,13 +95,13 @@ const mutate = (batches) => {
     return batches
 }
 
-const drawBatch = (batch) => {
+const drawTriangle = (triangle) => {
     ctx.globalAlpha = 0.5
     ctx.beginPath()
-    ctx.fillStyle = `rgba(${batch.color.r}, ${batch.color.g}, ${batch.color.b}, ${batch.color.a})`
-    ctx.moveTo(batch.points[0].x, batch.points[0].y)
+    ctx.fillStyle = `rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a})`
+    ctx.moveTo(triangle.points[0].x, triangle.points[0].y)
     for (let i = 1; i < 2; i++) {
-        ctx.lineTo(batch.points[i].x, batch.points[0].y)
+        ctx.lineTo(triangle.points[i].x, triangle.points[0].y)
     }
     ctx.fill()
 }
@@ -109,11 +109,30 @@ const drawBatch = (batch) => {
 const run = (batchcount, limit) => {
     let batches = []
     for (let j = 0; j < limit; j++) {
-        for (let i = 0; i < batchcount; i++) {
+        for (let i = 0; i < batchcount - batches.length; i++) {
             batches.push(batchFitness())
+            console.log(batches)
         }
-        mutate(batches)
+        let mBatches = mutate(batches)
+        for (let h = 0; h < mBatches.length; h++) {
+            for (let k = 0; k < mBatches[h].batch.length; k++) {
+                ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
+                drawTriangle(mBatches[h].batch[k])
+            }
+            mBatches[h].fitness = fitness()
+        }
+        batches = rank(mBatches)
+        console.log('ranked batches')
+    }
+    ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
+    for (let z = 0; z < batches[0].batch.length; z++) {
+        drawTriangle(batches[0].batch[z])
     }
 }
-document.querySelector('#generate').onclick = () => run(10, 5);
+
+const rank = (batches) => {
+    batches.sort((a, b) => b.fitness - a.fitness)
+    return batches.slice(0, batches.length / 2)
+}
+document.querySelector('#generate').onclick = () => run(3, 5);
 document.querySelector('#triangles').onchange = (e) => { if (e.target.value !== '') { triangleCount = e.target.value } else { console.log('triangle count is empty') } };
