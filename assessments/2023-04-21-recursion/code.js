@@ -32,28 +32,28 @@ const rotate = (char, places) => {
 }
 
 // x
-const factorial = () => {}
+const factorial = () => { }
 
 // x
 const fibonacci = (n) => {
   if (n === 0) {
     return 0
   } else if (n === 1) {
-      return 1
-    } else {
-      return fibonacci()
-    }
+    return 1
+  } else {
+    return fibonacci()
   }
+}
 
 // x
-const sumSquares = () => {}
+const sumSquares = () => { }
 
 // x
 const maximum = (ary) => {
   if (ary.length === 0) {
     return -Infinity
   } else {
-    return Math.max(ary[0], maximum(ary[1]))
+    return Math.max(ary[0], maximum(ary.slice(1)))
   }
 }
 
@@ -61,7 +61,7 @@ const treeMap = (tree, fnct) => {
   if (isLeaf(tree)) {
     return fnct(tree)
   } else {
-    return {'left': treeMap(tree.left, fnct), 'right': treeMap(tree.right, fnct)}
+    return { 'left': treeMap(tree.left, fnct), 'right': treeMap(tree.right, fnct) }
   }
 }
 
@@ -99,14 +99,14 @@ const toList = (ary) => {
   if (ary.length === 0) {
     return null
   } else {
-    return {'first': ary[0], 'rest': toList(ary.slice(1))}
+    return { 'first': ary[0], 'rest': toList(ary.slice(1)) }
   }
 }
 
 const map = (list, fnct) => {
   if (list.rest === null) {
-    return {'first': fnct(list.first), 'rest': null}
+    return { 'first': fnct(list.first), 'rest': null }
   } else {
-    return {'first': fnct(list.first), 'rest': map(list.rest, fnct)}
+    return { 'first': fnct(list.first), 'rest': map(list.rest, fnct) }
   }
 }
