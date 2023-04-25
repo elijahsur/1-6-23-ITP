@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////////////////////
 // Write your code here ...
 
+// not tested but guessing it works
 const factorial = (n) => {
   if (n === 0) {
     return 1
@@ -9,6 +10,7 @@ const factorial = (n) => {
   }
 }
 
+// sorta tested
 const fibonacci = (n) => {
   if (n === 0) {
     return 0
@@ -19,6 +21,7 @@ const fibonacci = (n) => {
   }
 }
 
+// not tested but guessing it works
 const sumSquares = (n) => {
   if (n === 0) {
     return 0
@@ -68,7 +71,6 @@ const nvwls = (str) => {
   }
 }
 
-// x
 const caesar = (str, key) => {
   if (str.length === 0) {
     return ''
