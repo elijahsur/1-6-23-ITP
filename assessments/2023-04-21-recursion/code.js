@@ -64,7 +64,17 @@ const treeMap = (tree, fnct) => {
   }
 }
 
-const subPrimesBelow = () => {}
+const subPrimesBelow = (n) => {
+  if (n === 0) {
+    return 0
+  } else {
+    if (isPrime(n)) {
+      return n + subPrimesBelow(n - 1)
+    } else {
+      return subPrimesBelow(n - 1)
+    }
+  }
+}
 
 const nvwls = () => {}
 
