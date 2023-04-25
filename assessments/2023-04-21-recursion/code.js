@@ -106,6 +106,6 @@ const map = (list, fnct) => {
   if (list.rest === null) {
     return {'first': fnct(list.first), 'rest': null}
   } else {
-    return {'first': fnct(list.first), 'rest': map(list.rest)}
+    return {'first': fnct(list.first), 'rest': map(list.rest, fnct)}
   }
 }
