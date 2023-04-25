@@ -26,7 +26,7 @@ const sumSquares = (n) => {
   if (n === 0) {
     return 0
   } else {
-    return n**2 + sumSquares(n - 1)
+    return n ** 2 + sumSquares(n - 1)
   }
 }
 
@@ -63,7 +63,15 @@ const nvwls = (str) => {
   if (str.length === 0) {
     return ''
   } else {
-    if (str[0] ? 'a' : 'e') {
+    if (str[0] === 'a') {
+      return nvwls(str.slice(1))
+    } else if (str[0] === 'e') {
+      return nvwls(str.slice(1))
+    } else if (str[0] === 'i') {
+      return nvwls(str.slice(1))
+    } else if (str[0] === 'o') {
+      return nvwls(str.slice(1))
+    } else if (str[0] === 'u') {
       return nvwls(str.slice(1))
     } else {
       return str[0] + nvwls(str.slice(1))
