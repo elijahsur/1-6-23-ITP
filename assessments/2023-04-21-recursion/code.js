@@ -41,7 +41,7 @@ const fibonacci = (n) => {
   } else if (n === 1) {
     return 1
   } else {
-    return n + fibonacci(n - 1) + fibonacci(n - 2)
+    return fibonacci(n - 1) + fibonacci(n - 2)
   }
 }
 
