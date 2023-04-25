@@ -41,11 +41,10 @@ const fibonacci = (n) => {
   } else if (n === 1) {
     return 1
   } else {
-    return fibonacci()
+    return n + fibonacci(n - 1) + fibonacci(n - 2)
   }
 }
 
-// x
 const sumSquares = (n) => {
   if (n === 0) {
     return 0
