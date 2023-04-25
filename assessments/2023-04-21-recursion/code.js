@@ -70,7 +70,11 @@ const nvwls = (str) => {
 
 // x
 const caesar = (str, key) => {
-
+  if (str.length === 0) {
+    return ''
+  } else {
+    return rotate(str[0], key) + caesar(str, key)
+  }
 }
 
 const toList = (ary) => {
