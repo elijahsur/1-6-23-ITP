@@ -76,7 +76,17 @@ const subPrimesBelow = (n) => {
   }
 }
 
-const nvwls = () => {}
+const nvwls = (str) => {
+  if (str.length === 0) {
+    return ''
+  } else {
+    if (str[0] === 'a' || 'e' || 'i' || 'o' || 'u') {
+      return str.slice(1)
+    } else {
+      return str[0] + nvwls(str.slice(1))
+    }
+  }
+}
 
 const caesar = () => {}
 
