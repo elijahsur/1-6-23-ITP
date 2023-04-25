@@ -58,7 +58,7 @@ const subPrimesBelow = (n) => {
   }
 }
 
-// x
+// i didnt remember how to check multiple at once, kinda just defaulted to many if statements
 const nvwls = (str) => {
   if (str.length === 0) {
     return ''
