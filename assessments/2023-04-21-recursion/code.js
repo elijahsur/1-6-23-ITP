@@ -2,7 +2,13 @@
 // Write your code here ...
 
 // x
-const factorial = () => { }
+const factorial = (n) => {
+  if (n === 0) {
+    return 1
+  } else {
+    return n * factorial(n - 1)
+  }
+}
 
 const fibonacci = (n) => {
   if (n === 0) {
