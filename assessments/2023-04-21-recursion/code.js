@@ -45,6 +45,7 @@ const fibonacci = (n) => {
     }
   }
 
+// x
 const sumSquares = () => {}
 
 // x
@@ -76,6 +77,7 @@ const subPrimesBelow = (n) => {
   }
 }
 
+// x
 const nvwls = (str) => {
   if (str.length === 0) {
     return ''
@@ -88,8 +90,16 @@ const nvwls = (str) => {
   }
 }
 
-const caesar = () => {}
+const caesar = (str, key) => {
 
-const toList = () => {}
+}
+
+const toList = (ary) => {
+  if (ary.length === 0) {
+    return null
+  } else {
+    return {'first': ary[0], 'rest': toList(ary.slice(1))}
+  }
+}
 
 const map = () => {}
