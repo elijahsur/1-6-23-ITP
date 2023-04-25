@@ -46,9 +46,14 @@ const fibonacci = (n) => {
 }
 
 // x
-const sumSquares = () => { }
+const sumSquares = (n) => {
+  if (n === 0) {
+    return 0
+  } else {
+    return n**2 + sumSquares(n - 1)
+  }
+}
 
-// x
 const maximum = (ary) => {
   if (ary.length === 0) {
     return -Infinity
