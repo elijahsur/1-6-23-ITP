@@ -83,7 +83,7 @@ const nvwls = (str) => {
     return ''
   } else {
     if (str[0] === 'a') {
-      return str.slice(1)
+      return nvwls(str.slice(1))
     } else {
       return str[0] + nvwls(str.slice(1))
     }
