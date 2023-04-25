@@ -58,7 +58,7 @@ const maximum = (ary) => {
 
 const treeMap = (tree, fnct) => {
   if (isLeaf(tree)) {
-    fnct(tree)
+    return fnct(tree)
   } else {
     return {'left': treeMap(tree.left, fnct), 'right': treeMap(tree.right, fnct)}
   }
