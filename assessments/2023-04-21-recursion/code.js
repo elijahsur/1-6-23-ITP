@@ -31,8 +31,10 @@ const rotate = (char, places) => {
   }
 }
 
+// x
 const factorial = () => {}
 
+// x
 const fibonacci = (n) => {
   if (n === 0) {
     return 0
@@ -45,6 +47,7 @@ const fibonacci = (n) => {
 
 const sumSquares = () => {}
 
+// x
 const maximum = (ary) => {
   if (ary.length === 0) {
     return -Infinity
@@ -53,7 +56,13 @@ const maximum = (ary) => {
   }
 }
 
-const treeMap = () => {}
+const treeMap = (tree, fnct) => {
+  if (isLeaf(tree)) {
+    fnct(tree)
+  } else {
+    return {'left': treeMap(tree.left), 'right': treeMap(tree.right)}
+  }
+}
 
 const subPrimesBelow = () => {}
 
