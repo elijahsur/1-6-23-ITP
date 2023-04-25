@@ -60,7 +60,7 @@ const nvwls = (str) => {
   if (str.length === 0) {
     return ''
   } else {
-    if (str[0] === 'a','e','i','o','u') {
+    if (str.indexOf('a','e','i','o','u') === 0) {
       return nvwls(str.slice(1))
     } else {
       return str[0] + nvwls(str.slice(1))
