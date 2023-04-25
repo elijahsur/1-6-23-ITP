@@ -30,3 +30,37 @@ const rotate = (char, places) => {
     return lower === char ? rotated : rotated.toUpperCase();
   }
 }
+
+const factorial = () => {}
+
+const fibonacci = (n) => {
+  if (n === 0) {
+    return 0
+  } else if (n === 1) {
+      return 1
+    } else {
+      return fibonacci()
+    }
+  }
+
+const sumSquares = () => {}
+
+const maximum = (ary) => {
+  if (ary.length === 0) {
+    return -Infinity
+  } else {
+    return Math.max(ary(0), maximum(ary(1))
+  }
+}
+
+const treeMap = () => {}
+
+const subPrimesBelow = () => {}
+
+const nvwls = () => {}
+
+const caesar = () => {}
+
+const toList = () => {}
+
+const map = () => {}
