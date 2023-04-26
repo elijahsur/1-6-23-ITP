@@ -2,7 +2,7 @@
 // Write your code here ...
 
 // not tested but guessing it works
-const factorial = (n) => {
+const factorial = (n) => { // correct
   if (n === 0) {
     return 1
   } else {
@@ -11,7 +11,7 @@ const factorial = (n) => {
 }
 
 // sorta tested
-const fibonacci = (n) => {
+const fibonacci = (n) => { // correct
   if (n === 0) {
     return 0
   } else if (n === 1) {
@@ -22,7 +22,7 @@ const fibonacci = (n) => {
 }
 
 // not tested but guessing it works
-const sumSquares = (n) => {
+const sumSquares = (n) => { // correct
   if (n === 0) {
     return 0
   } else {
@@ -30,7 +30,7 @@ const sumSquares = (n) => {
   }
 }
 
-const maximum = (ary) => {
+const maximum = (ary) => { // correct
   if (ary.length === 0) {
     return -Infinity
   } else {
@@ -38,7 +38,7 @@ const maximum = (ary) => {
   }
 }
 
-const treeMap = (tree, fnct) => {
+const treeMap = (tree, fnct) => { // correct
   if (isLeaf(tree)) {
     return fnct(tree)
   } else {
@@ -46,7 +46,7 @@ const treeMap = (tree, fnct) => {
   }
 }
 
-const subPrimesBelow = (n) => {
+const subPrimesBelow = (n) => { // correct
   if (n === 0) {
     return 0
   } else {
@@ -59,7 +59,7 @@ const subPrimesBelow = (n) => {
 }
 
 // i didnt remember how to check multiple at once, kinda just defaulted to many if statements
-const nvwls = (str) => {
+const nvwls = (str) => { // correct
   if (str.length === 0) {
     return ''
   } else {
@@ -79,7 +79,7 @@ const nvwls = (str) => {
   }
 }
 
-const caesar = (str, key) => {
+const caesar = (str, key) => { // correct
   if (str.length === 0) {
     return ''
   } else {
@@ -87,7 +87,7 @@ const caesar = (str, key) => {
   }
 }
 
-const toList = (ary) => {
+const toList = (ary) => { // correct
   if (ary.length === 0) {
     return null
   } else {
@@ -95,7 +95,7 @@ const toList = (ary) => {
   }
 }
 
-const map = (list, fnct) => {
+const map = (list, fnct) => { // almost
   if (list.rest === null) {
     return { 'first': fnct(list.first), 'rest': null }
   } else {
