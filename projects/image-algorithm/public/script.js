@@ -28,6 +28,10 @@ const randomRGBA = () => {
 }
 
 //draws the first batch of random triangles around the canvas
+
+// REVIEW: I'd expect this function to generate the batch of random triangles
+// without drawing them. Then I'd have a separate function that given a batch of
+// triangles and a canvas (or a context, maybe), would draw them all.
 const randomTriangles = () => {
     let batch = []
     for (let i = 0; i < triangleCount; i++) {
@@ -65,10 +69,18 @@ const randomTriangles = () => {
     return batch
 }
 
+// REVIEW: This is good. You might want to use that code I gave you to convert
+// from the four RGBA values to three RGB just because each pixel is whatever
+// color it is and you can get the same color different ways with different
+// alpha values.
 const fitness = () => {
     let totFitness = 0
     for (let i = 0; i < (picture.height); i++) {
         for (let j = 0; j < picture.width; j++) {
+            // REVIEW: I'm not sure but it might be a lot faster to only call
+            // getImageData once outside the loop. I.e. call getImageData() to
+            // get *all* the image data and then index into the resulting .data
+            // array to get the specific pixels.
             let genPixel = ctx.getImageData(j, i, 1, 1).data
             let picPixel = cdy.getImageData(j, i, 1, 1).data
             totFitness = totFitness + (picPixel[0] - genPixel[0] + picPixel[1] - genPixel[1] + picPixel[2] - genPixel[2] + picPixel[3] - genPixel[3])
@@ -77,6 +89,13 @@ const fitness = () => {
     return totFitness
 }
 
+// REVIEW: this function should almost certainly take the batch you want to
+// measure the fitness of as an argument. This might be where you would use the
+// function I suggested above that takes a batch of triangles and draws them
+// all. So to measure the fitness you clear the rect, draw all the triangles,
+// and then compute the fitness based on image data. Also, fitness() is a pretty
+// expensve function to call so you should only call it once and save the value
+// if you need it twice, as you do here.
 const batchFitness = () => {
     ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
     let batch = randomTriangles()
@@ -84,6 +103,17 @@ const batchFitness = () => {
     return { 'fitness': fitness(), 'batch': batch }
 }
 
+// REVIEW: I'd expect this function to take a single batch as its argument and
+// return a mutated version of that batch. Because I'd expect that you're
+// mutating a batch as the last step of making a new organism: i.e. you cross
+// two batches to make a new batch and then mutate it and that's the child. Oh,
+// wait, maybe this function is kind of doing the crossing but in place? I was
+// perhaps mislead by the name. It's probably worth writing a function, cross,
+// that takes two batches and produces a new batch based on crossing them. Then
+// what this function is maybe actually doing, namely generating a whole new
+// batch boils down to generating new offspring from randomly selected parents
+// until you have a new batch of the right size. Anyway, we should probably talk
+// about this function because I'm not quite sure how you intend it to work ...
 const mutate = (batches) => {
     for (let i = 1; i < batches.length; i++) {
         let random = maxRandom(batches[i].length)
@@ -95,13 +125,13 @@ const mutate = (batches) => {
     return batches
 }
 
-const drawBatch = (batch) => {
+const drawTriangle = (triangle) => {
     ctx.globalAlpha = 0.5
     ctx.beginPath()
-    ctx.fillStyle = `rgba(${batch.color.r}, ${batch.color.g}, ${batch.color.b}, ${batch.color.a})`
-    ctx.moveTo(batch.points[0].x, batch.points[0].y)
+    ctx.fillStyle = `rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a})`
+    ctx.moveTo(triangle.points[0].x, triangle.points[0].y)
     for (let i = 1; i < 2; i++) {
-        ctx.lineTo(batch.points[i].x, batch.points[0].y)
+        ctx.lineTo(triangle.points[i].x, triangle.points[0].y)
     }
     ctx.fill()
 }
@@ -109,11 +139,30 @@ const drawBatch = (batch) => {
 const run = (batchcount, limit) => {
     let batches = []
     for (let j = 0; j < limit; j++) {
-        for (let i = 0; i < batchcount; i++) {
+        for (let i = 0; i < batchcount - batches.length; i++) {
             batches.push(batchFitness())
+            console.log(batches)
         }
-        mutate(batches)
+        let mBatches = mutate(batches)
+        for (let h = 0; h < mBatches.length; h++) {
+            for (let k = 0; k < mBatches[h].batch.length; k++) {
+                ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
+                drawTriangle(mBatches[h].batch[k])
+            }
+            mBatches[h].fitness = fitness()
+        }
+        batches = rank(mBatches)
+        console.log('ranked batches')
+    }
+    ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
+    for (let z = 0; z < batches[0].batch.length; z++) {
+        drawTriangle(batches[0].batch[z])
     }
 }
-document.querySelector('#generate').onclick = () => run(10, 5);
+
+const rank = (batches) => {
+    batches.sort((a, b) => b.fitness - a.fitness)
+    return batches.slice(0, batches.length / 2)
+}
+document.querySelector('#generate').onclick = () => run(3, 5);
 document.querySelector('#triangles').onchange = (e) => { if (e.target.value !== '') { triangleCount = e.target.value } else { console.log('triangle count is empty') } };
