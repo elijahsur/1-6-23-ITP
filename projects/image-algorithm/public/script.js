@@ -158,3 +158,10 @@ const rank = (batches) => {
 }
 document.querySelector('#generate').onclick = () => test();
 document.querySelector('#triangles').onchange = (e) => { if (e.target.value !== '') { triangleCount = e.target.value } else { console.log('triangle count is empty') } };
+
+const rank = (batches) => {
+    batches.sort((a, b) => b.fitness - a.fitness)
+    return batches.slice(0, batches.length / 2)
+}
+document.querySelector('#generate').onclick = () => test();
+document.querySelector('#triangles').onchange = (e) => { if (e.target.value !== '') { triangleCount = e.target.value } else { console.log('triangle count is empty') } };
