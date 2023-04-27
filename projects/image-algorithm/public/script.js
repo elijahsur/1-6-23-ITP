@@ -27,7 +27,7 @@ const randomRGBA = () => {
     return maxRandom(255)
 }
 
-//draws the first batch of random triangles
+//draws the first batch of random triangles around the canvas
 const randomTriangles = () => {
     let batch = []
     for (let i = 0; i < triangleCount; i++) {
@@ -67,10 +67,18 @@ const drawBatch = (batch) => {
     console.log('batch drawn')
 }
 
+// REVIEW: This is good. You might want to use that code I gave you to convert
+// from the four RGBA values to three RGB just because each pixel is whatever
+// color it is and you can get the same color different ways with different
+// alpha values.
 const fitness = () => {
     let totFitness = 0
     for (let i = 0; i < (picture.height); i++) {
         for (let j = 0; j < picture.width; j++) {
+            // REVIEW: I'm not sure but it might be a lot faster to only call
+            // getImageData once outside the loop. I.e. call getImageData() to
+            // get *all* the image data and then index into the resulting .data
+            // array to get the specific pixels.
             let genPixel = ctx.getImageData(j, i, 1, 1).data
             let picPixel = cdy.getImageData(j, i, 1, 1).data
             totFitness = totFitness + (picPixel[0] - genPixel[0] + picPixel[1] - genPixel[1] + picPixel[2] - genPixel[2] + picPixel[3] - genPixel[3])
@@ -79,13 +87,24 @@ const fitness = () => {
     return totFitness
 }
 
-const batchFitness = (batch) => {
+const batchFitness = () => {
     ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
     drawBatch(batch.triangles)
     let fit = fitness()
     return { 'fitness' : fit, 'triangles': batch.triangles }
 }
 
+// REVIEW: I'd expect this function to take a single batch as its argument and
+// return a mutated version of that batch. Because I'd expect that you're
+// mutating a batch as the last step of making a new organism: i.e. you cross
+// two batches to make a new batch and then mutate it and that's the child. Oh,
+// wait, maybe this function is kind of doing the crossing but in place? I was
+// perhaps mislead by the name. It's probably worth writing a function, cross,
+// that takes two batches and produces a new batch based on crossing them. Then
+// what this function is maybe actually doing, namely generating a whole new
+// batch boils down to generating new offspring from randomly selected parents
+// until you have a new batch of the right size. Anyway, we should probably talk
+// about this function because I'm not quite sure how you intend it to work ...
 const mutate = (batches) => {
     for (let i = 1; i < batches.length; i++) {
         let random = maxRandom(batches[i].triangles.length)
