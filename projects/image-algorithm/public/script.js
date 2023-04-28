@@ -36,8 +36,8 @@ const randomTriangles = () => {
         let b = randomRGBA()
         let a = randomRGBA()
         ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${a})`
-        let maxY = maxRandom(image.height)
-        let maxX = maxRandom(image.width)
+        let maxY = maxRandom(canvas.height)
+        let maxX = maxRandom(canvas.width)
         let triObj = { 'points': [], 'color': { r, g, b, a } }
         triObj.points.push({ 'x': maxX, 'y': maxY })
         for (let i = 0; i < 2; i++) {
@@ -117,12 +117,25 @@ const mutate = (batches) => {
 }
 
 const drawTriangle = (triangle) => {
-    ctx.globalAlpha = 0.5
+    ctx.globalAlpha = 1
     ctx.beginPath()
-    ctx.fillStyle = `rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a})`
+    ctx.fillStyle = 'red'//`rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a})`
+    console.log(ctx.fillStyle)
     ctx.moveTo(triangle.points[0].x, triangle.points[0].y)
     for (let i = 1; i < 2; i++) {
-        ctx.lineTo(triangle.points[i].x, triangle.points[0].y)
+        ctx.lineTo(triangle.points[i].x, triangle.points[i].y)
+    }
+    ctx.stroke()
+}
+
+const drawTriangle2 = (triangle) => {
+    ctx.globalAlpha = 1
+    ctx.beginPath()
+    ctx.fillStyle = `rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a})`
+    console.log(ctx.fillStyle)
+    ctx.moveTo(triangle.points[0].x, triangle.points[0].y)
+    for (let i = 1; i < 2; i++) {
+        ctx.lineTo(triangle.points[i].x, triangle.points[i].y)
     }
     ctx.fill()
 }
