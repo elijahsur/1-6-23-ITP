@@ -67,6 +67,17 @@ const drawBatch = (batch) => {
     console.log('batch drawn')
 }
 
+/*
+ * Translate value at a given alpha to the corresponding value at full opacity.
+ * Loosely based on code from https://stackoverflow.com/a/11615135.
+ */
+const opaquify = (v, a) => Math.round((v * a) / 255 + (255 - a));
+
+/*
+ * Translate rgba values we get from ImageData into RGB triples.
+ */
+const toRGB = (r, g, b, a) => [r, g, b].map((v) => opaquify(v, a));
+
 // REVIEW: This is good. You might want to use that code I gave you to convert
 // from the four RGBA values to three RGB just because each pixel is whatever
 // color it is and you can get the same color different ways with different
@@ -81,13 +92,15 @@ const fitness = () => {
             // array to get the specific pixels.
             let genPixel = ctx.getImageData(j, i, 1, 1).data
             let picPixel = cdy.getImageData(j, i, 1, 1).data
-            totFitness = totFitness + (picPixel[0] - genPixel[0] + picPixel[1] - genPixel[1] + picPixel[2] - genPixel[2] + picPixel[3] - genPixel[3])
+            let rgbGenPixel = toRGB(genPixel)
+            let rgbPicPixel = toRGB(picPixel)
+            totFitness = totFitness + (rgbPicPixel[0] - rgbGenPixel[0] + rgbPicPixel[1] - rgbGenPixel[1] + rgbPicPixel[2] - rgbGenPixel[2])
         }
     }
     return totFitness
 }
 
-const batchFitness = () => {
+const batchFitness = (batch) => {
     ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
     drawBatch(batch.triangles)
     let fit = fitness()
@@ -105,36 +118,22 @@ const batchFitness = () => {
 // batch boils down to generating new offspring from randomly selected parents
 // until you have a new batch of the right size. Anyway, we should probably talk
 // about this function because I'm not quite sure how you intend it to work ...
-const mutate = (batches) => {
-    for (let i = 1; i < batches.length; i++) {
-        let random = maxRandom(batches[i].triangles.length)
-        let newTri = batches[i].triangles[random]
-        let oldTri = batches[i - 1].triangles[random]
-        batches[i - 1].triangles[random] = newTri
-        batches[i].triangles[random] = oldTri
+const cross = (triangles) => {
+    let newBatch = []
+    for (let i = 1; i < triangles.length; i++) {
+        let firstHalf = triangles[i - 1].triangles.slice(0, triangles[i - 1].triangles.length / 2)
+        let secondHalf = triangles[i].triangles.slice(triangles[i].triangles.length / 2, triangles[i].triangles.length)
+        newBatch.push({'fitness' : 0, 'triangles' : firstHalf.concat(secondHalf)})
     }
-    return batches
+    return newBatch
 }
 
 const drawTriangle = (triangle) => {
     ctx.globalAlpha = 1
     ctx.beginPath()
-    ctx.fillStyle = 'red'//`rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a})`
-    console.log(ctx.fillStyle)
-    ctx.moveTo(triangle.points[0].x, triangle.points[0].y)
-    for (let i = 1; i < 2; i++) {
-        ctx.lineTo(triangle.points[i].x, triangle.points[i].y)
-    }
-    ctx.stroke()
-}
-
-const drawTriangle2 = (triangle) => {
-    ctx.globalAlpha = 1
-    ctx.beginPath()
     ctx.fillStyle = `rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a})`
-    console.log(ctx.fillStyle)
     ctx.moveTo(triangle.points[0].x, triangle.points[0].y)
-    for (let i = 1; i < 2; i++) {
+    for (let i = 1; i < triangle.points.length; i++) {
         ctx.lineTo(triangle.points[i].x, triangle.points[i].y)
     }
     ctx.fill()
@@ -144,30 +143,22 @@ const run = (batchcount, limit) => {
     let batches = []
     for (let j = 0; j < limit; j++) {
         for (let i = 0; i < batchcount - batches.length; i++) {
-            batches.push(batchFitness({'fitness' : 24, 'triangles': randomTriangles()}))
-            console.log(batches)
+            batches.push({'triangles': randomTriangles()})
         }
-        let mBatches = mutate(batches)
+        let mBatches = cross(batches)
         for (let h = 0; h < mBatches.length; h++) {
-            console.log([h, mBatches])
             mBatches[h] = batchFitness(mBatches[h])
         }
         batches = rank(mBatches)
-        console.log('ranked batches')
+        console.log(batches[0].fitness)
     }
     ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
     drawBatch(batches[0].triangles)
-}
-
-const test = () => {
-    let t = randomTriangles()[2]
-    console.log(t)
-    drawTriangle(t)
 }
 
 const rank = (batches) => {
     batches.sort((a, b) => b.fitness - a.fitness)
     return batches.slice(0, batches.length / 2)
 }
-document.querySelector('#generate').onclick = () => test();
+document.querySelector('#generate').onclick = () => run(10, 3);
 document.querySelector('#triangles').onchange = (e) => { if (e.target.value !== '') { triangleCount = e.target.value } else { console.log('triangle count is empty') } };
