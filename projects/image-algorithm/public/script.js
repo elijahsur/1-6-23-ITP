@@ -1,4 +1,3 @@
-//temp assignment of the image to the mona lisa, already loaded on the website
 let image = document.querySelector('#mona-lisa');
 
 let canvas = document.querySelector('canvas');
@@ -78,24 +77,22 @@ const opaquify = (v, a) => Math.round((v * a) / 255 + (255 - a));
  */
 const toRGB = (r, g, b, a) => [r, g, b].map((v) => opaquify(v, a));
 
-// REVIEW: This is good. You might want to use that code I gave you to convert
-// from the four RGBA values to three RGB just because each pixel is whatever
-// color it is and you can get the same color different ways with different
-// alpha values.
 const fitness = () => {
     let totFitness = 0
-    for (let i = 0; i < (picture.height); i++) {
-        for (let j = 0; j < picture.width; j++) {
-            // REVIEW: I'm not sure but it might be a lot faster to only call
-            // getImageData once outside the loop. I.e. call getImageData() to
-            // get *all* the image data and then index into the resulting .data
-            // array to get the specific pixels.
-            let genPixel = ctx.getImageData(j, i, 1, 1).data
-            let picPixel = cdy.getImageData(j, i, 1, 1).data
-            let rgbGenPixel = toRGB(genPixel)
-            let rgbPicPixel = toRGB(picPixel)
-            totFitness = totFitness + (rgbPicPixel[0] - rgbGenPixel[0] + rgbPicPixel[1] - rgbGenPixel[1] + rgbPicPixel[2] - rgbGenPixel[2])
-        }
+    let drawData = ctx.getImageData(0, 0, picture.width, picture.height).data
+    let imgData = cdy.getImageData(0, 0, picture.width, picture.height).data
+    console.log({'drawData length' : drawData.length, 'img size' : picture.width * picture.height, 'size difference' : drawData.length - picture.width * picture.height * 4})
+    for (let i = 0; i < (drawData.length); i++) {
+            let drawPixel = drawData.slice(0, 4)
+            drawData = drawData.slice(4)
+            let imgPixel = imgData.slice(0,4)
+            imgData = imgData.slice(4)
+            let rgbDraw = toRGB(...drawPixel)
+            let rgbIMG = toRGB(...imgPixel)
+            totFitness = totFitness + (rgbIMG[0] - rgbDraw[0] + rgbIMG[1] - rgbDraw[1] + rgbIMG[2] - rgbDraw[2])
+            if (i % 100 === 0) {
+                console.log([i, rgbDraw])
+            }
     }
     return totFitness
 }
@@ -107,17 +104,6 @@ const batchFitness = (batch) => {
     return { 'fitness' : fit, 'triangles': batch.triangles }
 }
 
-// REVIEW: I'd expect this function to take a single batch as its argument and
-// return a mutated version of that batch. Because I'd expect that you're
-// mutating a batch as the last step of making a new organism: i.e. you cross
-// two batches to make a new batch and then mutate it and that's the child. Oh,
-// wait, maybe this function is kind of doing the crossing but in place? I was
-// perhaps mislead by the name. It's probably worth writing a function, cross,
-// that takes two batches and produces a new batch based on crossing them. Then
-// what this function is maybe actually doing, namely generating a whole new
-// batch boils down to generating new offspring from randomly selected parents
-// until you have a new batch of the right size. Anyway, we should probably talk
-// about this function because I'm not quite sure how you intend it to work ...
 const cross = (triangles) => {
     let newBatch = []
     for (let i = 1; i < triangles.length; i++) {
@@ -160,5 +146,6 @@ const rank = (batches) => {
     batches.sort((a, b) => b.fitness - a.fitness)
     return batches.slice(0, batches.length / 2)
 }
+
 document.querySelector('#generate').onclick = () => run(10, 3);
 document.querySelector('#triangles').onchange = (e) => { if (e.target.value !== '') { triangleCount = e.target.value } else { console.log('triangle count is empty') } };
