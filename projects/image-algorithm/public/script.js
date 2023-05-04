@@ -82,17 +82,12 @@ const fitness = () => {
     let drawData = ctx.getImageData(0, 0, picture.width, picture.height).data
     let imgData = cdy.getImageData(0, 0, picture.width, picture.height).data
     console.log({'drawData length' : drawData.length, 'img size' : picture.width * picture.height, 'size difference' : drawData.length - picture.width * picture.height * 4})
-    for (let i = 0; i < (drawData.length); i++) {
-            let drawPixel = drawData.slice(0, 4)
-            drawData = drawData.slice(4)
-            let imgPixel = imgData.slice(0,4)
-            imgData = imgData.slice(4)
+    for (let i = 0; i < (drawData.length); i += 4) {
+            let drawPixel = drawData.slice(i, i + 4)
+            let imgPixel = imgData.slice(i, i + 4)
             let rgbDraw = toRGB(...drawPixel)
             let rgbIMG = toRGB(...imgPixel)
-            totFitness = totFitness + (rgbIMG[0] - rgbDraw[0] + rgbIMG[1] - rgbDraw[1] + rgbIMG[2] - rgbDraw[2])
-            if (i % 100 === 0) {
-                console.log([i, rgbDraw])
-            }
+            totFitness = totFitness + Math.sqrt((rgbIMG[0] - rgbDraw[0])^2 + (rgbIMG[1] - rgbDraw[1])^2 + (rgbIMG[2] - rgbDraw[2])^2)
     }
     return totFitness
 }
