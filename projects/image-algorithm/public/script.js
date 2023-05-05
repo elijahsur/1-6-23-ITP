@@ -6,17 +6,23 @@ let picture = document.querySelector('#picture');
 
 let triangleCount = 50;
 
-picture.height = image.height / 2
-picture.width = image.width / 2
 
 let ctx = canvas.getContext("2d");
 let cdy = picture.getContext("2d");
 
-cdy.drawImage(image, -(image.width / 4), 0)
+const imgDraw = () => {
+    picture.height = image.height / 2
+    picture.width = image.width / 2
+    canvas.height = picture.height
+    canvas.width = picture.width
+    cdy.drawImage(image, -(image.width / 4), 0)
+}
 
-canvas.height = picture.height
-canvas.width = picture.width
-
+if (image.complete) {
+    imgDraw()
+} else {
+    image.onload = imgDraw
+}
 //specific max amount, then generates random numbers
 const maxRandom = (max) => {
     return Math.floor(Math.random() * max)
@@ -81,22 +87,21 @@ const fitness = () => {
     let totFitness = 0
     let drawData = ctx.getImageData(0, 0, picture.width, picture.height).data
     let imgData = cdy.getImageData(0, 0, picture.width, picture.height).data
-    console.log({'drawData length' : drawData.length, 'img size' : picture.width * picture.height, 'size difference' : drawData.length - picture.width * picture.height * 4})
     for (let i = 0; i < (drawData.length); i += 4) {
-            let drawPixel = drawData.slice(i, i + 4)
-            let imgPixel = imgData.slice(i, i + 4)
-            let rgbDraw = toRGB(...drawPixel)
-            let rgbIMG = toRGB(...imgPixel)
-            totFitness = totFitness + Math.sqrt((rgbIMG[0] - rgbDraw[0])^2 + (rgbIMG[1] - rgbDraw[1])^2 + (rgbIMG[2] - rgbDraw[2])^2)
+        let drawPixel = drawData.slice(i, i + 4)
+        let imgPixel = imgData.slice(i, i + 4)
+        let rgbDraw = toRGB(...drawPixel)
+        let rgbIMG = toRGB(...imgPixel)
+        totFitness = totFitness + (((rgbIMG[0] - rgbDraw[0]) ^ 2) + ((rgbIMG[1] - rgbDraw[1]) ^ 2) + ((rgbIMG[2] - rgbDraw[2]) ^ 2))
     }
-    return totFitness
+    return Math.sqrt(totFitness)
 }
 
 const batchFitness = (batch) => {
     ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
     drawBatch(batch.triangles)
     let fit = fitness()
-    return { 'fitness' : fit, 'triangles': batch.triangles }
+    return { 'fitness': fit, 'triangles': batch.triangles }
 }
 
 const cross = (triangles) => {
@@ -104,7 +109,7 @@ const cross = (triangles) => {
     for (let i = 1; i < triangles.length; i++) {
         let firstHalf = triangles[i - 1].triangles.slice(0, triangles[i - 1].triangles.length / 2)
         let secondHalf = triangles[i].triangles.slice(triangles[i].triangles.length / 2, triangles[i].triangles.length)
-        newBatch.push({'fitness' : 0, 'triangles' : firstHalf.concat(secondHalf)})
+        newBatch.push({ 'fitness': 0, 'triangles': firstHalf.concat(secondHalf) })
     }
     return newBatch
 }
@@ -123,15 +128,18 @@ const drawTriangle = (triangle) => {
 const run = (batchcount, limit) => {
     let batches = []
     for (let j = 0; j < limit; j++) {
-        for (let i = 0; i < batchcount - batches.length; i++) {
-            batches.push({'triangles': randomTriangles()})
+        let dif = batchcount - batches.length
+        for (let i = 0; i < dif; i++) {
+            batches.push({ 'triangles': randomTriangles() })
         }
         let mBatches = cross(batches)
         for (let h = 0; h < mBatches.length; h++) {
             mBatches[h] = batchFitness(mBatches[h])
         }
+        console.log(batches.length)
         batches = rank(mBatches)
-        console.log(batches[0].fitness)
+        console.log('ranked')
+        console.log([batches.length, batches[0].fitness])
     }
     ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
     drawBatch(batches[0].triangles)
@@ -142,5 +150,5 @@ const rank = (batches) => {
     return batches.slice(0, batches.length / 2)
 }
 
-document.querySelector('#generate').onclick = () => run(10, 3);
+document.querySelector('#generate').onclick = () => run(10, 10);
 document.querySelector('#triangles').onchange = (e) => { if (e.target.value !== '') { triangleCount = e.target.value } else { console.log('triangle count is empty') } };
