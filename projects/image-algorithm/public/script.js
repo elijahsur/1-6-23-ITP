@@ -18,11 +18,18 @@ const imgDraw = () => {
     cdy.drawImage(image, -(image.width / 4), 0)
 }
 
-if (image.complete) {
-    imgDraw()
-} else {
-    image.onload = imgDraw
-}
+//if (image.complete) {
+ //   imgDraw()
+//} else {
+ //   image.onload = imgDraw
+//}
+picture.width = 20
+picture.height = 20
+canvas.height = 20
+canvas.width = 20
+cdy.fillStyle = 'red'
+cdy.fillRect(250,250,50,50)
+
 //specific max amount, then generates random numbers
 const maxRandom = (max) => {
     return Math.floor(Math.random() * max)
@@ -92,9 +99,9 @@ const fitness = () => {
         let imgPixel = imgData.slice(i, i + 4)
         let rgbDraw = toRGB(...drawPixel)
         let rgbIMG = toRGB(...imgPixel)
-        totFitness = totFitness + (((rgbIMG[0] - rgbDraw[0]) ^ 2) + ((rgbIMG[1] - rgbDraw[1]) ^ 2) + ((rgbIMG[2] - rgbDraw[2]) ^ 2))
+        totFitness = totFitness + (((rgbIMG[0] - rgbDraw[0]) ** 2) + ((rgbIMG[1] - rgbDraw[1]) ** 2) + ((rgbIMG[2] - rgbDraw[2]) ** 2))
     }
-    return Math.sqrt(totFitness)
+    return 1 / Math.sqrt(totFitness)
 }
 
 const batchFitness = (batch) => {
@@ -107,9 +114,9 @@ const batchFitness = (batch) => {
 const cross = (triangles) => {
     let newBatch = []
     for (let i = 1; i < triangles.length; i++) {
-        let firstHalf = triangles[i - 1].triangles.slice(0, triangles[i - 1].triangles.length / 2)
-        let secondHalf = triangles[i].triangles.slice(triangles[i].triangles.length / 2, triangles[i].triangles.length)
-        newBatch.push({ 'fitness': 0, 'triangles': firstHalf.concat(secondHalf) })
+            let firstHalf = triangles[i - 1].triangles.slice(0, triangles[i - 1].triangles.length / 2)
+            let secondHalf = triangles[i].triangles.slice(triangles[i].triangles.length / 2, triangles[i].triangles.length)
+            newBatch.push({ 'fitness': 0, 'triangles': firstHalf.concat(secondHalf) })
     }
     return newBatch
 }
@@ -150,5 +157,5 @@ const rank = (batches) => {
     return batches.slice(0, batches.length / 2)
 }
 
-document.querySelector('#generate').onclick = () => run(10, 10);
+document.querySelector('#generate').onclick = () => run(20, 100);
 document.querySelector('#triangles').onchange = (e) => { if (e.target.value !== '') { triangleCount = e.target.value } else { console.log('triangle count is empty') } };
