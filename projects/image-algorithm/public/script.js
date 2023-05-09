@@ -19,16 +19,16 @@ const imgDraw = () => {
 }
 
 //if (image.complete) {
- //   imgDraw()
+//   imgDraw()
 //} else {
- //   image.onload = imgDraw
+//   image.onload = imgDraw
 //}
-picture.width = 20
-picture.height = 20
-canvas.height = 20
-canvas.width = 20
+picture.width = 300
+picture.height = 300
+canvas.height = 300
+canvas.width = 300
 cdy.fillStyle = 'red'
-cdy.fillRect(250,250,50,50)
+cdy.fillRect(0, 0, 500, 500)
 
 //specific max amount, then generates random numbers
 const maxRandom = (max) => {
@@ -47,7 +47,7 @@ const randomTriangles = () => {
         let g = randomRGBA()
         let b = randomRGBA()
         let a = randomRGBA()
-        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${a})`
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${a*255})`
         let maxY = maxRandom(canvas.height)
         let maxX = maxRandom(canvas.width)
         let triObj = { 'points': [], 'color': { r, g, b, a } }
@@ -111,18 +111,64 @@ const batchFitness = (batch) => {
     return { 'fitness': fit, 'triangles': batch.triangles }
 }
 
-const cross = (triangles) => {
+const cross = (triangles, limit) => {
     let newBatch = []
     for (let i = 1; i < triangles.length; i++) {
-            let firstHalf = triangles[i - 1].triangles.slice(0, triangles[i - 1].triangles.length / 2)
-            let secondHalf = triangles[i].triangles.slice(triangles[i].triangles.length / 2, triangles[i].triangles.length)
-            newBatch.push({ 'fitness': 0, 'triangles': firstHalf.concat(secondHalf) })
+        let firstHalf = triangles[i - 1].triangles.slice(0, triangles[i - 1].triangles.length / 2)
+        let secondHalf = triangles[i].triangles.slice(triangles[i].triangles.length / 2, triangles[i].triangles.length)
+        newBatch.push({ 'fitness': 0, 'triangles': mutate(mix(firstHalf.concat(secondHalf))) })
     }
     return newBatch
 }
 
+const mix = (triangles) => {
+        for (let i = 0; i < 2; i++) {
+            triangles[i].tempN = maxRandom(triangles.length)
+        }
+        triangles.sort((a,b) => a.tempN - b.tempN)
+    for (let j = 0; j < triangles.length; j++) {
+        delete triangles[j]['tempN']
+    }
+    return triangles
+}
+
+const mutate = (triangles) => {
+    let ntriangles = []
+    for (let i = 0; i < triangles.length; i ++) {
+        if (Math.random() < 0.05) {
+            ntriangles.push(allChange(triangles[i]))
+        } else {ntriangles.push(triangles[i])}
+    }
+    return ntriangles
+}
+
+const allChange = (triangle) => {
+    let nPoints = []
+    for (let i = 0; i < triangle.points.length; i++) {
+        nPoints.push({'x' : triangle.points[i].x + maxRandom(100) - 50, 'y' :  triangle.points[i].y + maxRandom(100) - 50})
+    }
+    return {'points' : nPoints, 'color' : colorChange(triangle.color)}
+}
+
+const colorChange = (color) => {
+    let changeFactor = maxRandom(25)
+    if (!color.r + changeFactor > 255) {
+        color.r = color.r + changeFactor
+    }
+    if (!color.g + changeFactor > 255) {
+        color.g = color.g + changeFactor
+    }
+    if (!color.b + changeFactor > 255) {
+        color.b = color.b + changeFactor
+    }
+    if (!color.a + changeFactor > 255) {
+        color.a = color.a + changeFactor
+    }
+    return color
+}
+
 const drawTriangle = (triangle) => {
-    ctx.globalAlpha = 1
+    ctx.globalAlpha = .5
     ctx.beginPath()
     ctx.fillStyle = `rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a})`
     ctx.moveTo(triangle.points[0].x, triangle.points[0].y)
@@ -146,7 +192,7 @@ const run = (batchcount, limit) => {
         console.log(batches.length)
         batches = rank(mBatches)
         console.log('ranked')
-        console.log([batches.length, batches[0].fitness])
+        console.log([batches.length, Math.trunc(batches[0].fitness * 1000000) + '% matching'])
     }
     ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
     drawBatch(batches[0].triangles)
@@ -157,5 +203,4 @@ const rank = (batches) => {
     return batches.slice(0, batches.length / 2)
 }
 
-document.querySelector('#generate').onclick = () => run(20, 100);
-document.querySelector('#triangles').onchange = (e) => { if (e.target.value !== '') { triangleCount = e.target.value } else { console.log('triangle count is empty') } };
+document.querySelector('#generate').onclick = () => run(20, 20);
