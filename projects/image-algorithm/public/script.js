@@ -1,4 +1,3 @@
-//temp assignment of the image to the mona lisa, already loaded on the website
 let image = document.querySelector('#mona-lisa');
 
 let canvas = document.querySelector('canvas');
@@ -7,16 +6,29 @@ let picture = document.querySelector('#picture');
 
 let triangleCount = 50;
 
-picture.height = image.height / 2
-picture.width = image.width / 2
 
 let ctx = canvas.getContext("2d");
 let cdy = picture.getContext("2d");
 
-cdy.drawImage(image, -(image.width / 4), 0)
+const imgDraw = () => {
+    picture.height = image.height / 2
+    picture.width = image.width / 2
+    canvas.height = picture.height
+    canvas.width = picture.width
+    cdy.drawImage(image, -(image.width / 4), 0)
+}
 
-canvas.height = picture.height
-canvas.width = picture.width
+//if (image.complete) {
+ //   imgDraw()
+//} else {
+ //   image.onload = imgDraw
+//}
+picture.width = 20
+picture.height = 20
+canvas.height = 20
+canvas.width = 20
+cdy.fillStyle = 'red'
+cdy.fillRect(250,250,50,50)
 
 //specific max amount, then generates random numbers
 const maxRandom = (max) => {
@@ -28,23 +40,16 @@ const randomRGBA = () => {
 }
 
 //draws the first batch of random triangles around the canvas
-
-// REVIEW: I'd expect this function to generate the batch of random triangles
-// without drawing them. Then I'd have a separate function that given a batch of
-// triangles and a canvas (or a context, maybe), would draw them all.
 const randomTriangles = () => {
     let batch = []
     for (let i = 0; i < triangleCount; i++) {
-        ctx.globalAlpha = 0.5
-        ctx.beginPath()
         let r = randomRGBA()
         let g = randomRGBA()
         let b = randomRGBA()
         let a = randomRGBA()
         ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${a})`
-        let maxY = maxRandom(image.height)
-        let maxX = maxRandom(image.width)
-        ctx.moveTo(maxX, maxY)
+        let maxY = maxRandom(canvas.height)
+        let maxX = maxRandom(canvas.width)
         let triObj = { 'points': [], 'color': { r, g, b, a } }
         triObj.points.push({ 'x': maxX, 'y': maxY })
         for (let i = 0; i < 2; i++) {
@@ -60,78 +65,69 @@ const randomTriangles = () => {
             } else {
                 yDistance = maxY - (maxRandom(50) + 50)
             }
-            ctx.lineTo(xDistance, yDistance)
             triObj.points.push({ 'x': xDistance, 'y': yDistance })
         }
-        ctx.fill()
         batch.push(triObj)
     }
     return batch
 }
 
-// REVIEW: This is good. You might want to use that code I gave you to convert
-// from the four RGBA values to three RGB just because each pixel is whatever
-// color it is and you can get the same color different ways with different
-// alpha values.
+const drawBatch = (batch) => {
+    for (let i = 0; i < batch.length; i++) {
+        drawTriangle(batch[i])
+    }
+    console.log('batch drawn')
+}
+
+/*
+ * Translate value at a given alpha to the corresponding value at full opacity.
+ * Loosely based on code from https://stackoverflow.com/a/11615135.
+ */
+const opaquify = (v, a) => Math.round((v * a) / 255 + (255 - a));
+
+/*
+ * Translate rgba values we get from ImageData into RGB triples.
+ */
+const toRGB = (r, g, b, a) => [r, g, b].map((v) => opaquify(v, a));
+
 const fitness = () => {
     let totFitness = 0
-    for (let i = 0; i < (picture.height); i++) {
-        for (let j = 0; j < picture.width; j++) {
-            // REVIEW: I'm not sure but it might be a lot faster to only call
-            // getImageData once outside the loop. I.e. call getImageData() to
-            // get *all* the image data and then index into the resulting .data
-            // array to get the specific pixels.
-            let genPixel = ctx.getImageData(j, i, 1, 1).data
-            let picPixel = cdy.getImageData(j, i, 1, 1).data
-            totFitness = totFitness + (picPixel[0] - genPixel[0] + picPixel[1] - genPixel[1] + picPixel[2] - genPixel[2] + picPixel[3] - genPixel[3])
-        }
+    let drawData = ctx.getImageData(0, 0, picture.width, picture.height).data
+    let imgData = cdy.getImageData(0, 0, picture.width, picture.height).data
+    for (let i = 0; i < (drawData.length); i += 4) {
+        let drawPixel = drawData.slice(i, i + 4)
+        let imgPixel = imgData.slice(i, i + 4)
+        let rgbDraw = toRGB(...drawPixel)
+        let rgbIMG = toRGB(...imgPixel)
+        totFitness = totFitness + (((rgbIMG[0] - rgbDraw[0]) ** 2) + ((rgbIMG[1] - rgbDraw[1]) ** 2) + ((rgbIMG[2] - rgbDraw[2]) ** 2))
     }
-    return totFitness
+    return 1 / Math.sqrt(totFitness)
 }
 
-// REVIEW: this function should almost certainly take the batch you want to
-// measure the fitness of as an argument. This might be where you would use the
-// function I suggested above that takes a batch of triangles and draws them
-// all. So to measure the fitness you clear the rect, draw all the triangles,
-// and then compute the fitness based on image data. Also, fitness() is a pretty
-// expensve function to call so you should only call it once and save the value
-// if you need it twice, as you do here.
-const batchFitness = () => {
+const batchFitness = (batch) => {
     ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
-    let batch = randomTriangles()
-    console.log({ 'fitness': fitness(), 'batch': batch })
-    return { 'fitness': fitness(), 'batch': batch }
+    drawBatch(batch.triangles)
+    let fit = fitness()
+    return { 'fitness': fit, 'triangles': batch.triangles }
 }
 
-// REVIEW: I'd expect this function to take a single batch as its argument and
-// return a mutated version of that batch. Because I'd expect that you're
-// mutating a batch as the last step of making a new organism: i.e. you cross
-// two batches to make a new batch and then mutate it and that's the child. Oh,
-// wait, maybe this function is kind of doing the crossing but in place? I was
-// perhaps mislead by the name. It's probably worth writing a function, cross,
-// that takes two batches and produces a new batch based on crossing them. Then
-// what this function is maybe actually doing, namely generating a whole new
-// batch boils down to generating new offspring from randomly selected parents
-// until you have a new batch of the right size. Anyway, we should probably talk
-// about this function because I'm not quite sure how you intend it to work ...
-const mutate = (batches) => {
-    for (let i = 1; i < batches.length; i++) {
-        let random = maxRandom(batches[i].length)
-        let newTri = batches[i][random]
-        let oldTri = batches[i - 1][random]
-        batches[i - 1][random] = newTri
-        batches[i][random] = oldTri
+const cross = (triangles) => {
+    let newBatch = []
+    for (let i = 1; i < triangles.length; i++) {
+            let firstHalf = triangles[i - 1].triangles.slice(0, triangles[i - 1].triangles.length / 2)
+            let secondHalf = triangles[i].triangles.slice(triangles[i].triangles.length / 2, triangles[i].triangles.length)
+            newBatch.push({ 'fitness': 0, 'triangles': firstHalf.concat(secondHalf) })
     }
-    return batches
+    return newBatch
 }
 
 const drawTriangle = (triangle) => {
-    ctx.globalAlpha = 0.5
+    ctx.globalAlpha = 1
     ctx.beginPath()
     ctx.fillStyle = `rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a})`
     ctx.moveTo(triangle.points[0].x, triangle.points[0].y)
-    for (let i = 1; i < 2; i++) {
-        ctx.lineTo(triangle.points[i].x, triangle.points[0].y)
+    for (let i = 1; i < triangle.points.length; i++) {
+        ctx.lineTo(triangle.points[i].x, triangle.points[i].y)
     }
     ctx.fill()
 }
@@ -139,30 +135,27 @@ const drawTriangle = (triangle) => {
 const run = (batchcount, limit) => {
     let batches = []
     for (let j = 0; j < limit; j++) {
-        for (let i = 0; i < batchcount - batches.length; i++) {
-            batches.push(batchFitness())
-            console.log(batches)
+        let dif = batchcount - batches.length
+        for (let i = 0; i < dif; i++) {
+            batches.push({ 'triangles': randomTriangles() })
         }
-        let mBatches = mutate(batches)
+        let mBatches = cross(batches)
         for (let h = 0; h < mBatches.length; h++) {
-            for (let k = 0; k < mBatches[h].batch.length; k++) {
-                ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
-                drawTriangle(mBatches[h].batch[k])
-            }
-            mBatches[h].fitness = fitness()
+            mBatches[h] = batchFitness(mBatches[h])
         }
+        console.log(batches.length)
         batches = rank(mBatches)
-        console.log('ranked batches')
+        console.log('ranked')
+        console.log([batches.length, batches[0].fitness])
     }
     ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
-    for (let z = 0; z < batches[0].batch.length; z++) {
-        drawTriangle(batches[0].batch[z])
-    }
+    drawBatch(batches[0].triangles)
 }
 
 const rank = (batches) => {
     batches.sort((a, b) => b.fitness - a.fitness)
     return batches.slice(0, batches.length / 2)
 }
-document.querySelector('#generate').onclick = () => run(3, 5);
+
+document.querySelector('#generate').onclick = () => run(20, 100);
 document.querySelector('#triangles').onchange = (e) => { if (e.target.value !== '') { triangleCount = e.target.value } else { console.log('triangle count is empty') } };
