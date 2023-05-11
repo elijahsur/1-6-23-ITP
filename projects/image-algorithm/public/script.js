@@ -19,16 +19,16 @@ const imgDraw = () => {
 }
 
 //if (image.complete) {
- //   imgDraw()
+//   imgDraw()
 //} else {
- //   image.onload = imgDraw
+//   image.onload = imgDraw
 //}
-picture.width = 20
-picture.height = 20
-canvas.height = 20
-canvas.width = 20
+picture.width = 300
+picture.height = 300
+canvas.height = 300
+canvas.width = 300
 cdy.fillStyle = 'red'
-cdy.fillRect(250,250,50,50)
+cdy.fillRect(0, 0, 500, 500)
 
 //specific max amount, then generates random numbers
 const maxRandom = (max) => {
@@ -47,7 +47,7 @@ const randomTriangles = () => {
         let g = randomRGBA()
         let b = randomRGBA()
         let a = randomRGBA()
-        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${a})`
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${a / 255})`
         let maxY = maxRandom(canvas.height)
         let maxX = maxRandom(canvas.width)
         let triObj = { 'points': [], 'color': { r, g, b, a } }
@@ -105,7 +105,7 @@ const fitness = () => {
 }
 
 const batchFitness = (batch) => {
-    ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
+    ctx.clearRect(0, 0, ctx.width, ctx.height)
     drawBatch(batch.triangles)
     let fit = fitness()
     return { 'fitness': fit, 'triangles': batch.triangles }
@@ -114,15 +114,54 @@ const batchFitness = (batch) => {
 const cross = (triangles) => {
     let newBatch = []
     for (let i = 1; i < triangles.length; i++) {
-            let firstHalf = triangles[i - 1].triangles.slice(0, triangles[i - 1].triangles.length / 2)
-            let secondHalf = triangles[i].triangles.slice(triangles[i].triangles.length / 2, triangles[i].triangles.length)
-            newBatch.push({ 'fitness': 0, 'triangles': firstHalf.concat(secondHalf) })
+        let firstHalf = triangles[i - 1].triangles.slice(0, triangles[i - 1].triangles.length / 2)
+        let secondHalf = triangles[i].triangles.slice(triangles[i].triangles.length / 2, triangles[i].triangles.length)
+        newBatch.push({ 'fitness': 0, 'triangles': mutate(mix(firstHalf.concat(secondHalf)), .5) })
     }
     return newBatch
 }
 
+const mix = (triangles) => {
+    for (let i = 0; i < 2; i++) {
+        triangles[maxRandom(triangles.length)].temp = true
+    }
+    let tempTriangles = triangles.filter((a) => a.temp === true)
+    let normalTriangles = triangles.filter((a) => !(a.temp === true))
+
+    return normalTriangles.concat(tempTriangles)
+}
+
+const mutate = (triangles, chance) => {
+    let ntriangles = []
+    for (let i = 0; i < triangles.length; i++) {
+        if (Math.random() < chance) {
+            ntriangles.push(allChange(triangles[i]))
+        } else { ntriangles.push(triangles[i]) }
+    }
+    return ntriangles
+}
+
+const allChange = (triangle) => {
+    let nPoints = []
+    for (let i = 0; i < triangle.points.length; i++) {
+        nPoints.push({ 'x': triangle.points[i].x + maxRandom(100) - 50, 'y': triangle.points[i].y + maxRandom(100) - 50 })
+    }
+    return { 'points': nPoints, 'color': colorChange(triangle.color) }
+}
+
+const colorChange = (color) => {
+    let changeFactor = maxRandom(100) - 50
+    color.r = clamp(color.r + changeFactor, 0, 255)
+    color.g = clamp(color.g + changeFactor, 0, 255)
+    color.b = clamp(color.b + changeFactor, 0, 255)
+    color.a = clamp(color.a + changeFactor, 0, 255)
+    return color
+}
+
+const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
+
 const drawTriangle = (triangle) => {
-    ctx.globalAlpha = 1
+    ctx.globalAlpha = .5
     ctx.beginPath()
     ctx.fillStyle = `rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a})`
     ctx.moveTo(triangle.points[0].x, triangle.points[0].y)
@@ -137,7 +176,7 @@ const run = (batchcount, limit) => {
     for (let j = 0; j < limit; j++) {
         let dif = batchcount - batches.length
         for (let i = 0; i < dif; i++) {
-            batches.push({ 'triangles': randomTriangles() })
+            batches.push({ 'fitness': 0, 'triangles': randomTriangles() })
         }
         let mBatches = cross(batches)
         for (let h = 0; h < mBatches.length; h++) {
@@ -145,8 +184,7 @@ const run = (batchcount, limit) => {
         }
         console.log(batches.length)
         batches = rank(mBatches)
-        console.log('ranked')
-        console.log([batches.length, batches[0].fitness])
+        console.log([batches.length, Math.trunc(batches[0].fitness * 1000000) + '% matching'])
     }
     ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
     drawBatch(batches[0].triangles)
@@ -157,5 +195,26 @@ const rank = (batches) => {
     return batches.slice(0, batches.length / 2)
 }
 
-document.querySelector('#generate').onclick = () => run(20, 100);
-document.querySelector('#triangles').onchange = (e) => { if (e.target.value !== '') { triangleCount = e.target.value } else { console.log('triangle count is empty') } };
+const asexRun = (spawn, limit, chance) => {
+    let parent = { 'fitness': 0, 'triangles': randomTriangles() }
+    for (let i = 0; i < limit; i++) {
+        parent = asexualRep(parent, spawn, chance)
+        console.log(Math.trunc(parent.fitness * 1000000) + '% matching')
+    }
+    ctx.clearRect(0, 0, ctx.width, ctx.height)
+    drawBatch(parent)
+}
+
+const asexualRep = (triAndFit, spawn, chance) => {
+    let offspring = []
+    for (let i = 0; i < spawn; i++) {
+        let child = { 'fitness': 0, 'triangles': mutate(mix(triAndFit.triangles), chance) }
+        offspring.push(batchFitness(child))
+    }
+    offspring = rank(offspring)
+    return offspring[0]
+}
+
+document.querySelector('#generate').onclick = () => run(20, 20)
+
+document.querySelector('#asex').onclick = () => asexRun(20,20,.7)
