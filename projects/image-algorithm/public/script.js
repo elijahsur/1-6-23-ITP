@@ -4,7 +4,6 @@ let canvas = document.querySelector('canvas');
 
 let picture = document.querySelector('#picture');
 
-let triangleCount = 50;
 
 
 let ctx = canvas.getContext("2d");
@@ -40,7 +39,7 @@ const randomRGBA = () => {
 }
 
 //draws the first batch of random triangles around the canvas
-const randomTriangles = () => {
+const randomTriangles = (triangleCount) => {
     let batch = []
     for (let i = 0; i < triangleCount; i++) {
         let r = randomRGBA()
@@ -73,6 +72,7 @@ const randomTriangles = () => {
 }
 
 const drawBatch = (batch) => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
     for (let i = 0; i < batch.length; i++) {
         drawTriangle(batch[i])
     }
@@ -105,7 +105,6 @@ const fitness = () => {
 }
 
 const batchFitness = (batch) => {
-    ctx.clearRect(0, 0, ctx.width, ctx.height)
     drawBatch(batch.triangles)
     let fit = fitness()
     return { 'fitness': fit, 'triangles': batch.triangles }
@@ -144,13 +143,15 @@ const mutate = (triangles, chance) => {
 const allChange = (triangle) => {
     let nPoints = []
     for (let i = 0; i < triangle.points.length; i++) {
-        nPoints.push({ 'x': triangle.points[i].x + maxRandom(100) - 50, 'y': triangle.points[i].y + maxRandom(100) - 50 })
+        let change = 50
+        nPoints.push({ 'x': clamp(triangle.points[i].x + maxRandom(change) - change / 2, 0, canvas.width), 'y': clamp(triangle.points[i].y + maxRandom(change) - change / 2, 0, canvas.height )})
     }
     return { 'points': nPoints, 'color': colorChange(triangle.color) }
 }
 
 const colorChange = (color) => {
-    let changeFactor = maxRandom(100) - 50
+    let factor = 100
+    let changeFactor = maxRandom(factor) - factor / 2
     color.r = clamp(color.r + changeFactor, 0, 255)
     color.g = clamp(color.g + changeFactor, 0, 255)
     color.b = clamp(color.b + changeFactor, 0, 255)
@@ -161,9 +162,8 @@ const colorChange = (color) => {
 const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
 
 const drawTriangle = (triangle) => {
-    ctx.globalAlpha = .5
     ctx.beginPath()
-    ctx.fillStyle = `rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a})`
+    ctx.fillStyle = `rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a / 255})`
     ctx.moveTo(triangle.points[0].x, triangle.points[0].y)
     for (let i = 1; i < triangle.points.length; i++) {
         ctx.lineTo(triangle.points[i].x, triangle.points[i].y)
@@ -176,7 +176,7 @@ const run = (batchcount, limit) => {
     for (let j = 0; j < limit; j++) {
         let dif = batchcount - batches.length
         for (let i = 0; i < dif; i++) {
-            batches.push({ 'fitness': 0, 'triangles': randomTriangles() })
+            batches.push({ 'fitness': 0, 'triangles': randomTriangles(50) })
         }
         let mBatches = cross(batches)
         for (let h = 0; h < mBatches.length; h++) {
@@ -186,7 +186,7 @@ const run = (batchcount, limit) => {
         batches = rank(mBatches)
         console.log([batches.length, Math.trunc(batches[0].fitness * 1000000) + '% matching'])
     }
-    ctx.clearRect(image.height / 2, image.width / 2, image.width, image.height)
+    ctx.clearRect(canvas.height / 2, canvas.width / 2, canvas.width, canvas.height)
     drawBatch(batches[0].triangles)
 }
 
@@ -196,12 +196,12 @@ const rank = (batches) => {
 }
 
 const asexRun = (spawn, limit, chance) => {
-    let parent = { 'fitness': 0, 'triangles': randomTriangles() }
+    let parent = { 'fitness': 0, 'triangles': randomTriangles(50) }
     for (let i = 0; i < limit; i++) {
         parent = asexualRep(parent, spawn, chance)
         console.log(Math.trunc(parent.fitness * 1000000) + '% matching')
     }
-    ctx.clearRect(0, 0, ctx.width, ctx.height)
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
     drawBatch(parent)
 }
 
@@ -217,4 +217,20 @@ const asexualRep = (triAndFit, spawn, chance) => {
 
 document.querySelector('#generate').onclick = () => run(20, 20)
 
-document.querySelector('#asex').onclick = () => asexRun(20,20,.7)
+//document.querySelector('#asex').onclick = () => asexRun(20,20,.7)
+
+document.querySelector('#asex').onclick = () => {
+
+    let chance = 0.4;
+    let best = { 'fitness': 0, 'triangles': randomTriangles(5) };
+
+    const step = () => {
+        const child = batchFitness({ 'fitness': 0, 'triangles': mutate(mix(best.triangles), chance) });
+        if (child.fitness > best.fitness) {
+            console.log(`child is better`);
+            best = child;
+        }
+        requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+};
