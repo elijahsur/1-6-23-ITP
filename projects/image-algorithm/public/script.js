@@ -152,10 +152,12 @@ const allChange = (triangle) => {
 const colorChange = (color) => {
     let factor = 100
     let changeFactor = maxRandom(factor) - factor / 2
-    color.r = clamp(color.r + changeFactor, 0, 255)
-    color.g = clamp(color.g + changeFactor, 0, 255)
-    color.b = clamp(color.b + changeFactor, 0, 255)
-    color.a = clamp(color.a + changeFactor, 0, 255)
+    let random = Math.random()
+    if (random < .25) {
+    color.r = clamp(color.r + changeFactor, 0, 255) } else if (random < .5) {
+    color.g = clamp(color.g + changeFactor, 0, 255) } else if (random < .75) {
+    color.b = clamp(color.b + changeFactor, 0, 255) } else if (random < 1) {
+    color.a = clamp(color.a + changeFactor, 0, 255) }
     return color
 }
 
@@ -222,7 +224,7 @@ document.querySelector('#generate').onclick = () => run(20, 20)
 document.querySelector('#asex').onclick = () => {
 
     let chance = 0.4;
-    let best = { 'fitness': 0, 'triangles': randomTriangles(5) };
+    let best = { 'fitness': 0, 'triangles': randomTriangles(50) };
 
     const step = () => {
         const child = batchFitness({ 'fitness': 0, 'triangles': mutate(mix(best.triangles), chance) });
