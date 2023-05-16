@@ -44,8 +44,8 @@ const randomRGBA = () => {
     return maxRandom(255)
 }
 
-//draws the first batch of random triangles around the canvas
-const randomTriangles = (triangleCount) => {
+//draws the first batch of random polygon around the canvas
+const randompolygon = (triangleCount) => {
     let batch = []
     for (let i = 0; i < triangleCount; i++) {
         let r = randomRGBA()
@@ -80,7 +80,7 @@ const randomTriangles = (triangleCount) => {
 const drawBatch = (batch) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     for (let i = 0; i < batch.length; i++) {
-        drawTriangle(batch[i])
+        drawPolygon(batch[i])
     }
     console.log('batch drawn')
 }
@@ -111,48 +111,60 @@ const fitness = () => {
 }
 
 const batchFitness = (batch) => {
-    drawBatch(batch.triangles)
+    drawBatch(batch.polygon)
     let fit = fitness()
-    return { 'fitness': fit, 'triangles': batch.triangles }
+    return { 'fitness': fit, 'polygon': batch.polygon }
 }
 
-const cross = (triangles) => {
+const cross = (polygon) => {
     let newBatch = []
-    for (let i = 1; i < triangles.length; i++) {
-        let firstHalf = triangles[i - 1].triangles.slice(0, triangles[i - 1].triangles.length / 2)
-        let secondHalf = triangles[i].triangles.slice(triangles[i].triangles.length / 2, triangles[i].triangles.length)
-        newBatch.push({ 'fitness': 0, 'triangles': mutate(mix(firstHalf.concat(secondHalf)), .5) })
+    for (let i = 1; i < polygon.length; i++) {
+        let firstHalf = polygon[i - 1].polygon.slice(0, polygon[i - 1].polygon.length / 2)
+        let secondHalf = polygon[i].polygon.slice(polygon[i].polygon.length / 2, polygon[i].polygon.length)
+        newBatch.push({ 'fitness': 0, 'polygon': mutate(mix(firstHalf.concat(secondHalf)), .5) })
     }
     return newBatch
 }
 
-const mix = (triangles) => {
+const mix = (polygon) => {
     for (let i = 0; i < 2; i++) {
-        triangles[maxRandom(triangles.length)].temp = true
+        polygon[maxRandom(polygon.length)].temp = true
     }
-    let tempTriangles = triangles.filter((a) => a.temp === true)
-    let normalTriangles = triangles.filter((a) => !(a.temp === true))
+    let temppolygon = polygon.filter((a) => a.temp === true)
+    let normalpolygon = polygon.filter((a) => !(a.temp === true))
 
-    return normalTriangles.concat(tempTriangles)
+    return normalpolygon.concat(temppolygon)
 }
 
-const mutate = (triangles, chance) => {
-    let ntriangles = []
-    for (let i = 0; i < triangles.length; i++) {
+const mutate = (polygon, chance) => {
+    let npolygon = []
+    for (let i = 0; i < polygon.length; i++) {
         if (Math.random() < chance) {
-            ntriangles.push(allChange(triangles[i]))
-        } else { ntriangles.push(triangles[i]) }
+            npolygon.push(allChange(polygon[i]))
+        } else { npolygon.push(polygon[i]) }
     }
-    return ntriangles
+    return npolygon
 }
 
 const allChange = (triangle) => {
     let nPoints = []
     for (let i = 0; i < triangle.points.length; i++) {
         let change = 25
-        nPoints.push({ 'x': clamp(triangle.points[i].x + maxRandom(change) - change / 2, 0, canvas.width), 'y': clamp(triangle.points[i].y + maxRandom(change) - change / 2, 0, canvas.height )})
+        nPoints.push({ 'x': clamp(triangle.points[i].x + maxRandom(change) - change / 2, 0, canvas.width), 'y': clamp(triangle.points[i].y + maxRandom(change) - change / 2, 0, canvas.height) })
     }
-    return { 'points': nPoints, 'color': colorChange({...triangle.color}) }
+    return { 'points': addPoint(nPoints, 25), 'color': colorChange({ ...triangle.color }) }
+}
+
+const addPoint = (polygon, change) => {
+    let nPoints = [...polygon]
+    let points = maxRandom(6) - 3
+    if (polygon.length + points > 2 && polygon.length + points < 8) {
+        for (let i = 0; i < points; i++) {
+            nPoints.push({ 'x': clamp(maxRandom(change) - change / 2, 0, canvas.width), 'y': clamp(maxRandom(change) - change / 2, 0, canvas.width) })
+        }
+    }
+    console.log(polygon.length)
+    return mix(nPoints)
 }
 
 const colorChange = (color) => {
@@ -161,19 +173,19 @@ const colorChange = (color) => {
     let random = Math.random()
     if (random < .25) {
         color.r = clamp(color.r + changeFactor, 0, 255)
-      } else if (random < .5) {
+    } else if (random < .5) {
         color.g = clamp(color.g + changeFactor, 0, 255)
-      } else if (random < .75) {
+    } else if (random < .75) {
         color.b = clamp(color.b + changeFactor, 0, 255)
-      } else {
-        color.a = clamp(color.a + changeFactor, 0, 255) 
-      }
+    } else {
+        color.a = clamp(color.a + changeFactor, 0, 255)
+    }
     return color
 }
 
 const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
 
-const drawTriangle = (triangle) => {
+const drawPolygon = (triangle) => {
     ctx.beginPath()
     ctx.fillStyle = `rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a / 255})`
     ctx.moveTo(triangle.points[0].x, triangle.points[0].y)
@@ -186,11 +198,11 @@ const drawTriangle = (triangle) => {
 const altDrawBatch = (batch) => {
     ccy.clearRect(0, 0, canvas.width, canvas.height)
     for (let i = 0; i < batch.length; i++) {
-        altDrawTriangle(batch[i])
+        altDrawPolygon(batch[i])
     }
 }
 
-const altDrawTriangle = (triangle) => {
+const altDrawPolygon = (triangle) => {
     ccy.beginPath()
     ccy.fillStyle = `rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a / 255})`
     ccy.moveTo(triangle.points[0].x, triangle.points[0].y)
@@ -203,14 +215,14 @@ const altDrawTriangle = (triangle) => {
 document.querySelector('#asex').onclick = () => {
 
     let chance = 0.4;
-    let best = { 'fitness': 0, 'triangles': randomTriangles(1) };
+    let best = { 'fitness': 0, 'polygon': randompolygon(1) };
 
     const step = () => {
-        const child = batchFitness({ 'fitness': 0, 'triangles': mutate(mix(best.triangles), chance) });
+        const child = batchFitness({ 'fitness': 0, 'polygon': mutate(best.polygon, chance) });
         if (child.fitness > best.fitness) {
             console.log(`child is better`);
             best = child;
-            altDrawBatch(best.triangles)
+            altDrawBatch(best.polygon)
         }
         requestAnimationFrame(step);
     };
