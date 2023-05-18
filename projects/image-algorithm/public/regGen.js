@@ -4,13 +4,6 @@ let canvas = document.querySelector('canvas');
 
 let picture = document.querySelector('#picture');
 
-let canvChild = document.querySelector('#child')
-
-
-let ccy = canvChild.getContext("2d")
-let ctx = canvas.getContext("2d");
-let cdy = picture.getContext("2d");
-
 const imgDraw = () => {
     picture.height = image.height / 2
     picture.width = image.width / 2
@@ -21,19 +14,11 @@ const imgDraw = () => {
     cdy.drawImage(image, -(image.width / 4), 0)
 }
 
-//if (image.complete) {
-//   imgDraw()
-//} else {
-//   image.onload = imgDraw
-//}
-canvChild.width = 300
-canvChild.height = 300
-picture.width = 300
-picture.height = 300
-canvas.height = 300
-canvas.width = 300
-cdy.fillStyle = 'red'
-cdy.fillRect(0, 0, 500, 500)
+if (image.complete) {
+   imgDraw()
+} else {
+   image.onload = imgDraw
+}
 
 //specific max amount, then generates random numbers
 const maxRandom = (max) => {
@@ -44,8 +29,8 @@ const randomRGBA = () => {
     return maxRandom(255)
 }
 
-//draws the first batch of random polygon around the canvas
-const randompolygon = (triangleCount) => {
+//draws the first batch of random triangles around the canvas
+const randomTriangles = (triangleCount) => {
     let batch = []
     for (let i = 0; i < triangleCount; i++) {
         let r = randomRGBA()
@@ -80,7 +65,7 @@ const randompolygon = (triangleCount) => {
 const drawBatch = (batch) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     for (let i = 0; i < batch.length; i++) {
-        drawPolygon(batch[i])
+        drawTriangle(batch[i])
     }
     console.log('batch drawn')
 }
@@ -111,81 +96,69 @@ const fitness = () => {
 }
 
 const batchFitness = (batch) => {
-    drawBatch(batch.polygon)
+    drawBatch(batch.triangles)
     let fit = fitness()
-    return { 'fitness': fit, 'polygon': batch.polygon }
+    return { 'fitness': fit, 'triangles': batch.triangles }
 }
 
-const cross = (polygon) => {
+const cross = (triangles) => {
     let newBatch = []
-    for (let i = 1; i < polygon.length; i++) {
-        let firstHalf = polygon[i - 1].polygon.slice(0, polygon[i - 1].polygon.length / 2)
-        let secondHalf = polygon[i].polygon.slice(polygon[i].polygon.length / 2, polygon[i].polygon.length)
-        newBatch.push({ 'fitness': 0, 'polygon': mutate(mix(firstHalf.concat(secondHalf)), .5) })
+    for (let i = 1; i < triangles.length; i++) {
+        let firstHalf = triangles[i - 1].triangles.slice(0, triangles[i - 1].triangles.length / 2)
+        let secondHalf = triangles[i].triangles.slice(triangles[i].triangles.length / 2, triangles[i].triangles.length)
+        newBatch.push({ 'fitness': 0, 'triangles': mutate(mix(firstHalf.concat(secondHalf)), .5) })
     }
     return newBatch
 }
 
-const mix = (polygon) => {
+const mix = (triangles) => {
     for (let i = 0; i < 2; i++) {
-        polygon[maxRandom(polygon.length)].temp = true
+        triangles[maxRandom(triangles.length)].temp = true
     }
-    let temppolygon = polygon.filter((a) => a.temp === true)
-    let normalpolygon = polygon.filter((a) => !(a.temp === true))
+    let tempTriangles = triangles.filter((a) => a.temp === true)
+    let normalTriangles = triangles.filter((a) => !(a.temp === true))
 
-    return normalpolygon.concat(temppolygon)
+    return normalTriangles.concat(tempTriangles)
 }
 
-const mutate = (polygon, chance) => {
-    let npolygon = []
-    for (let i = 0; i < polygon.length; i++) {
+const mutate = (triangles, chance) => {
+    let ntriangles = []
+    for (let i = 0; i < triangles.length; i++) {
         if (Math.random() < chance) {
-            npolygon.push(allChange(polygon[i]))
-        } else { npolygon.push(polygon[i]) }
+            ntriangles.push(allChange(triangles[i]))
+        } else { ntriangles.push(triangles[i]) }
     }
-    return npolygon
+    return ntriangles
 }
 
 const allChange = (triangle) => {
     let nPoints = []
     for (let i = 0; i < triangle.points.length; i++) {
-        let change = 25
-        nPoints.push({ 'x': clamp(triangle.points[i].x + maxRandom(change) - change / 2, 0, canvas.width), 'y': clamp(triangle.points[i].y + maxRandom(change) - change / 2, 0, canvas.height) })
+        let change = 10
+        nPoints.push({ 'x': clamp(triangle.points[i].x + maxRandom(change) - change / 2, 0, canvas.width), 'y': clamp(triangle.points[i].y + maxRandom(change) - change / 2, 0, canvas.height )})
     }
-    return { 'points': addPoint(nPoints, 25), 'color': colorChange({ ...triangle.color }) }
-}
-
-const addPoint = (polygon, change) => {
-    let nPoints = [...polygon]
-    let points = maxRandom(6) - 3
-    if (polygon.length + points > 2 && polygon.length + points < 8) {
-        for (let i = 0; i < points; i++) {
-            nPoints.push({ 'x': clamp(maxRandom(change) - change / 2, 0, canvas.width), 'y': clamp(maxRandom(change) - change / 2, 0, canvas.width) })
-        }
-    }
-    console.log(polygon.length)
-    return mix(nPoints)
+    return { 'points': nPoints, 'color': colorChange(triangle.color) }
 }
 
 const colorChange = (color) => {
-    let factor = 20
+    let factor = 10
     let changeFactor = maxRandom(factor) - factor / 2
     let random = Math.random()
     if (random < .25) {
         color.r = clamp(color.r + changeFactor, 0, 255)
-    } else if (random < .5) {
+      } else if (random < .5) {
         color.g = clamp(color.g + changeFactor, 0, 255)
-    } else if (random < .75) {
+      } else if (random < .75) {
         color.b = clamp(color.b + changeFactor, 0, 255)
-    } else {
-        color.a = clamp(color.a + changeFactor, 0, 255)
-    }
+      } else {
+        color.a = clamp(color.a + changeFactor, 0, 255) 
+      }
     return color
 }
 
 const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
 
-const drawPolygon = (triangle) => {
+const drawTriangle = (triangle) => {
     ctx.beginPath()
     ctx.fillStyle = `rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a / 255})`
     ctx.moveTo(triangle.points[0].x, triangle.points[0].y)
@@ -195,36 +168,33 @@ const drawPolygon = (triangle) => {
     ctx.fill()
 }
 
-const altDrawBatch = (batch) => {
-    ccy.clearRect(0, 0, canvas.width, canvas.height)
-    for (let i = 0; i < batch.length; i++) {
-        altDrawPolygon(batch[i])
-    }
-}
-
-const altDrawPolygon = (triangle) => {
-    ccy.beginPath()
-    ccy.fillStyle = `rgba(${triangle.color.r}, ${triangle.color.g}, ${triangle.color.b}, ${triangle.color.a / 255})`
-    ccy.moveTo(triangle.points[0].x, triangle.points[0].y)
-    for (let i = 1; i < triangle.points.length; i++) {
-        ccy.lineTo(triangle.points[i].x, triangle.points[i].y)
-    }
-    ccy.fill()
-}
-
-document.querySelector('#asex').onclick = () => {
-
-    let chance = 0.4;
-    let best = { 'fitness': 0, 'polygon': randompolygon(1) };
-
-    const step = () => {
-        const child = batchFitness({ 'fitness': 0, 'polygon': mutate(best.polygon, chance) });
-        if (child.fitness > best.fitness) {
-            console.log(`child is better`);
-            best = child;
-            altDrawBatch(best.polygon)
+const run = (batchcount, limit) => {
+    let batches = []
+    for (let j = 0; j < limit; j++) {
+        let dif = batchcount - batches.length
+        for (let i = 0; i < dif; i++) {
+            batches.push({ 'fitness': 0, 'triangles': randomTriangles(50) })
         }
-        requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-};
+        let mBatches = cross(batches)
+        for (let h = 0; h < mBatches.length; h++) {
+            mBatches[h] = batchFitness(mBatches[h])
+        }
+        console.log(batches.length)
+        batches = rank(mBatches)
+        console.log([batches.length, Math.trunc(batches[0].fitness * 1000000) + '% matching'])
+    }
+    ctx.clearRect(canvas.height / 2, canvas.width / 2, canvas.width, canvas.height)
+    drawBatch(batches[0].triangles)
+}
+
+const rank = (batches) => {
+    batches.sort((a, b) => b.fitness - a.fitness)
+    return batches.slice(0, batches.length / 2)
+}
+
+document.querySelector('#generate').onclick = () => run(20, 20)
+
+//<fieldset>
+//<legend><p>generate</p></legend>
+//<input type="button" id="generate"></input>
+//</fieldset>
