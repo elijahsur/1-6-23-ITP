@@ -23,12 +23,12 @@ h1 {
   display: grid;
   width: min(600px, 80vmin);
   height: min(600px, 80vmin);
-  gap: 8px;
+  gap: 0px;
   grid-template-columns: repeat(5, 1fr);
 }
 
 div.box {
-  border: 1px solid grey;
+  border: 1px solid black;
 }
 
 button {

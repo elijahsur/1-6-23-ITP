@@ -16,13 +16,13 @@ const grid = document.querySelector('#grid');
 for (let i = 0; i < 5 * 5; i++) {
   const div = document.createElement('div');
   div.classList.add('box');
-  setRandomColor(div);
-  div.onclick = (e) => setRandomColor(e.target);
+  setColor(div);
+  div.onclick = (e) => setColor(e.target);
   grid.append(div);
 }
 
 document.querySelector('button').onclick = (e) => {
   grid.querySelectorAll('div').forEach((div) => {
-    setRandomColor(div);
+    setColor(div);
   });
 };
